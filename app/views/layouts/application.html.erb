@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= favicon_link_tag "logo.jpg" %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+  </head>
+
+  <body>
+    <div id="page-container">
+      <%= render "layouts/user_header" %>
+      <div id="content-body-custom">
+        <div class="row">
+          <section class="site-content">
+            <%= yield %>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <footer id="footer" class="site-footer padding-10-0 footer-custom">
+    <%= render "layouts/user_footer" %>
+  </footer>
+</html>

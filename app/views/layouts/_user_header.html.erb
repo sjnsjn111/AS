@@ -1,0 +1,67 @@
+<nav class="navbar navbar-default navbar-custom">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-left">
+      <li class="active">
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-home"></span> Home
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "#" do %>
+          <span class="glyphicon glyphicon-search"></span> Search
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "http://www.udn.vn/" do %>
+          <span class="glyphicon glyphicon-question-sign"></span> Help
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "http://www.udn.vn/" do %>
+          <span class="glyphicon glyphicon-book"></span> Guides
+       <% end %>
+      </li>
+      <li>
+        <%= link_to "http://www.udn.vn/" do %>
+          <span class="glyphicon"></span> Library Information
+        <% end %>
+      </li>
+    </ul>
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right site-nav">
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> User
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li>
+            <%= link_to "javascript:void(0)" do %>
+              <i class="fa fa-user"></i>
+              <%= t("profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "javascript:void(0)" do %>
+              <i class="fa fa-pencil-square-o"></i>
+              <%= t("change") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i>
+              <%= t("logout") %>
+            <% end %>
+          </li>
+        </ul>
+      </ul>
+    <% else %>
+      <div class="nav navbar-nav navbar-right nav-custom">
+        <%= link_to "javascript:void(0)", class: "btn-login-user" do %>
+          <i class="fa fa-sign-in"></i> <%= t("login") %>
+        <% end %>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</nav>
+<%= render "devise_custom/login" %>
+<%= javascript_include_tag "login" %>

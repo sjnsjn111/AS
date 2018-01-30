@@ -1,0 +1,14 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+nav.navbar-custom {
+  margin-bottom: 5px;
+}
+.nav-custom {
+  position: relative;
+  top: 15px;
+  right: 20px;
+}
+.site-nav li:hover > ul {
+  display: block;
+}
