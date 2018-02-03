@@ -13,6 +13,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :nationality
       t.text :avatar
       t.integer :year
+      t.string :identification_number
+      t.string :religion
       t.date :deleted_at
 
       t.timestamps

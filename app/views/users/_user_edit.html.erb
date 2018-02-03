@@ -1,0 +1,64 @@
+<%= simple_form_for @user, method: :patch, remote: true do |f| %>
+  <div class="col-sm-2 col-md-2 col-lg-2">
+    <center>
+      <%= link_to :back, class: "btn btn-danger btn-sm" do %>
+        <i class="fa fa-undo"></i> <%= t "back" %>
+      <% end %>
+    </center></br>
+    <%= image_tag @user.avatar.url, class: "img-rounded",
+      alt: t("avatar"), width: 200, height: 250 %>
+    <%= f.file_field :avatar, class: "btn btn-success btn-md w-200",
+      accept: "image/jpeg,image/gif,image/png" %>
+  </div>
+  <div class="col-sm-10 col-md-10 col-lg-10" >
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :name, disabled: true %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :people_id, label: t("people_id"), disabled: true %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :identification_number, disabled: true %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :email, disabled: true %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :birthday, as: :date %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :religion %>
+    </div>
+     <div class="funkyradio col-sm-7 col-md-7 col-lg-7">
+      <div class="row">
+        <div class="col-md-12">
+          <h5 class="m-0"><strong><%= t "sex" %></strong></h5>
+          <% User.sexes.each do |key, value| %>
+            <div class="funkyradio-success col-md-4">
+              <%= f.radio_button :sex, value, id: "radio#{value}" %>
+              <%= f.label :sex, t("sexes.#{key}"), for: "radio#{value}" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :phone %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :address, as: :string %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :nation %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <%= f.input :nationality %>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <center>
+        <%= f.submit t("change"), class: "btn btn-info btn-md" %>
+      </center>
+    </div>
+  </div>
+<% end %>
+<%= javascript_include_tag "upload_picture" %>

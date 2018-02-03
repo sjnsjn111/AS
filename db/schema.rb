@@ -205,6 +205,8 @@ ActiveRecord::Schema.define(version: 20180128135826) do
     t.string "nationality"
     t.text "avatar"
     t.integer "year"
+    t.string "identification_number"
+    t.string "religion"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

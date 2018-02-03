@@ -6,12 +6,6 @@ body {
     color: #212529;
     background-color: #fff;
 }
-section.site-content {
-  color: #fff;
-  background: linear-gradient( rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5) ), url("background.jpg");
-  background-size: cover !important;
-}
 p.text-hero {
     font-size: 1.2em;
     font-weight: 300;
@@ -131,8 +125,4 @@ label {
 }
 .dropdown-menu p{
     color:#000; margin: 0 10px; cursor:pointer;
-}
-.page-custom {
-  position: relative;
-  top: -100px;
 }

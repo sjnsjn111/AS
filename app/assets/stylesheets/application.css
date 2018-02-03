@@ -16,4 +16,5 @@
  *= require_self
  *= require custom
  *= require_tree ../../../node_modules/alertify/themes
+ *= require funky_radio_checkbox
  */

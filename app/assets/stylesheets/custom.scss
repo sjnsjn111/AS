@@ -1,14 +1,115 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'colors';
 
-nav.navbar-custom {
-  margin-bottom: 5px;
-}
-.nav-custom {
-  position: relative;
-  top: 15px;
-  right: 20px;
+.m-0 {
+  margin-bottom: 0 !important;
 }
 .site-nav li:hover > ul {
   display: block;
+}
+.w-1200 {
+  width: 1200px;
+}
+body {
+  background: linear-gradient( #e4f1ee,
+    #f9f9f9);
+}
+.navbar-user {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colHighlight; }}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight; }}
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $bgDefault;
+          > li {
+            > a {
+              color: $colDefault;
+              &:hover,  &:focus {
+                color: $colHighlight;
+                background-color: $bgHighlight; }}
+            &.divider {
+              background-color: $bgHighlight;}}}}}
+    @if $dropDown {
+      .open .dropdown-menu > .active {
+        > a, > a:hover, > a:focus {
+          color: $colHighlight;
+          background-color: $bgHighlight; }}}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+@media (max-width: 767px) {
+  .navbar-user .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+}
+.page-content {
+  padding: 15px;
+}
+.min-w-180 {
+  min-width: 180px !important;
+}
+.h-55 {
+  height: 55px;
+}
+label.required {
+  abbr {
+    color: $red;
+  }
+}
+.w-600 {
+  width: 600px;
+}
+.alert-alert {
+  @extend.alert-danger;
+}
+.alert-notice {
+  @extend.alert-info;
+}
+.m-0 {
+  margin: 0;
+}
+.w-200 {
+  width: 200px;
+}
+.m-10 {
+  margin: 10px;
+}
+.m-left-275 {
+  margin-left: 275px;
 }

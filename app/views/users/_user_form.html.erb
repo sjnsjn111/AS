@@ -1,0 +1,169 @@
+<div class="col-sm-2 col-md-2 col-lg-2">
+  <%= image_tag @user.avatar.url, class: "img-rounded",
+    alt: t("avatar"), width: 200, height: 250 %>
+  <center>
+    <%= link_to edit_user_registration_url(current_user),
+      class: "btn btn-warning btn-md m-10" do %>
+      <i class="fa fa-key"></i> <%= t "change_pass" %>
+    <% end %>
+  </center>
+</div>
+<div class="col-sm-10 col-md-10 col-lg-10" >
+  <div class="panel panel-default">
+    <div class="panel panel-heading h-55">
+      <h4 class="col-md-6">
+        <%= t "general_info" %>
+      </h4>
+      <p class="col-md-6 text-right">
+        <%= link_to edit_user_path(@user), remote: true,
+          class: "btn btn-info btn-sm" do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+      </p>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-user-o"></i> <%= t "name" %>
+              </strong>
+            </td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-envelope-o"></i> <%= t "email" %>
+              </strong>
+            </td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-font-awesome"></i> <%= t "nationality" %>
+              </strong>
+            </td>
+            <td><%= @user.nationality %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-transgender"></i> <%= t "sex" %>
+              </strong>
+            </td>
+            <td><%= @user.sex %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-birthday-cake"></i> <%= t "birthday" %>
+              </strong>
+            </td>
+            <td>
+              <%= @user.birthday %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <%= link_to "#tab-1", data: {toggle: "tab"} do %>
+            <%= t "info_register" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#tab-2", data: {toggle: "tab"} do %>
+            <%= t "info_others" %>
+          <% end %>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="tab-1" class="tab-pane fade in active">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-asterisk"></i> <%= t "aspiration" %> 1
+                  </strong>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-asterisk"></i> <%= t "aspiration" %> 2
+                  </strong>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-asterisk"></i> <%= t "aspiration" %> 3
+                  </strong>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="tab-2" class="tab-pane fade">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-user-o"></i> <%= t "people_id" %>
+                  </strong>
+                </td>
+                <td><%= @user.people_id %></td>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-legal"></i> <%= t "religion" %>
+                  </strong>
+                </td>
+                <td><%= @user.religion %></td>
+              </tr>
+              <tr>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-address-card"></i> <%= t "address" %>
+                  </strong>
+                </td>
+                <td><%= @user.address %></td>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-address-card-o"></i> <%= t "identification_number" %>
+                  </strong>
+                </td>
+                <td class="col-md-3">
+                  <%= @user.identification_number %>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-font-awesome"></i> <%= t "nation" %>
+                  </strong>
+                </td class="col-md-3">
+                <td ><%= @user.nation %></td>
+                <td class="col-md-3">
+                  <strong>
+                    <i class="fa fa-phone"></i> <%= t "phone" %>
+                  </strong>
+                </td>
+                <td class="col-md-3">
+                  <%= @user.phone %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

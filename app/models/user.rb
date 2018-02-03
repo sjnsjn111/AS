@@ -16,7 +16,20 @@ class User < ApplicationRecord
   has_many :major_departments, through: :majors
   has_many :departments, through: :major_departments
 
-  enum role: %i{student teacher admin}
-  enum sex: %i{unknown male female}
-  enum level: %i{university college Intermediate}
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :people_id, presence: true
+  validates :identification_number, presence: true
+
+  enum role: %i(student teacher admin)
+  enum sex: %i(unknown male female)
+  enum level: %i(university college Intermediate)
+
+  mount_uploader :avatar, PictureUploader
+
+  def picture_size
+    if avatar.size > 5.megabytes
+      errors.add :avatar, t("less_than_5")
+    end
+  end
 end

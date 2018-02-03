@@ -18,3 +18,5 @@
 //= require i18n.js
 //= require i18n/translations
 //= require alertify/lib/alertify.min.js
+//= require jquery.validate
+//= require jquery.validate.additional-methods

@@ -16,4 +16,8 @@ Rails.application.routes.draw do
     get "edit", to: "devises/users#edit", as: :edit_user_registration
     delete "logout", to: "devises/sessions#destroy", as: :destroy_user_session
   end
+
+  resources :set_language, only: :index
+
+  resources :users, only: %i(show edit update)
 end

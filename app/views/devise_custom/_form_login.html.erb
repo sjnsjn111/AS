@@ -42,13 +42,9 @@
 
   <div class="form-group p-15">
     <div class="text-center">
-      <a href="javascript:void(0)" class="link-forgot-password">
-        <small><%= t "forgot" %></small>
-      </a>
-      <span> - </span>
-      <a href="javascript:void(0)" class="link-register">
-        <small><%= t "create_new" %></small>
-      </a>
+      <%= link_to "javascript:void(0)", class: "link-forgot-password" do %>
+        <p><%= t "forgot" %></p>
+      <% end %>
     </div>
   </div>
 <% end %>
