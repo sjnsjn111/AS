@@ -1,0 +1,16 @@
+<tr role="row" class="student-<%= student.id %>">
+  <td class="text-center"><%= student.identification_number %></td>
+  <td class="text-center"><%= student.name %></td>
+  <td class="text-center"><%= l student.birthday, format: :long %></td>
+  <td class="text-center"><%= student.people_id %></td>
+  <td class="text-center">
+    <div class="btn-group btn-group-xs">
+      <%= link_to "#", remote: true, class: "btn btn-default btn-xs" do %>
+        <i class="fa fa-eye"></i>
+      <% end %>
+      <%= link_to "#", remote: true, class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-remove"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

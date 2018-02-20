@@ -3,7 +3,6 @@ class School < ApplicationRecord
 
   has_many :majors, dependent: :destroy
   has_many :remarkings, dependent: :destroy
-  has_many :teacher, dependent: :destroy
   has_many :registers, through: :majors
   has_many :reviews, through: :majors
   has_many :users, through: :registers

@@ -4,10 +4,10 @@
       <%= link_to :back, class: "btn btn-danger btn-sm" do %>
         <i class="fa fa-undo"></i> <%= t "back" %>
       <% end %>
-    </center></br>
-    <%= image_tag @user.avatar.url, class: "img-rounded",
+    </center><br/>
+    <%= image_tag @user.avatar.url, class: "img-rounded avatar",
       alt: t("avatar"), width: 200, height: 250 %>
-    <%= f.file_field :avatar, class: "btn btn-success btn-md w-200",
+    <%= f.file_field :avatar, class: "btn btn-success btn-md w-200 btn-avatar",
       accept: "image/jpeg,image/gif,image/png" %>
   </div>
   <div class="col-sm-10 col-md-10 col-lg-10" >

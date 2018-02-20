@@ -1,9 +1,9 @@
 <div class="col-sm-2 col-md-2 col-lg-2">
-  <%= image_tag @user.avatar.url, class: "img-rounded",
-    alt: t("avatar"), width: 200, height: 250 %>
+  <%= image_tag @user.avatar.url, class: "img-rounded avatar",
+    alt: t("avatar"), width: 185, height: 230 %>
   <center>
     <%= link_to edit_user_registration_url(current_user),
-      class: "btn btn-warning btn-md m-10" do %>
+      class: "btn btn-warning btn-md m-10 btn-avatar" do %>
       <i class="fa fa-key"></i> <%= t "change_pass" %>
     <% end %>
   </center>
@@ -54,7 +54,7 @@
                 <i class="fa fa-transgender"></i> <%= t "sex" %>
               </strong>
             </td>
-            <td><%= @user.sex %></td>
+            <td><%= t("sexes.#{@user.sex}") %></td>
           </tr>
           <tr>
             <td class="col-md-3">
@@ -84,30 +84,9 @@
         <div id="tab-1" class="tab-pane fade in active">
           <table class="table table-hover">
             <tbody>
-              <tr>
-                <td class="col-md-3">
-                  <strong>
-                    <i class="fa fa-asterisk"></i> <%= t "aspiration" %> 1
-                  </strong>
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="col-md-3">
-                  <strong>
-                    <i class="fa fa-asterisk"></i> <%= t "aspiration" %> 2
-                  </strong>
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="col-md-3">
-                  <strong>
-                    <i class="fa fa-asterisk"></i> <%= t "aspiration" %> 3
-                  </strong>
-                </td>
-                <td></td>
-              </tr>
+              <% if @registers.present? %>
+                <%= render partial: "aspiration", collection: @registers, as: :register %>
+              <% end %>
             </tbody>
           </table>
         </div>

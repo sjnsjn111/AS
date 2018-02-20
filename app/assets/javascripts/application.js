@@ -13,10 +13,17 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require rails-ujs
+//= require modernizr.min
+//= require plugins
 //= require bootstrap
+//= require app
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
 //= require alertify/lib/alertify.min.js
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require sidenav
+//= require highcharts
+//= require chartkick
+//= require login_custom

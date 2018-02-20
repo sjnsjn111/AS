@@ -10,9 +10,12 @@
   </head>
 
   <body>
-    <div id="page-container">
+    <% if user_signed_in? %>
+      <%= render "layouts/user_sidebar" %>
+    <% end %>
+    <div id="main" class="p-0">
       <%= render "layouts/user_header" %>
-      <div id="content-body-custom">
+      <div id="content-body-custom" class="p-15">
         <div class="row">
           <center>
             <div class="w-1200">
@@ -21,8 +24,9 @@
               <% end %>
             </div>
           </center>
-          <div class="page-content">
+          <div id="page-content">
             <%= yield %>
+            <a href="#" id="to-top" style="display: block;"><i class="fa fa-angle-double-up"></i></a>
           </div>
         </div>
       </div>

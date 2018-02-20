@@ -1,0 +1,19 @@
+<li class="active">
+  <%= show_icon_note note %>
+
+  <div class="timeline-time">
+    <small>
+      <%= time_ago_in_words note.time %>
+      <%= check_time_note note %>
+    </small>
+  </div>
+
+  <div class="timeline-content">
+    <p class="push-bit text-primary">
+      <strong><%= t "note_style.#{note.style}" %></strong>
+    </p>
+    <p class="push-bit">
+      <%= note.content %> <%= note.time.strftime("%H:%M") %>
+    </p>
+  </div>
+</li>

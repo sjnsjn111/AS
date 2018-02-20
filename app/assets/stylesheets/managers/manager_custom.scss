@@ -1,0 +1,17 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'colors';
+@import 'font-awesome';
+
+.m-left-80 {
+  margin-left: 80px;
+}
+.m-left-50 {
+  margin-left: 50px;
+}
+.display-none {
+  display: none;
+}
+label abbr {
+  color: red;
+}

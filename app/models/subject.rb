@@ -1,4 +1,4 @@
-class Subjects < ApplicationRecord
+class Subject < ApplicationRecord
   acts_as_paranoid
 
   has_many :subject_departments, dependent: :destroy

@@ -6,6 +6,7 @@ class CreateMajors < ActiveRecord::Migration[5.1]
       t.string :code
       t.text :introducing
       t.date :deleted_at
+      t.text :picture
 
       t.timestamps
     end

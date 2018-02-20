@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="widget">
+      <div class="widget-extra themed-background-dark">
+        <h3 class="widget-content-light">
+          <%= t "competition" %> <strong><%= t "timeline" %></strong>
+        </h3>
+      </div>
+      <div class="widget-extra">
+        <div class="timeline">
+          <ul class="timeline-list">
+            <% if @notes.present? %>
+              <%= render partial: "note_timeline", collection: @notes, as: :note %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="block full">
+      <div class="block-title">
+        <div class="block-options pull-right">
+          <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
+            <i class="fa fa-briefcase"></i>
+          </a>
+        </div>
+        <h3 class="widget-content-light"><%= t "competition" %> <strong><%= t "calender" %></strong></h3>
+      </div>
+      <div class="table table-bordered table-striped table-vcenter dataTable no-footer" role="grid">
+        <div class="row">
+          <div class="col-md-12">
+            <table role="grid" class="table table-bordered table-striped table-vcenter dataTable no-footer">
+            <thead>
+              <tr role="row">
+                <th class="text-center"></th>
+                <th class="text-center"><%= t "start_time" %></th>
+                <th class="text-center"><%= t "end_time" %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render partial: "note_calendar", collection: @note_cal, as: :note %>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

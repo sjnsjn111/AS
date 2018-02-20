@@ -1,0 +1,60 @@
+@import 'colors';
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: $color_martinique_approx;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+  a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #white;
+    display: block;
+    transition: 0.3s;
+    &:hover {
+      background-color: $color_wistful_approx;
+      color: $color_wistful_approx;
+    }
+    i {
+      color: $colDefault;
+    }
+    span {
+      color: $colDefault;
+      margin-left: 15px;
+    }
+  }
+  .icon {
+    position: relative;
+    top: -55px;
+    background-color: $color_wistful_approx;
+    padding-right: 32px;
+    &:hover {
+      background-color: $color_martinique_approx;
+    }
+  }
+  .btn-close {
+    font-size: 20px;
+    padding-left: 110px;
+    position: relative;
+    top: -50px;
+  }
+}
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+@media screen and(max-height: 450px) {
+  .sidenav {
+      padding-top: 15px;
+      a {
+          font-size: 18px;
+      }
+  }
+}

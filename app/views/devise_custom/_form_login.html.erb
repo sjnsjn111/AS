@@ -24,19 +24,23 @@
     </div>
   </div>
 
-  <div class="form-group form-actions remember-login p-15">
-    <div class="pull-left">
-      <%= f.label :remember_me, class: "checkbox inline remember_me" do %>
-        <label class="switch switch-primary" data-toggle="tooltip">
-          <%= f.check_box :remember_me,id: "login-remember-me" %>
-          <span></span>
-        </label>
-      <% end %>
-    </div>
-    <div class="pull-right">
-      <%= f.button :submit, class: "btn btn-sm btn-primary" do %>
-        <%= t "login" %>
-      <% end %>
+  <div class="form-group remember-login">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="col-xs-4">
+          <%= f.label :remember_me, class: "checkbox inline remember_me" do %>
+            <label class="switch switch-primary" data-toggle="tooltip">
+              <%= f.check_box :remember_me,id: "login-remember-me" %>
+              <span></span>
+            </label>
+          <% end %>
+        </div>
+        <div class="col-xs-8 text-right">
+          <%= f.button :submit, class: "btn btn-sm btn-primary" do %>
+            <%= t "login" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 

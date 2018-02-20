@@ -18,6 +18,21 @@ Rails.application.routes.draw do
   end
 
   resources :set_language, only: :index
+  resources :statistic_results, only: :index
 
-  resources :users, only: %i(show edit update)
+  resources :users, except: %i(destroy new create index)
+  resources :registers
+  resources :results
+  resources :majors
+  resources :notes, only: :index
+
+  namespace :teachers do
+    resources :users, only: %i(new create)
+  end
+
+  namespace :admins do
+    resources :users, only: %i(index new create) do
+      collection { post :import_students }
+    end
+  end
 end

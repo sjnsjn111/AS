@@ -10,5 +10,6 @@ class CreateRegisters < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :registers, [:major_id, :user_id], unique: true
   end
 end

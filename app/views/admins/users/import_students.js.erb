@@ -1,0 +1,8 @@
+<% if @success %>
+  $('#add-student').modal('hide');
+  alertify.success('<%= @success %>');
+  $('#table-user').html('<%= j render "table_student" %>');
+<% elsif @errors.present? %>
+  alertify.error('<%= j (render partial: "shared/error_exception",
+    locals: {errors: @errors}) %>');
+<% end %>

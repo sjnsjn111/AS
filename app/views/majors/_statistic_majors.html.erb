@@ -1,0 +1,30 @@
+<div class="col-sm-6 col-lg-4">
+  <a href="javascript:void(0)" class="widget widget-hover-effect2">
+    <div class="widget-extra themed-background-dark">
+      <h4 class="widget-content-light"><strong>Total</strong> Majors</h4>
+    </div>
+    <div class="widget-extra-full">
+      <span class="h2 animation-expandOpen"><%= Major.all.size %></span>
+    </div>
+  </a>
+</div>
+<div class="col-sm-6 col-lg-4">
+  <a href="javascript:void(0)" class="widget widget-hover-effect2">
+    <div class="widget-extra themed-background">
+      <h4 class="widget-content-light"><strong>Total</strong> Schools</h4>
+    </div>
+    <div class="widget-extra-full">
+      <span class="h2 animation-expandOpen"><%= School.all.size %></span>
+    </div>
+  </a>
+</div>
+<div class="col-sm-6 col-lg-4">
+  <a href="javascript:void(0)" class="widget widget-hover-effect2">
+    <div class="widget-extra backgound-green">
+      <h4 class="widget-content-light"><strong>Top</strong> Majors</h4>
+    </div>
+    <div class="widget-extra-full">
+      <span class="h3 animation-expandOpen text-success"><%= @top_target.major.name %></span>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,16 @@
+<div class="col-sm-2 col-lg-2 center-block">
+  <%= link_to "javascript:void(0)", class: "widget widget-hover-effect2" do %>
+    <div class="widget-extra themed-background-dark">
+      <h4 class="widget-content-light">
+        <strong>
+          <%= average.first %>
+        </strong>
+      </h4>
+    </div>
+    <div class="widget-extra-full">
+      <span class="h2 animation-expandOpen">
+        <b><%= average.second.round 2 %></b>
+      </span>
+    </div>
+  <% end %>
+</div>

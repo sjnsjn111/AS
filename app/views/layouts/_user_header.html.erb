@@ -1,39 +1,43 @@
 <nav class="navbar navbar-user m-0">
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-left">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "javascript:void(0)", onclick: "openNav()" do %>
+            <i class="fa fa-bars"></i>
+          <% end %>
+        </li>
+      <% end %>
       <li class="active">
         <%= link_to root_path do %>
           <span class="glyphicon glyphicon-home"></span> Home
         <% end %>
       </li>
       <li>
-        <%= link_to "#" do %>
-          <span class="glyphicon glyphicon-search"></span> Search
-        <% end %>
-      </li>
-
-      <li>
-        <%= link_to "http://www.udn.vn/" do %>
-          <span class="glyphicon glyphicon-question-sign"></span> Help
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "http://www.udn.vn/" do %>
-          <span class="glyphicon glyphicon-book"></span> Guides
-       <% end %>
-      </li>
-      <li>
-        <%= link_to "http://www.udn.vn/" do %>
-          <span class="glyphicon"></span> Library Information
-        <% end %>
+        <h3 class="title-main"><strong><%= t "title_main" %></strong></h3>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right site-nav">
       <% if user_signed_in? %>
           <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> User
+          <a class="dropdown-toggle h-50 p-top-5" data-toggle="dropdown" href="#">
+          <%= image_tag current_user.avatar.url, class: "img-circle", size: 40 %>
           <span class="caret"></span></a>
           <ul class="dropdown-menu min-w-180">
+            <% if current_user.teacher? %>
+              <li>
+                <%= link_to new_teachers_user_path do %>
+                  <%= t("teacher") %><i class="fa fa-users pull-right"></i>
+                <% end %>
+              </li>
+            <% end %>
+            <% if current_user.admin? %>
+              <li>
+                <%= link_to admins_users_path(role: :student) do %>
+                  <%= t("admin") %><i class="fa fa-user-secret pull-right"></i>
+                <% end %>
+              </li>
+            <% end %>
             <li>
               <%= link_to user_path(current_user) do %>
                 <%= t("profile") %><i class="fa fa-address-book pull-right"></i>
@@ -62,4 +66,3 @@
   </div>
 </nav>
 <%= render "devise_custom/login" %>
-<%= javascript_include_tag "login" %>

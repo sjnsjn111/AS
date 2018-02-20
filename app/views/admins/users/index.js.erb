@@ -1,0 +1,5 @@
+<% if params[:role] == Settings.teacher %>
+  $('#table-user').html('<%= j render "table_teacher" %>');
+<% else %>
+  $('#table-user').html('<%= j render "table_student" %>');
+<% end %>

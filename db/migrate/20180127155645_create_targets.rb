@@ -4,6 +4,7 @@ class CreateTargets < ActiveRecord::Migration[5.1]
       t.references :major
       t.integer :amount
       t.integer :year
+      t.float :benchmark
       t.date :deleted_at
 
       t.timestamps
