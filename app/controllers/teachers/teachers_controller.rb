@@ -1,11 +1,10 @@
-class Teachers::TeachersController < ApplicationController
+class Teachers::TeachersController < BaseNotificationsController
   layout "teachers/teacher"
 
-  before_action :authenticate_user!
-  before_action :load_school
-  # before_action :check_permissions_teacher
-  # before_action :current_ability
-  # load_and_authorize_resource
+  before_action :load_school_teacher
+  before_action :check_permissions_teacher
+  before_action :current_ability
+  load_and_authorize_resource
 
   private
 

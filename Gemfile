@@ -37,6 +37,7 @@ gem "rails-i18n"
 gem "chartkick"
 gem "cancancan"
 gem "roo"
+gem "ckeditor"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

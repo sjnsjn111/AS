@@ -27,3 +27,4 @@
 //= require highcharts
 //= require chartkick
 //= require login_custom
+//= require ckeditor/init

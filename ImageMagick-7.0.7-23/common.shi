@@ -1,0 +1,22 @@
+# Test environment
+top_srcdir='/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23'
+top_builddir='/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23'
+
+set -a
+COMPARE="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities/magick compare"
+COMPOSITE="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities/magick composite"
+CONJURE="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities/magick conjure"
+CONVERT="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities/magick convert"
+DISPLAY="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities/magick display"
+IDENTIFY="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities/magick identify"
+MAGICK="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities/magick"
+MONTAGE="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities/magick montage"
+VALIDATE="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/tests/validate"
+DRAWTEST="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/tests/drawtest"
+WANDTEST="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/tests/wandtest"
+LD_LIBRARY_PATH="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/magick/.libs:${LD_LIBRARY_PATH}"
+MAGICK_CODER_MODULE_PATH="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/coders"
+MAGICK_CONFIGURE_PATH="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/config:/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/config"
+MAGICK_FILTER_MODULE_PATH="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/filters"
+PATH="/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/utilities:/home/lamphan/study/admissions_support/ImageMagick-7.0.7-23/tests:${PATH}"
+set +a

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+  mount ActionCable.server => "/cable"
+
   root "static_pages#index"
 
   devise_for :user, path: "devises", controllers: {
@@ -27,12 +30,15 @@ Rails.application.routes.draw do
   resources :notes, only: :index
 
   namespace :teachers do
-    resources :users, only: %i(new create)
+    resources :users, except: %i(new create destroy)
+    resources :majors
   end
 
   namespace :admins do
-    resources :users, only: %i(index new create) do
+    resources :users do
       collection { post :import_students }
     end
+    resources :schools
+    resources :results
   end
 end

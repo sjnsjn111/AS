@@ -16,8 +16,8 @@
  *= require plugins
  *= require themes
  *= require_self
- *= require managers/manager_custom
- *= require_tree ../../../../node_modules/alertify/themes
- *= require funky_radio_checkbox
  *= require hidepaginate
+ *= require funky_radio_checkbox
+ *= require_tree ../../../../node_modules/alertify/themes
+ *= require managers/manager_custom
 */

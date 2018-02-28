@@ -16,10 +16,18 @@ class ApplicationController < ActionController::Base
     Ability.new(current_user, controller_namespace)
   end
 
-  def load_school
+  def load_school_teacher
     @school = current_user.school if current_user.teacher?
     return if @school
     redirect_to root_url
+  end
+
+  def top_major
+    @top_target = Target.includes(:major).top_mark(1.year.ago.year).first
+  end
+
+  def hot_major
+    @hot_major = Major.hot_major(DateTime.now.year).first
   end
 
   private

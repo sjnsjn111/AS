@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="block full">
+      <div class="block-title">
+        <div class="block-options pull-right">
+          <%= link_to "#", class: "btn btn-alt btn-sm btn-info m-left-50", title: t("add_student"),
+                data: {toggle: "modal", target: "#add-result"} do %>
+            <i class="fa fa-user-plus"></i>
+          <% end %>
+        </div>
+        <h3 class="widget-content-light"><%= t "all" %> <strong><%= t "user" %></strong></h3>
+      </div>
+      <div class="dataTables_wrapper form-inline no-footer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-search-user pull-right">
+              <!-- <%= render "search_user" %> -->
+            </div>
+          </div>
+        </div>
+
+        <div id="table-user">
+          <%= render "table_result" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="add-result" role="dialog" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><strong>
+            <%= t "add_result" %>
+        </strong></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row display-none" id="hide">
+          <%= render "import_results" %>
+        </div>
+
+        <div class="row" id="show">
+          <%= render "add_result_manual" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="user-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>
+<%= javascript_include_tag "show_hide" %>

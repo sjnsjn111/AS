@@ -3,25 +3,26 @@
     <div class="block full">
       <div class="block-title">
         <div class="block-options pull-right">
-          <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
-            <i class="fa fa-briefcase"></i>
-          </a>
+          <%= link_to "#", class: "btn btn-alt btn-sm btn-info m-left-50", title: t("add_student"),
+                data: {toggle: "modal", target: "#add-student"} do %>
+            <i class="fa fa-user-plus"></i>
+          <% end %>
         </div>
         <h3 class="widget-content-light"><%= t "all" %> <strong><%= t "user" %></strong></h3>
       </div>
       <div class="dataTables_wrapper form-inline no-footer">
         <div class="row">
           <div class="col-md-12">
-            <div class="col-md-10 form-search-major">
-
+            <div class="form-search-user pull-right">
+              <%= render "search_student" %>
             </div>
-            <div class="col-md-2">
-              <%= link_to "javascript:void(0)", class: "btn btn-sm btn-info m-left-50",
+            <!-- <div class="col-md-2">
+              <%= link_to "#", class: "btn btn-sm btn-info m-left-50",
                 data: {toggle: "modal", target: "#add-student"} do %>
                 <i class="fa fa-plus"></i>
                 <%= t "student" %>
               <% end %>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -37,18 +38,27 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><strong><%= t "add_student" %></strong></h4>
+        <h4 class="modal-title"><strong>
+          <% if @user.teacher? %>
+            <%= t "add_teacher" %>
+          <% elsif @user.student? %>
+            <%= t "add_student" %>
+          <% end %>
+        </strong></h4>
       </div>
       <div class="modal-body">
-        <div class="row" id="show">
-          <%= render "import_students.html.erb" %>
-        </div>
+        <% if @user.student? %>
+          <div class="row display-none" id="hide">
+            <%= render "import_students" %>
+          </div>
+        <% end %>
 
-        <div class="row display-none" id="hide">
+        <div class="row" id="show">
           <%= render "add_student_manual" %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="modal fade" id="user-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>
 <%= javascript_include_tag "show_hide" %>

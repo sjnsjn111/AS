@@ -5,13 +5,21 @@ default_value: 0
 num_standard: 3
 per_page: 10
 round: 2
-success: "success"
-primary: "primary"
-info: "info"
-defaul: "default"
-warning: "warning"
-danger: "danger"
 aspiration: "aspiration"
 logo:
   size: 25
+  school: 70
 teacher: "teacher"
+student: "student"
+admin: "admin"
+min_name: 5
+min_code: 3
+college: "college"
+intermediate: "intermediate"
+warning: "warning"
+danger: "danger"
+success: "success"
+info: "info"
+primary: "primary"
+basic: "basic"
+default: "default"

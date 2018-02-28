@@ -1,0 +1,8 @@
+<% if @school.errors.any? %>
+  $('#add-school').html('<%= j render "form" %>');
+<% else %>
+  $('.school-<%= @school.id %>').remove();
+  $('#body-table-school').prepend('<%= j render "school", school: @school %>');
+  alertify.success('<%= @success %>');
+  $('#add-school').modal('hide');
+<% end %>

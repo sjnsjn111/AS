@@ -1,0 +1,14 @@
+<li class="notif-li notif notif-<%= notification.id %> ">
+  <%= link_to "javascript:void(0)", class: "content", id: "#{notification.id}" do %>
+    <div class="imageblock">
+      <%= image_tag "add_student.ico", class: "notifimage" %>
+    </div>
+    <div class="messageblock">
+      <div class="message"><b><%= notification.user.name %></b> <%= t "added_student" %></div>
+      <div class="messageinfo">
+        <i class="icon-trophy"></i>
+        <%= time_ago_in_words(notification.created_at) %> <%= t "ago" %>
+      </div>
+    </div>
+  <% end %>
+</li>

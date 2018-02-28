@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128100857) do
+ActiveRecord::Schema.define(version: 20180224230218) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20180128100857) do
     t.index ["recipient_type", "recipient_id"], name: "index_activities_on_recipient_type_and_recipient_id"
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
+  end
+
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -81,6 +93,7 @@ ActiveRecord::Schema.define(version: 20180128100857) do
     t.text "content"
     t.text "user_read"
     t.text "user_readed"
+    t.integer "style"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

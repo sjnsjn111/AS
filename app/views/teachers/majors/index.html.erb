@@ -1,0 +1,32 @@
+<div class="row text-center">
+  <%= render "statistic_majors" %>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="block full">
+      <div class="block-title">
+        <div class="block-options pull-right">
+          <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
+            <i class="fa fa-briefcase"></i>
+          </a>
+        </div>
+        <h3 class="widget-content-light"><%= t "individual" %> <strong><%= t "result" %></strong></h3>
+      </div>
+      <div class="dataTables_wrapper form-inline no-footer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-10 form-search-major">
+              <%= render "search_major" %>
+            </div>
+          </div>
+        </div>
+
+        <div id="table-major">
+          <%= render "table_major" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="major-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>
+<div class="modal fade" id="add-major" role="dialog" tabindex="-1" aria-hidden="true"></div>

@@ -21,14 +21,16 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :people_id, presence: true
   validates :identification_number, presence: true
+  validates :birthday, presence: true
+  validate :picture_size
 
   enum role: %i(student teacher admin)
   enum sex: %i(unknown male female)
-  enum level: %i(university college Intermediate)
 
   mount_uploader :avatar, PictureUploader
 
   scope :user_newest, ->{order created_at: :desc}
+  scope :get_not_role, ->role{where.not role: :role}
 
   def picture_size
     if avatar.size > 5.megabytes

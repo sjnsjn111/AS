@@ -6,6 +6,7 @@ class CreateNotifications < ActiveRecord::Migration[5.1]
       t.text :content
       t.text :user_read
       t.text :user_readed
+      t.integer :style
       t.date :deleted_at
 
       t.timestamps

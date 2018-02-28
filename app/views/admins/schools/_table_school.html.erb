@@ -1,0 +1,24 @@
+<% if @schools.present? %>
+  <table role="grid" class="table table-vcenter table-striped">
+    <thead>
+      <tr role="row">
+        <th class="text-center"><%= t "logo" %></th>
+        <th class="text-center"><%= t "code" %></th>
+        <th class="text-center"><%= t "name" %></th>
+        <th class="text-center"><%= t "city" %></th>
+        <th class="text-center"><%= t "level" %></th>
+        <th class="text-center"><%= t "action" %></th>
+      </tr>
+    </thead>
+    <tbody id="body-table-school">
+      <%= render @schools %>
+    </tbody>
+  </table>
+  <div class="row text-center pag">
+    <%= paginate @schools, remote: true %>
+  </div>
+<% else %>
+  <p class="text-danger text-center">
+    <i><%= t "not_schools" %></i>
+  </p>
+<% end %>

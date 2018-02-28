@@ -6,7 +6,7 @@ class CreateSchools < ActiveRecord::Migration[5.1]
       t.string :phone
       t.string :email
       t.string :code
-      t.string :logo
+      t.text :logo
       t.text :url_school
       t.text :introducing
       t.integer :level

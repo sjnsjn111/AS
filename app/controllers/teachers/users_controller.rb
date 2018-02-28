@@ -1,9 +1,5 @@
 class Teachers::UsersController < Teachers::TeachersController
-  def new
+  before_action :load_notifications, only: :index
 
-  end
-
-  def create
-
-  end
+  def index; end
 end

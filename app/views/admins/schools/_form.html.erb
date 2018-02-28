@@ -1,0 +1,77 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <% unless @school.new_record? %>
+        <%= image_tag @school.logo, class: "img-circle pull-left", size: 40 %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title pull-left m-l-10"><strong><%= t "new_school" %></strong></h4>
+    </div>
+    <div class="modal-body">
+      <%= simple_form_for [:admins, @school], remote: true do |f| %>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :name %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :code %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :address, as: :string %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :phone %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :email %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :url_school, as: :string %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :city %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :logo, as: :file, input_html: {class: "btn btn-warning"} %>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="control-label label-funky">
+              <abbr title="required">*</abbr> Level
+            </label>
+            <div class="funkyradio col-md-8">
+              <div class="col-md-12">
+                <% School.levels.each do |key, value| %>
+                  <div class="funkyradio-<%= show_level_school key %> col-md-4">
+                    <%= f.radio_button :level, value, id: "radio#{value}" %>
+                    <%= f.label :level, t("levels.#{key}"), for: "radio#{value}" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.input :introducing, as: :ckeditor, input_html: {rows: 10, cols: 30} %>
+            </div>
+          </div>
+        </div>
+        <center>
+          <%= f.button :submit, class: "btn btn-primary btn-md" %>
+        </center>
+      <% end %>
+    </div>
+  </div>
+</div>

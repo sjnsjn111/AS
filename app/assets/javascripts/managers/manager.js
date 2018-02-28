@@ -25,3 +25,5 @@
 //= require jquery.validate.additional-methods
 //= require highcharts
 //= require chartkick
+//= require cable
+//= require ckeditor/init

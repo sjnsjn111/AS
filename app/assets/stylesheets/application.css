@@ -21,4 +21,5 @@
  *= require funky_radio_checkbox
  *= require sidenav
  *= require hidepaginate
+ *= require_tree ../../../vendor/assets/stylesheets/fonts
  */

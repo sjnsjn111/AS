@@ -1,0 +1,29 @@
+<tr role="row" class="school-<%= school.id %>">
+  <td class="text-center">
+    <%= image_tag school.logo_url, class: "img-circle",
+      size: Settings.logo.school %>
+  </td>
+  <td class="text-center"><%= school.code %></td>
+  <td class="text-center"><%= school.name %></td>
+  <td class="text-center"><%= school.city %></td>
+  <td class="text-center">
+    <span class="label label-<%= show_level_school school.level %>">
+      <%= school.level %>
+    </span>
+  </td>
+  <td class="text-center">
+    <div class="btn-group btn-group-xs">
+      <%= link_to admins_school_path(school), remote: true,
+        class: "btn btn-default btn-xs" do %>
+        <i class="fa fa-eye"></i>
+      <% end %>
+      <%= link_to edit_admins_school_path(school), remote: true,
+        class: "btn btn-warning btn-xs" do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+      <%= link_to "#", class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-remove"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>
