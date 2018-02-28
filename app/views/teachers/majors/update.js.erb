@@ -1,0 +1,8 @@
+<% if @major.errors.any? %>
+  $('#add-major').html('<%= j render "form" %>');
+<% else %>
+  $('.major-<%= @major.id %>').remove();
+  $('#body-table-major').prepend('<%= j render "major", major: @major %>');
+  alertify.success('<%= @success %>');
+  $('#add-major').modal('hide');
+<% end %>

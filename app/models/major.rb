@@ -28,7 +28,15 @@ class Major < ApplicationRecord
 
   def picture_size
     if picture.size > 5.megabytes
-      errors.add :picture, t("less_than_5")
+      errors.add :picture, I18n.t("less_than_5")
+    end
+  end
+
+  def name_unique_in_school
+    if self.school.majors.pluck(:name).include? self.name
+      major = Major.find_by name: self.name
+      return if major.id == self.id
+      errors.add :name, I18n.t("name_unique_in_school")
     end
   end
 

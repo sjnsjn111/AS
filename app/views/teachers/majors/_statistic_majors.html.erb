@@ -17,7 +17,7 @@
 <div class="col-sm-6 col-lg-3">
   <a href="javascript:void(0)" class="widget widget-hover-effect2">
     <div class="widget-extra themed-background-dark">
-      <h4 class="widget-content-light"><strong>Total</strong> Majors</h4>
+      <h4 class="widget-content-light"><strong><%= t "all" %></strong> <%= t "majors" %></h4>
     </div>
     <div class="widget-extra-full">
       <span class="h2 animation-expandOpen"><%= Major.all.size %></span>
@@ -28,7 +28,8 @@
 <div class="col-sm-6 col-lg-3">
   <a href="javascript:void(0)" class="widget widget-hover-effect2">
     <div class="widget-extra themed-background-spring">
-      <h4 class="widget-content-light"><strong>Top</strong> Majors</h4>
+      <h4 class="widget-content-light"><strong><%= t "top" %></strong>
+      <%= t "majors" %></h4>
     </div>
     <div class="widget-extra-full m-h-63">
       <span class="h3 animation-expandOpen text-success"><%= @top_target.major_code %> / <%= @top_target.benchmark %></span>
@@ -39,7 +40,7 @@
 <div class="col-sm-6 col-lg-3">
   <a href="javascript:void(0)" class="widget widget-hover-effect2">
     <div class="widget-extra themed-background-fancy">
-      <h4 class="widget-content-light"><strong>Hot</strong> Majors</h4>
+      <h4 class="widget-content-light"><strong><%= t "hot" %></strong> <%= t "majors" %></h4>
     </div>
     <div class="widget-extra-full m-h-63">
       <span class="h3 animation-expandOpen text-danger"><%= @hot_major.code %> / <%= @hot_major.num %></span>

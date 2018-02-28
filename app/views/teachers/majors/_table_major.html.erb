@@ -2,13 +2,14 @@
   <table role="grid" class="table table-bordered table-striped table-vcenter dataTable no-footer">
     <thead>
       <tr role="row">
+        <th class="text-center"><%= t "logo" %></th>
         <th class="text-center"><%= t "code" %></th>
         <th class="text-center"><%= t "name" %></th>
         <th class="text-center"><%= t "school" %></th>
         <th class="text-center"><%= t "action" %></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="body-table-major">
       <%= render @majors %>
     </tbody>
   </table>

@@ -1,4 +1,7 @@
 <tr role="row" class="major-<%= major.id %>">
+  <td class="text-center">
+    <%= image_tag major.picture_url, class: "img-circle", size: 50 %>
+  </td>
   <td class="text-center"><%= major.code %></td>
   <td class="text-center"><%= major.name %></td>
   <td class="text-center"><%= major.school_name %></td>
