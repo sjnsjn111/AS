@@ -2,7 +2,7 @@
 <div id="modal-login" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div id="login-ajax" class="display-none">
+      <div id="login-ajax">
         <div class="login-title text-center">
           <i class="close-form-login" data-dismiss="modal">&times;</i>
           <h1>
@@ -11,19 +11,14 @@
             <small>
               <%= t "please" %>
               <strong><%= t "login" %></strong>
-              <%= t "or" %> <strong><%= t "register" %></strong>
             </small>
           </h1>
         </div>
         <div class="block">
-          <div class="loading-ajax"></div>
-          <div class="form-horizontal form-bordered form-control-borderless">
+          <div class="form-horizontal form-bordered form-control-borderless form-login">
             <%= render "devise_custom/form_login" %>
           </div>
-          <div class="form-horizontal form-bordered form-control-borderless display-none form-register">
-            <%= render "devise_custom/form_registration" %>
-          </div>
-          <div class="form-horizontal form-bordered form-control-borderless display-none">
+          <div class="form-horizontal form-bordered form-control-borderless form-fogot display-none">
             <%= render "devise_custom/form_forgot_password" %>
           </div>
         </div>

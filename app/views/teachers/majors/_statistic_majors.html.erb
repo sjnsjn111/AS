@@ -1,0 +1,48 @@
+<div class="col-sm-6 col-lg-3">
+  <%= link_to new_teachers_major_path, remote: true,
+    class: "widget widget-hover-effect2" do %>
+    <div class="widget-extra themed-background-success">
+      <h4 class="widget-content-light">
+        <strong><%= t "add_new" %></strong> <%= t "major" %>
+      </h4>
+    </div>
+    <div class="widget-extra-full">
+      <span class="h2 text-success animation-expandOpen">
+        <i class="fa fa-plus"></i>
+      </span>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-sm-6 col-lg-3">
+  <a href="javascript:void(0)" class="widget widget-hover-effect2">
+    <div class="widget-extra themed-background-dark">
+      <h4 class="widget-content-light"><strong>Total</strong> Majors</h4>
+    </div>
+    <div class="widget-extra-full">
+      <span class="h2 animation-expandOpen"><%= Major.all.size %></span>
+    </div>
+  </a>
+</div>
+
+<div class="col-sm-6 col-lg-3">
+  <a href="javascript:void(0)" class="widget widget-hover-effect2">
+    <div class="widget-extra themed-background-spring">
+      <h4 class="widget-content-light"><strong>Top</strong> Majors</h4>
+    </div>
+    <div class="widget-extra-full m-h-63">
+      <span class="h3 animation-expandOpen text-success"><%= @top_target.major_code %> / <%= @top_target.benchmark %></span>
+    </div>
+  </a>
+</div>
+
+<div class="col-sm-6 col-lg-3">
+  <a href="javascript:void(0)" class="widget widget-hover-effect2">
+    <div class="widget-extra themed-background-fancy">
+      <h4 class="widget-content-light"><strong>Hot</strong> Majors</h4>
+    </div>
+    <div class="widget-extra-full m-h-63">
+      <span class="h3 animation-expandOpen text-danger"><%= @hot_major.code %> / <%= @hot_major.num %></span>
+    </div>
+  </a>
+</div>

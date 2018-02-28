@@ -1,0 +1,33 @@
+<div class="row text-center">
+  <%= render "statistic_school" %>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="block full">
+      <div class="block-title">
+        <div class="block-options pull-right">
+          <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
+            <i class="fa fa-building"></i>
+          </a>
+        </div>
+        <h3 class="widget-content-light"><%= t "all" %> <strong><%= t "school" %></strong></h3>
+      </div>
+      <div class="dataTables_wrapper form-inline no-footer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-10 form-search-school">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive" id="table-school">
+          <%= render "table_school" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="add-school" role="dialog" tabindex="-1" aria-hidden="true"></div>
+<div class="modal fade" id="school-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>

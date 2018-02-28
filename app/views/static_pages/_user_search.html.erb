@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="block full">
+      <div class="block-title">
+        <div class="block-options pull-right">
+          <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
+            <i class="fa fa-briefcase"></i>
+          </a>
+        </div>
+        <h2 class="widget-content-light"><%= t "user" %> <strong><%= t "result" %></strong></h2>
+      </div>
+      <% if @users.present? %>
+        <table role="grid" class="table table-bordered table-striped table-vcenter dataTable no-footer">
+          <thead>
+            <tr role="row">
+              <th class="text-center w-100"><%= t "identification_number" %></th>
+              <th class="text-center"><%= t "name" %></th>
+              <th class="text-center"><%= t "birthday" %></th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+            <tbody>
+              <%= render partial: "user", collection: @users, as: :user %>
+            </tbody>
+        </table>
+        <div class="row text-center pag">
+          <%= paginate @users, remote: true %>
+        </div>
+      <% elsif %>
+        <i class="text-danger"><strong><%= t "not_has_data" %></strong></i>
+      <% end %>
+    </div>
+  </div>
+</div>

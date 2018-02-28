@@ -1,0 +1,8 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% elsif @message %>
+  alertify.error('<%= @message %>');
+<% elsif @success %>
+  $('#table-user').html('<%= j render "table_student" %>');
+  alertify.success('<%= @success %>')
+<% end %>

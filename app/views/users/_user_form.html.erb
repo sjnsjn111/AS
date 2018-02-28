@@ -1,0 +1,78 @@
+<div class="col-sm-2 col-md-2 col-lg-2">
+  <%= image_tag @user.avatar.url, class: "img-rounded avatar",
+    alt: t("avatar"), width: 185, height: 230 %>
+  <center>
+    <%= link_to edit_user_registration_url(current_user),
+      class: "btn btn-warning btn-md m-10 btn-avatar" do %>
+      <i class="fa fa-key"></i> <%= t "change_pass" %>
+    <% end %>
+  </center>
+</div>
+<div class="col-sm-10 col-md-10 col-lg-10" >
+  <div class="panel panel-default">
+    <div class="panel panel-heading h-55">
+      <h4 class="col-md-6">
+        <%= t "general_info" %>
+      </h4>
+      <p class="col-md-6 text-right">
+        <%= link_to edit_user_path(@user), remote: true,
+          class: "btn btn-info btn-sm" do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+      </p>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-user-o"></i> <%= t "name" %>
+              </strong>
+            </td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-envelope-o"></i> <%= t "email" %>
+              </strong>
+            </td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-font-awesome"></i> <%= t "nationality" %>
+              </strong>
+            </td>
+            <td><%= @user.nationality %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-transgender"></i> <%= t "sex" %>
+              </strong>
+            </td>
+            <td><%= t("sexes.#{@user.sex}") %></td>
+          </tr>
+          <tr>
+            <td class="col-md-3">
+              <strong>
+                <i class="fa fa-birthday-cake"></i> <%= t "birthday" %>
+              </strong>
+            </td>
+            <td>
+              <%= @user.birthday %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @user.student? %>
+        <%= render "student_info" %>
+      <% else %>
+        <%= render "manager_info" %>
+      <% end %>
+    </div>
+  </div>
+</div>

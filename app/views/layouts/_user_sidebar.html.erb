@@ -1,0 +1,78 @@
+<div id="sidebar-scroll" class="sidenav">
+  <%= link_to root_path, class: "text-center icon" do %>
+    <%= image_tag "logo.ico", height: 35, width: 61 %>
+  <% end %>
+  <%= link_to "javascript:void(0)", class: "btn-close", onclick: "closeNav()", title: t("back") do %>
+    <i class="fa fa-arrow-left"></i>
+  <% end %>
+  <ul class="sidebar-nav">
+    <li>
+      <%= link_to notes_path do %>
+        <i class="  fa fa-calendar"></i>
+        <span><%= t "competition_calendar" %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <i class="fa fa-exchange"></i>
+        <span><%= t "change_aspiration" %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to statistic_results_path do %>
+        <i class="fa fa-bar-chart"></i>
+        <span><%= t "statistics_resuls" %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to majors_path do %>
+        <i class="fa fa-archive"></i>
+        <span><%= t "majors" %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <i class="fa fa-star"></i>
+        <span><%= t "suggestions" %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <i class="fa fa-reply"></i>
+        <span><%= t "remarking" %></span>
+      <% end %>
+    </li>
+    <li class="sidebar-header">
+      <span class="sidebar-header-options clearfix">
+        <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Quick Settings">
+        <i class="gi gi-settings"></i>
+        </a>
+        <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Create the most amazing pages with the widget kit!">
+          <i class="gi gi-lightbulb"></i>
+        </a>
+      </span>
+      <span class="sidebar-header-title">Widget Kit</span>
+    </li>
+  <li>
+    <a href="javascript:void(0)" class="sidebar-nav-menu">
+      <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+      <i class="gi gi-shopping_cart sidebar-nav-icon"></i>
+      <span class="sidebar-nav-mini-hide">eCommerce</span>
+    </a>
+    <ul class="side-nav-menu-content" style="display: none;">
+      <li>
+        <a>Dashboard</a>
+      </li>
+      <li>
+        <a>Orders</a>
+      </li>
+      <li>
+        <a>Order View</a>
+      </li>
+      <li>
+        <a>Products</a>
+      </li>
+    </ul>
+  </li>
+  </ul>
+</div>

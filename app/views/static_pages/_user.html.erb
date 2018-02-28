@@ -1,0 +1,6 @@
+<tr role="row">
+  <td class="text-center"><%= user.identification_number %></td>
+  <td class="text-center"><%= user.name %></td>
+  <td class="text-center"><%= l user.birthday, format: :long %></td>
+  <%= render partial: "user_result", collection: user.results, as: :result %>
+</tr>

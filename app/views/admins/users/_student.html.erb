@@ -1,0 +1,17 @@
+<tr role="row" class="user-<%= user.id %>">
+  <td class="text-center"><%= user.people_id %></td>
+  <td class="text-center"><%= user.name %></td>
+  <td class="text-center"><%= l user.birthday, format: :long %></td>
+  <td class="text-center">
+    <div class="btn-group btn-group-xs">
+      <%= link_to [:admins, user], remote: true, class: "btn btn-default btn-xs" do %>
+        <i class="fa fa-eye"></i>
+      <% end %>
+      <%= link_to [:admins, user], method: :delete, remote: true,
+        class: "btn btn-danger btn-xs",
+        data: {confirm: t("confirm_delete_user")} do %>
+        <i class="fa fa-remove"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

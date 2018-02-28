@@ -1,0 +1,9 @@
+<div class="col-md-12">
+  <p class="text-info"><%= t "import_excel" %></p>
+  <%= form_tag import_students_admins_users_path, multipart: true, remote: true do %>
+    <%= file_field_tag :file, class: "btn btn-warning",
+      accept: ".csv, .xlsx" %><br/>
+    <%= submit_tag t("import"), class: "btn btn-success" %>
+  <% end %>
+  <%= link_to t("back"), "javascript:void(0)", id: "btn-back" %>
+</div>

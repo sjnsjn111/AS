@@ -1,0 +1,129 @@
+@import 'colors';
+
+.noti-number {
+  position: absolute;
+  top: 8px;
+  left: 28px;
+  padding: 3px !important;
+  font-size: 9px;
+}
+@media(min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+.notifications {
+  min-width: 350px;
+  padding: 1px;
+  left: -300px;
+  .notif-li {
+    list-style-type: none;
+    padding: 5px;
+  }
+  a.content {
+    background: $gray80;
+    text-decoration: none;
+  }
+}
+.dropdown-menu {
+  margin-top: 8px !important;
+}
+.arrow-up-border {
+  border-color: transparent;
+  border-style: dashed dashed solid;
+  border-width: 0 9px 9px;
+  position: absolute;
+  right: 12px;
+  top: -9px;
+  z-index: 1;
+  height: 0;
+  width: 0;
+  border-bottom-color: $color_celeste_approx;
+}
+.arrow-up {
+  border-color: transparent;
+  border-bottom-color: $white;
+  border-style: dashed dashed solid;
+  border-width: 0 8px 8px;
+  position: absolute;
+  right: 13px;
+  top: -8px;
+  z-index: 1;
+  height: 0;
+  width: 0;
+}
+.notification-heading {
+  border-bottom: 1px solid $color_celeste_approx;
+  color: $color_storm_dust_approx;
+  cursor: inherit;
+  font-size: 12px;
+  padding: 2px 5px;
+}
+.notification-footer {
+  border-bottom: 1px solid $color_celeste_approx;
+  color: $color_storm_dust_approx;
+  cursor: inherit;
+  font-size: 12px;
+  padding: 2px 5px;
+}
+.notifications-wrapper {
+  max-height: 300px;
+  overflow: auto;
+}
+.menu-title {
+  color: $color_froly_approx;
+  display: inline-block;
+  font-size: 1.5rem;
+  padding-bottom: 2px;
+}
+.notif {
+  border-bottom: 1px solid $color_celeste_approx;
+  min-height: 50px;
+  position: relative;
+  &:hover {
+    background-color: $gray70;
+  }
+}
+.seeall {
+  border-top: 1px solid $color_celeste_approx;
+  font-size: 12px;
+  min-height: 30px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 5px;
+  background-color: $gray80;
+}
+.messageblock {
+  font-size: 12px;
+  left: 70px;
+  position: relative;
+  width: 250px;
+}
+.messageinfo {
+  color: $color_mountain_mist_approx;
+  font-size: 10px;
+}
+.imageblock {
+  left: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70px;
+  .notifimage {
+    max-height: 40px;
+    vertical-align: middle;
+    border: 0;
+    max-width: 100%;
+    display: inline-block;
+  }
+}
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.fa-lg {
+  font-size: 20px !important;
+}

@@ -10,10 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap.min
  *= require bootstrap-theme.min
- *= require font-awesome
+ *= require bootstrap.min
+ *= require main
+ *= require plugins
+ *= require themes
  *= require_self
  *= require custom
  *= require_tree ../../../node_modules/alertify/themes
+ *= require funky_radio_checkbox
+ *= require sidenav
+ *= require hidepaginate
+ *= require_tree ../../../vendor/assets/stylesheets/fonts
  */

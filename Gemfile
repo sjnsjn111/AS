@@ -32,6 +32,12 @@ gem "paranoia"
 gem "devise"
 gem "i18n-js"
 gem "font-awesome-rails"
+gem "config"
+gem "rails-i18n"
+gem "chartkick"
+gem "cancancan"
+gem "roo"
+gem "ckeditor"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

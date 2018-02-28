@@ -1,67 +1,68 @@
-<nav class="navbar navbar-default navbar-custom">
+<nav class="navbar navbar-user m-0">
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-left">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "javascript:void(0)", onclick: "openNav()" do %>
+            <i class="fa fa-bars"></i>
+          <% end %>
+        </li>
+      <% end %>
       <li class="active">
         <%= link_to root_path do %>
           <span class="glyphicon glyphicon-home"></span> Home
         <% end %>
       </li>
       <li>
-        <%= link_to "#" do %>
-          <span class="glyphicon glyphicon-search"></span> Search
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "http://www.udn.vn/" do %>
-          <span class="glyphicon glyphicon-question-sign"></span> Help
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "http://www.udn.vn/" do %>
-          <span class="glyphicon glyphicon-book"></span> Guides
-       <% end %>
-      </li>
-      <li>
-        <%= link_to "http://www.udn.vn/" do %>
-          <span class="glyphicon"></span> Library Information
-        <% end %>
+        <h3 class="title-main"><strong><%= t "title_main" %></strong></h3>
       </li>
     </ul>
-    <% if user_signed_in? %>
-      <ul class="nav navbar-nav navbar-right site-nav">
-        <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> User
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li>
-            <%= link_to "javascript:void(0)" do %>
-              <i class="fa fa-user"></i>
-              <%= t("profile") %>
+    <ul class="nav navbar-nav navbar-right site-nav">
+      <% if user_signed_in? %>
+          <li class="dropdown">
+          <a class="dropdown-toggle h-50 p-top-5" data-toggle="dropdown" href="#">
+          <%= image_tag current_user.avatar.url, class: "img-circle", size: 40 %>
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu min-w-180">
+            <% if current_user.teacher? %>
+              <li>
+                <%= link_to teachers_users_path do %>
+                  <%= t("teacher") %><i class="fa fa-users pull-right"></i>
+                <% end %>
+              </li>
             <% end %>
-          </li>
-          <li>
-            <%= link_to "javascript:void(0)" do %>
-              <i class="fa fa-pencil-square-o"></i>
-              <%= t("change") %>
+            <% if current_user.admin? %>
+              <li>
+                <%= link_to admins_users_path(role: :student) do %>
+                  <%= t("admin") %><i class="fa fa-user-secret pull-right"></i>
+                <% end %>
+              </li>
             <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-sign-out"></i>
-              <%= t("logout") %>
-            <% end %>
-          </li>
-        </ul>
-      </ul>
-    <% else %>
-      <div class="nav navbar-nav navbar-right nav-custom">
-        <%= link_to "javascript:void(0)", class: "btn-login-user" do %>
-          <i class="fa fa-sign-in"></i> <%= t("login") %>
-        <% end %>
-        </a>
-      </div>
-    <% end %>
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <%= t("profile") %><i class="fa fa-address-book pull-right"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_user_registration_url(current_user) do %>
+                <%= t("change_pass") %><i class="fa fa-pencil-square-o pull-right"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <%= t("logout") %><i class="fa fa-sign-out pull-right"></i>
+              <% end %>
+            </li>
+          </ul>
+      <% else %>
+        <li>
+          <%= link_to "javascript:void(0)", class: "btn-login-user" do %>
+            <i class="fa fa-sign-in"></i> <%= t("login") %>
+          <% end %>
+        </li>
+      <% end %>
+      <%= render "shared/language_local" %>
+    </ul>
   </div>
 </nav>
 <%= render "devise_custom/login" %>
-<%= javascript_include_tag "login" %>

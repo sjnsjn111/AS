@@ -1,0 +1,50 @@
+<table class="table table-hover">
+  <tbody>
+    <tr>
+      <td class="col-md-3">
+        <strong>
+          <i class="fa fa-user-o"></i> <%= t "people_id" %>
+        </strong>
+      </td>
+      <td><%= @user.people_id %></td>
+      <td class="col-md-3">
+        <strong>
+          <i class="fa fa-legal"></i> <%= t "religion" %>
+        </strong>
+      </td>
+      <td><%= @user.religion %></td>
+    </tr>
+    <tr>
+      <td class="col-md-3">
+        <strong>
+          <i class="fa fa-address-card"></i> <%= t "address" %>
+        </strong>
+      </td>
+      <td><%= @user.address %></td>
+      <td class="col-md-3">
+        <strong>
+          <i class="fa fa-address-card-o"></i> <%= t "identification_number" %>
+        </strong>
+      </td>
+      <td class="col-md-3">
+        <%= @user.identification_number %>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-md-3">
+        <strong>
+          <i class="fa fa-font-awesome"></i> <%= t "nation" %>
+        </strong>
+      </td class="col-md-3">
+      <td ><%= @user.nation %></td>
+      <td class="col-md-3">
+        <strong>
+          <i class="fa fa-phone"></i> <%= t "phone" %>
+        </strong>
+      </td>
+      <td class="col-md-3">
+        <%= @user.phone %>
+      </td>
+    </tr>
+  </tbody>
+</table>

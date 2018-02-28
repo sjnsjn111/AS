@@ -1,42 +1,32 @@
 <%= stylesheet_link_tag "static_pages" %>
-<div class="container page-custom">
+<div class="container">
   <p class="small-text-hero"><i class="icon-localizer text-primary mr-1"></i>Hello, <span class="text-primary">Wish you</span> have a fun experience</p>
   <h1>Let's <span class="text-primary">go </span> anywhere</h1>
   <p class="text-hero"> Look up the scores</p>
-  <div class="search-bar">
-    <form action="#">
-      <div class="row">
 
-        <div class="form-group rightLine col-lg-2 col-sm-2 col-md-2">
-          <input type="text" name="location" placeholder="Location" id="location">
-          <label for="location" class="location"><i class="fa fa-dot-circle-o"></i></label>
-        </div>
-        <div class="form-group rightLine col-lg-2  col-sm-2 col-md-2">
+  <div class="search-bar">
+    <%= search_form_for @q, url: root_path, remote: true do |f| %>
+      <div class="row">
+        <div class="form-group rightLine col-lg-3  col-sm-3 col-md-3">
           <div class="btn-group bootstrap-select listing-categories dropdown">
-            <button class="btn dropdown-toggle bs-placeholder btn-default" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <i class="fa fa-calendar"></i>
-              <span id="locationtext">Year</span>
-            </button>
-            <ul class="dropdown-menu locationLink" aria-labelledby="dropdownMenu1">
-              <li><p>2014</p></li>
-              <li role="separator" class="divider"></li>
-              <li><p>2015</p></li>
-              <li role="separator" class="divider"></li>
-              <li><p>2016</p></li>
-              <li role="separator" class="divider"></li>
-              <li><p>2017</p></li>
-            </ul>
+            <i class="fa fa-calendar icon-search"></i>
+            <%= f.select :year_eq, (3.years.ago.year..DateTime.now.year)
+              .collect{|y| [y, y]}.unshift([t("all_years"), nil]), {},
+              class: "search-user" %>
           </div>
         </div>
-        <div class="form-group col-lg-6  col-sm-6 col-md-6">
-          <input type="search" name="search" placeholder="Enter people id, name or identification number...
-">
+
+        <div class="form-group col-lg-7  col-sm-7 col-md-7">
+          <%= f.search_field :name_or_identification_number_cont,
+            placeholder: t("enter_id_name_number") %>
         </div>
+
         <div class="form-group col-lg-2  col-sm-2 col-md-2">
-          <input type="submit" value="Search" class="submit">
+          <%= f.submit t("search"), class: "submit" %>
         </div>
       </div>
-    </form>
+    <% end %>
   </div>
+  <div id="user-search"></div>
 </div>
 <%= javascript_include_tag "static_pages" %>

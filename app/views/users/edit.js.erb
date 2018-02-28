@@ -1,0 +1,6 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% else %>
+  $('#info-content').html('<%= j render "user_edit" %>');
+  $('#radio'+<%= User.sexes[@user.sex] %>).prop('checked', true);
+<% end %>

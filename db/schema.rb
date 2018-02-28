@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128135826) do
+ActiveRecord::Schema.define(version: 20180224230218) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20180128135826) do
     t.index ["recipient_type", "recipient_id"], name: "index_activities_on_recipient_type_and_recipient_id"
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
+  end
+
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -57,6 +69,7 @@ ActiveRecord::Schema.define(version: 20180128135826) do
     t.string "code"
     t.text "introducing"
     t.date "deleted_at"
+    t.text "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "code"], name: "index_majors_on_name_and_code"
@@ -64,9 +77,10 @@ ActiveRecord::Schema.define(version: 20180128135826) do
   end
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.date "start_time"
-    t.date "end_time"
+    t.datetime "time"
     t.text "content"
+    t.integer "style"
+    t.boolean "is_start", default: false
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,6 +93,7 @@ ActiveRecord::Schema.define(version: 20180128135826) do
     t.text "content"
     t.text "user_read"
     t.text "user_readed"
+    t.integer "style"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,6 +111,7 @@ ActiveRecord::Schema.define(version: 20180128135826) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_registers_on_department_id"
+    t.index ["major_id", "user_id"], name: "index_registers_on_major_id_and_user_id", unique: true
     t.index ["major_id"], name: "index_registers_on_major_id"
     t.index ["user_id"], name: "index_registers_on_user_id"
   end
@@ -175,21 +191,12 @@ ActiveRecord::Schema.define(version: 20180128135826) do
     t.bigint "major_id"
     t.integer "amount"
     t.integer "year"
+    t.float "benchmark", limit: 24
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["major_id", "year"], name: "index_targets_on_major_id_and_year", unique: true
     t.index ["major_id"], name: "index_targets_on_major_id"
-  end
-
-  create_table "teachers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "user_id"
-    t.bigint "school_id"
-    t.date "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_teachers_on_school_id"
-    t.index ["user_id"], name: "index_teachers_on_user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -205,7 +212,10 @@ ActiveRecord::Schema.define(version: 20180128135826) do
     t.string "nationality"
     t.text "avatar"
     t.integer "year"
+    t.string "identification_number"
+    t.string "religion"
     t.date "deleted_at"
+    t.bigint "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
@@ -221,8 +231,9 @@ ActiveRecord::Schema.define(version: 20180128135826) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["name", "role"], name: "index_users_on_name_and_role"
+    t.index ["name", "role", "year"], name: "index_users_on_name_and_role_and_year"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["school_id"], name: "index_users_on_school_id"
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 

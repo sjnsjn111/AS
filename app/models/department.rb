@@ -11,4 +11,25 @@ class Department < ApplicationRecord
   has_many :users, through: :results
 
   serialize :school_id, Array
+
+  scope :get_by, ->(ids){where id: ids}
+
+  class << self
+    def average_results_by_departments
+      hashes = {}
+      Department.all.each do |department|
+        average = Settings.default_value
+        department_users = department.results.includes(:user).group_by &:user_id
+        count = Settings.default_value
+        department_users.each do |department_user|
+          if department_user.second.size == Settings.num_standard
+            count += 1
+            average += department_user.second.pluck(:mark).inject(0){|sum,x| sum + x}
+          end
+        end
+        hashes[department.name] = average / (count*Settings.num_standard) unless count == Settings.default_value
+      end
+      hashes
+    end
+  end
 end

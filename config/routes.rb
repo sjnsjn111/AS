@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+  mount ActionCable.server => "/cable"
+
   root "static_pages#index"
 
   devise_for :user, path: "devises", controllers: {
@@ -15,5 +18,27 @@ Rails.application.routes.draw do
     put "/signup", to: "devises/users#update"
     get "edit", to: "devises/users#edit", as: :edit_user_registration
     delete "logout", to: "devises/sessions#destroy", as: :destroy_user_session
+  end
+
+  resources :set_language, only: :index
+  resources :statistic_results, only: :index
+
+  resources :users, except: %i(destroy new create index)
+  resources :registers
+  resources :results
+  resources :majors
+  resources :notes, only: :index
+
+  namespace :teachers do
+    resources :users, except: %i(new create destroy)
+    resources :majors
+  end
+
+  namespace :admins do
+    resources :users do
+      collection { post :import_students }
+    end
+    resources :schools
+    resources :results
   end
 end

@@ -38,6 +38,7 @@
     position: relative;
     padding: 20px 15px 1px;
     background-color: $white;
+    margin: 0;
     .loading-ajax {
       display: none;
       position: absolute;
@@ -49,6 +50,9 @@
       background: image-url("loading.gif") no-repeat center center;
       background-size: 128px 128px;
       background-color: rgba(0, 0, 0, 0.8);
+    }
+    .form-login, .form-fogot {
+      width: 500px;
     }
   }
   .form-group {
@@ -161,4 +165,7 @@
       background-color: $blue-light;
     }
   }
+}
+.display-none {
+  display: none;
 }

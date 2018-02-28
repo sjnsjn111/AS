@@ -1,0 +1,46 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title"><strong><%= @major.name %></strong></h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-7">
+          <%= image_tag @major.picture.url, class: "img-rounded col-md-12",
+            alt: t("avatar") %>
+        </div>
+        <div class="col-md-5">
+          <ul class="fa-ul">
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "name" %>:</strong>
+              <span><%= @major.name %></span>
+            </li>
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "amount_registers" %>:</strong>
+              <span><%= @major.registers.size %></span>
+            </li>
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "type" %>:</strong>
+              <span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 p-20">
+          <h6 class="title">
+            <i class="fa fa-asterisk"></i>
+            <strong><%= t "introducing" %></strong>
+          </h6>
+          <span>
+            <%= @major.introducing %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

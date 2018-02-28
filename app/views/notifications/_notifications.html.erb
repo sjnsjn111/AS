@@ -1,0 +1,29 @@
+<a href="#" class="dropdown-toggle no-background" data-toggle="dropdown" aria-expanded="false">
+  <i class="fa fa-bell-o fa-lg"></i>
+  <span class="label label-warning noti-number" id="noti-counter">
+    <%= @notifications.size %>
+  </span>
+</a>
+<ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+  <div class="arrow-up-border"></div>
+  <div class="arrow-up"></div>
+  <div class="notification-heading">
+    <span class="menu-title">
+      <%= t "your_notifications" %>
+    </span>
+    <span class="pull-right">
+      <input type="button" onclick="mark_read_all_notifications()" value="<%= t 'mark_see_all' %>" class="btn btn-success btn-xs">
+    </span>
+  </div>
+  <div class="notifications-wrapper notifications-view-index notifi-view-bar"
+    id="get-noti">
+    <% if @notifications.present? %>
+      <%= render partial: "notifications/notification",
+        collection: @notifications, as: :notification %>
+    <% end %>
+  </div>
+  <div class="seeall">
+    <%= link_to t("see_all"), "javascript:void(0)", class: "content" %>
+  </div>
+</ul>
+<%= hidden_field_tag "current-user-id", current_user.id if current_user%>

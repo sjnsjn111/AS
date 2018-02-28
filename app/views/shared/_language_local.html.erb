@@ -1,0 +1,27 @@
+<li class="dropdown">
+  <% if I18n.locale == Settings.language.vi.to_sym %>
+    <%= link_to "javascript:void(0)", data: {toggle: "dropdown"},
+      class: "dropdown-toggle lang-sel-sel icl-vi" do %>
+      <%= image_tag "vi.png", height: 15, witdh: 25 %>
+    <% end %>
+  <% else %>
+    <%= link_to "javascript:void(0)", data: {toggle: "dropdown"},
+      class: "dropdown-toggle lang-sel-sel icl-vi" do %>
+      <%= image_tag "en.png", height: 15, witdh: 25 %>
+    <% end %>
+  <% end %>
+  <ul class="dropdown-menu text-center">
+    <li>
+      <%= link_to set_language_index_path(locale: Settings.language.en) do %>
+        <%= image_tag "en.png", height: 15, witdh: 25 %>
+        <%= t "english" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to set_language_index_path(locale: Settings.language.vi) do %>
+        <%= image_tag "vi.png", height: 15, witdh: 25 %>
+        <%= t "viet_nam" %>
+      <% end %>
+    </li>
+  </ul>
+</li>

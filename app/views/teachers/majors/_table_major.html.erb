@@ -1,0 +1,22 @@
+<% if @majors.present? %>
+  <table role="grid" class="table table-bordered table-striped table-vcenter dataTable no-footer">
+    <thead>
+      <tr role="row">
+        <th class="text-center"><%= t "code" %></th>
+        <th class="text-center"><%= t "name" %></th>
+        <th class="text-center"><%= t "school" %></th>
+        <th class="text-center"><%= t "action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @majors %>
+    </tbody>
+  </table>
+  <div class="row text-center pag">
+    <%= paginate @majors, remote: true %>
+  </div>
+<% else %>
+  <p class="text-danger text-center">
+    <i><%= t "not_majors" %></i>
+  </p>
+<% end %>

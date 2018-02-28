@@ -1,0 +1,6 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% else %>
+  $('#major-detail').html('<%= j render "major_detail" %>');
+  $('#major-detail').modal('show');
+<% end %>

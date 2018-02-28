@@ -1,0 +1,33 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'colors';
+@import 'font-awesome';
+
+.m-left-80 {
+  margin-left: 80px;
+}
+.m-left-50 {
+  margin-left: 50px;
+}
+.display-none {
+  display: none;
+}
+label abbr {
+  color: red;
+}
+.inline-items {
+  font-size: 16px;
+}
+.label {
+  font-size: 85% !important;
+}
+.label-funky {
+  position: relative;
+  right: 565px;
+}
+.m-l-10 {
+  margin-left: 10px;
+}
+.m-h-63 {
+  min-height: 63px;
+}

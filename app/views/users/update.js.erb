@@ -1,0 +1,8 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% elsif @success %>
+  $('#info-content').html('<%= j render "user_form" %>');
+  alertify.success('<%= @success %>');
+<% elsif @errors %>
+  alertify.error('<%= j (render partial: "shared/error_messages", locals: {object: @user}) %>');
+<% end %>
