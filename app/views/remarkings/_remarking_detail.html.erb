@@ -1,0 +1,76 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title pull-left m-l-10"><strong><%= t "remarking" %></strong></h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
+              <span class="input-group-addon input-addonn-custom"><i class="fa fa-address-book"></i></span>
+              <input type="text" name="name" id="name"
+                value="<%= @remarking.user_name %>"
+                class="form-control input-md input-custom"
+                placeholder="Name" disabled="disabled">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
+              <span class="input-group-addon input-addonn-custom">
+                <i class="fa fa-institution"></i>
+              </span>
+              <input type="text" name="name" id="name"
+                value="<%= @remarking.school_name %>"
+                class="form-control input-md input-custom"
+                placeholder="Name" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
+              <span class="input-group-addon input-addonn-custom">
+                <i class="fa fa-book"></i>
+              </span>
+              <input type="text" name="name" id="name"
+                value="<%= @remarking.subject_name %>"
+                class="form-control input-md input-custom"
+                placeholder="Name" disabled="disabled">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
+              <span class="input-group-addon input-addonn-custom">
+                <i class="fa fa-magic"></i>
+              </span>
+              <input type="text" name="name" id="name"
+                value='<%= t("status_remarking.#{@remarking.status}") %>'
+                class="form-control input-md input-custom"
+                placeholder="Name" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="content-text">
+            <label class="label-control"><%= t "content" %>:</label>
+            <span><%= raw @remarking.content %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

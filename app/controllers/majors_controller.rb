@@ -21,7 +21,7 @@ class MajorsController < ApplicationController
 
   def load_target
     return Settings.default_value unless @major
-    @target_now = @major.targets.get_year(Date.today.year).first.amount
+    @target_now = @major.targets.get_year(Date.today.year).first&.amount
     @target_old = @major.targets.get_year [1.year.ago.year, 2.year.ago.year, 3.year.ago.year]
   end
 end

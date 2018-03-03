@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :results
   resources :majors
   resources :notes, only: :index
+  resources :remarkings, except: %i(edit update destroy)
 
   namespace :teachers do
     resources :users, except: %i(new create destroy)

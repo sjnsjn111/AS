@@ -1,0 +1,38 @@
+<li class="active">
+  <div class="timeline-icon themed-background-dark-amethyst themed-border-dark-amethyst"><i class="fa fa-file-text"></i></div>
+
+  <div class="timeline-time"><small>
+    <%= time_ago_in_words remarking.created_at %> <%= t "ago" %>
+  </small></div>
+
+  <div class="timeline-content">
+    <p class="push-bit">
+      <%= t "from" %>:
+      <strong><%= remarking.user_name %></strong>
+    </p>
+
+    <p class="push-bit">
+      <%= t "to" %>:
+      <strong><%= remarking.school_name %></strong>
+    </p>
+
+    <p class="push-bit">
+      <%= t "subject" %>:
+      <strong><%= remarking.subject_name %></strong>
+    </p>
+
+    <p class="push-bit">
+      <%= t "status" %>:
+      <span class="label label-<%= get_satus_remarking remarking %>">
+        <%= t "status_remarking.#{remarking.status}" %>
+      </span>
+    </p>
+
+    <p class="push-bit">
+      <%= link_to remarking_path(remarking), remote: true,
+        class: "btn btn-xs btn-primary" do %>
+        <i class="fa fa-file"></i> <%= t "detail_remarking" %>
+      <% end %>
+    </p>
+  </div>
+</li>

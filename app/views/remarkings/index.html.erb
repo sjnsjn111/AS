@@ -1,0 +1,59 @@
+<div class="row">
+  <% if @remarkings.present? %>
+    <div class="col-md-8" id="remarking-table">
+  <% else %>
+    <div class="col-md-12" id="remarking-table">
+  <% end %>
+    <div class="widget">
+      <div class="widget-advanced">
+        <div class="widget-header text-center themed-background-dark-amethyst">
+          <div class="widget-options">
+            <i class="fa fa-exclamation-circle fa-3x themed-color-autumn"></i>
+          </div>
+          <h3 class="widget-content-light">
+            <strong class="themed-color-amethyst"><%= t "results" %></strong><br>
+            <small><%= t "remarking" %></small>
+          </h3>
+        </div>
+        <div class="widget-main">
+          <%= link_to "javascript:void(0)", title: t("remarking_guide"),
+            class: "widget-image-container animation-fadeIn",
+            data: {toggle: "modal", target: "#remarking-guide"} do %>
+            <span class="widget-icon themed-background-amethyst">
+              <i class="fa fa-globe"></i>
+            </span>
+          <% end %>
+          <hr>
+          <div class="row">
+              <%= render partial: "result", collection: @results, as: :result %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="timeline">
+    <% if @remarkings.present? %>
+      <%= render "timeline_remarkings" %>
+    <% end %>
+  </div>
+</div>
+<div class="modal fade" id="remarking-new" role="dialog" tabindex="-1" aria-hidden="true"></div>
+
+<div class="modal fade" id="remarking-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>
+
+<div class="modal fade" id="remarking-guide" role="dialog" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t "remarking_guide" %></h4>
+      </div>
+      <div class="modal-body">
+        <%= render "remarking_guide" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "close" %></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,4 +16,17 @@ module ApplicationHelper
   def resource_name
     :user
   end
+
+  def get_satus_remarking remarking
+    case
+    when remarking.pending?
+      Settings.warning
+    when remarking.reject?
+      Settings.danger
+    when remarking.approve?
+      Settings.info
+    else
+      Settings.success
+    end
+  end
 end

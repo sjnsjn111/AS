@@ -12,36 +12,35 @@
         <span><%= t "competition_calendar" %></span>
       <% end %>
     </li>
+
     <li>
       <%= link_to "#" do %>
         <i class="fa fa-exchange"></i>
         <span><%= t "change_aspiration" %></span>
       <% end %>
     </li>
+
     <li>
       <%= link_to statistic_results_path do %>
         <i class="fa fa-bar-chart"></i>
         <span><%= t "statistics_resuls" %></span>
       <% end %>
     </li>
+
     <li>
       <%= link_to majors_path do %>
         <i class="fa fa-archive"></i>
         <span><%= t "majors" %></span>
       <% end %>
     </li>
+
     <li>
       <%= link_to "#" do %>
         <i class="fa fa-star"></i>
         <span><%= t "suggestions" %></span>
       <% end %>
     </li>
-    <li>
-      <%= link_to "#" do %>
-        <i class="fa fa-reply"></i>
-        <span><%= t "remarking" %></span>
-      <% end %>
-    </li>
+
     <li class="sidebar-header">
       <span class="sidebar-header-options clearfix">
         <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Quick Settings">
@@ -53,26 +52,29 @@
       </span>
       <span class="sidebar-header-title">Widget Kit</span>
     </li>
-  <li>
-    <a href="javascript:void(0)" class="sidebar-nav-menu">
-      <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-      <i class="gi gi-shopping_cart sidebar-nav-icon"></i>
-      <span class="sidebar-nav-mini-hide">eCommerce</span>
-    </a>
-    <ul class="side-nav-menu-content" style="display: none;">
-      <li>
-        <a>Dashboard</a>
-      </li>
-      <li>
-        <a>Orders</a>
-      </li>
-      <li>
-        <a>Order View</a>
-      </li>
-      <li>
-        <a>Products</a>
-      </li>
-    </ul>
-  </li>
+
+    <li>
+      <a href="javascript:void(0)" class="sidebar-nav-menu">
+        <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+        <i class="fa fa-reply sidebar-nav-icon"></i>
+        <span class="sidebar-nav-mini-hide"><%= t "remarking" %></span>
+      </a>
+      <ul class="side-nav-menu-content" style="display: none;">
+        <li>
+          <%= link_to remarkings_path do %>
+            <i class="fa fa-plus"></i> <%= t "new_remarking" %>
+          <% end %>
+        </li>
+        <li>
+          <a>Orders</a>
+        </li>
+        <li>
+          <a>Order View</a>
+        </li>
+        <li>
+          <a>Products</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </div>
