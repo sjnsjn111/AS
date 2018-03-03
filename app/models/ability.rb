@@ -39,7 +39,8 @@ class Ability
     can :read, [Major, Department, Note, Notification, Result, Review, School, Subject]
     can :manage, User, id: user.id
     can :manage, Register, user_id: user.id
-    can :manage, Remarking, user_id: user.id
+    can :read, Remarking, result_id: user.results.pluck(:id)
+    can :create, Remarking
   end
 
   def permission_admin user

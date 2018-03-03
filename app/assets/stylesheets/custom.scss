@@ -142,3 +142,15 @@ label.required {
   color: white;
   margin-left: 250px;
 }
+.theme-background-gray-light {
+  background-color: $gray-light-3;
+}
+.disable-link {
+  pointer-events: none;
+}
+label abbr {
+  color: $red;
+}
+p {
+  word-break: break-all
+}

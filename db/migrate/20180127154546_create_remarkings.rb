@@ -5,6 +5,7 @@ class CreateRemarkings < ActiveRecord::Migration[5.1]
       t.references :school
       t.integer :status, default: 0
       t.text :content
+      t.text :reply
       t.date :deleted_at
 
       t.timestamps
