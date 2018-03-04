@@ -1,0 +1,5 @@
+<tr role="row">
+  <td class="text-center"><%= user.identification_number %></td>
+  <td class="text-center"><%= user.name %></td>
+  <%= render partial: "result", locals: {results: user.results.get_year(DateTime.now.year).order_by_subject, user: user} %>
+</tr>

@@ -1,0 +1,13 @@
+<%= search_form_for @q, url: admins_results_path(), remote: true do |f| %>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <i class="fa fa-id-badge"></i>
+    </div>
+    <%= f.search_field :name_or_identification_number_or_people_id_cont,
+      class: "form-control", placeholder: t("enter_name_code_user") %>
+  </div>
+  <%= f.button :submit, class: "btn btn-info" do %>
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <%= t "filter" %>
+  <% end %>
+<% end %>
