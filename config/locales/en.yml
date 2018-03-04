@@ -154,3 +154,8 @@ en:
     approve: "Approve"
     processed: "Processed"
   content: "Content"
+  not_majors: "Not majors"
+  created_remarking: "Created remarking."
+  not_found_result: "Not found result."
+  not_found_remarking: "Not found remarking."
+  not_users: "Not users"

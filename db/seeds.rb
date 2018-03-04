@@ -28,7 +28,8 @@ User.create!(name: "Nguyen Van A", email: "nguyenvana@gmail.com", password: "123
   User.create! name: name, email: email, password: pass, year: DateTime.now.year,
     password_confirmation: pass_conf, role: role, address: address, phone: phone,
     sex: sex, people_id: people_id, nation: nation, nationality: nationality,
-    birthday: birthday, religion: religion, school_id: rand(1..2)
+    birthday: birthday, religion: religion, school_id: rand(1..2),
+    identification_number: Faker::Code.asin
 end
 
 User.create! name: Faker::Name.name, email: "admin@gmail.com", password: "123123",

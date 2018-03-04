@@ -154,3 +154,8 @@ vi:
     approve: "Chấp nhận"
     processed: "Đã xử lí"
   content: "Nội dung"
+  not_majors: "Không có ngành nào cả."
+  created_remarking: "Đã tạo đơn phúc khảo."
+  not_found_result: "Khôn  tìm thấy kết quả."
+  not_found_remarking: "Khôn tìm thấy đơn phúc khảo."
+  not_users: "Không có người dùng."

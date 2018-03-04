@@ -1,11 +1,11 @@
 <%= search_form_for @q, url: admins_users_path(), remote: true do |f| %>
   <%= f.hidden_field :role, value: @user.role %>
-  <div class="input-group">
-    <div class="input-group-addon">
-      <i class="fa fa-id-badge"></i>
+  <div class="form-group">
+    <div class="icon-addon addon-lg">
+      <%= f.search_field :name_or_identification_number_or_people_id_cont,
+      class: "form-control input-sm", placeholder: t("enter_name_code_user") %>
+      <label for="name_or_identification_number_or_people_id_cont" class="fa fa-id-badge" rel="tooltip"></label>
     </div>
-    <%= f.search_field :name_or_identification_number_or_people_id_cont,
-      class: "form-control", placeholder: t("enter_name_code_user") %>
   </div>
 
   <%= f.button :submit, class: "btn btn-info" do %>
