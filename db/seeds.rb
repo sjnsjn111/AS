@@ -107,12 +107,12 @@ end
     introducing: Faker::Lorem.sentence(50)
 end
 
-1.upto(20) do |x|
+1.upto(8) do |x|
   Subject.create! name: Faker::Ancient.titan, code: Faker::Code.asin
 end
 
 Department.all.each do |d|
-  array = (1..20).to_a
+  array = (1..8).to_a
   1.upto(3)do |n|
     b = array.sample
     array.delete b
@@ -130,7 +130,7 @@ Major.all.each do |m|
 end
 
 User.student.each do |s|
-  array = (1..20).to_a
+  array = (1..8).to_a
   1.upto(6) do |n|
     b = array.sample
     array.delete b

@@ -12,11 +12,32 @@ class Result < ApplicationRecord
 
   scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
   scope :get_newest, ->{order created_at: :desc}
+  scope :order_by_subject, ->{order subject_id: :asc}
 
   delegate :id, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :subject, prefix: true, allow_nil: true
 
   class << self
+    def import_file file
+      spreadsheet = open_spreadsheet(file)
+      header = spreadsheet.row(1)
+      results = []
+      (1..spreadsheet.last_row).each do |i|
+        row = Hash[[header, spreadsheet.row(i)].transpose]
+        user = User.find_by(identification_number: row["identification_number"])
+        subject = Subject.find_by(code: row["code"])
+        mark = row["mark"]
+        if user && subject && mark &&
+          result = Result.where(user_id: user.id, subject_id: subject.id)
+          if result.blank?
+            result = Result.new user_id: user.id, subject_id: subject.id, mark: mark
+            results << result
+          end
+        end
+      end
+      Result.import results
+    end
+
     # def average_results_by_departments
     #   hashes = {}
     #   depart_results = Department.all.includes(:results).group_by &:result_ids
@@ -48,16 +69,16 @@ class Result < ApplicationRecord
         group by results.subject_id"
     end
 
-    def import file
-      spreadsheet = open_spreadsheet(file)
-      header = spreadsheet.row(1)
-      (2..spreadsheet.last_row).each do |i|
-          row = Hash[[header, spreadsheet.row(i)].transpose]
-          result = find_by_id(row["id"]) || new
-          result.attributes = row.to_hash.slice(*row.to_hash.keys)
-          result.save!
-      end
-    end
+    # def import file
+    #   spreadsheet = open_spreadsheet(file)
+    #   header = spreadsheet.row(1)
+    #   (2..spreadsheet.last_row).each do |i|
+    #       row = Hash[[header, spreadsheet.row(i)].transpose]
+    #       result = find_by_id(row["id"]) || new
+    #       result.attributes = row.to_hash.slice(*row.to_hash.keys)
+    #       result.save!
+    #   end
+    # end
 
     def open_spreadsheet file
       case File.extname(file.original_filename)

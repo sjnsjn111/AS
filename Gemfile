@@ -38,6 +38,9 @@ gem "chartkick"
 gem "cancancan"
 gem "roo"
 gem "ckeditor"
+gem 'alertify-rails'
+gem "activerecord-import"
+gem "cocoon"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

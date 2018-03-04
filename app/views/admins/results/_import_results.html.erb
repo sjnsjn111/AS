@@ -1,0 +1,11 @@
+<div class="col-md-12">
+  <p class="text-info"><%= t "import_result_excel" %></p>
+  <%= form_tag import_results_admins_results_path(:admins), multipart: true,
+    method: :post do %>
+    <%= file_field_tag :file, class: "btn btn-warning",
+      accept: ".csv, .xlsx" %><br/>
+    <%= submit_tag t("confirm"), class: "btn btn-success",
+      title: t("confirm") %>
+  <% end %>
+  <%= link_to t("back"), "javascript:void(0)", id: "btn-back" %>
+</div>

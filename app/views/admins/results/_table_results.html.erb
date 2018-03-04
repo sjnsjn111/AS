@@ -1,29 +1,25 @@
-<% if @results.present? %>
-  <table role="grid" class="table table-vcenter table-striped">
+<% if @users.present? %>
+  <table role="grid" class="table table-bordered table-striped table-vcenter dataTable no-footer">
     <thead>
       <tr role="row">
-        <th class="text-center w-100">
-          <%= t "identification_number" %>
-        </th>
+        <th class="text-center w-100"><%= t "identification_number" %></th>
         <th class="text-center"><%= t "name" %></th>
-        <th class="text-center"></th>
-        <th class="text-center"></th>
-        <th class="text-center"></th>
-        <th class="text-center"></th>
-        <th class="text-center"></th>
-        <th class="text-center"></th>
-        <th class="text-center"><%= t "action" %></th>
+        <% @subjects.each do |subject| %>
+          <th class="text-center"><%= subject.name %></th>
+        <% end %>
       </tr>
     </thead>
-    <tbody id="body-table-school">
-      <%= render @results %>
+    <tbody id="body-table-result">
+      <%= render partial: "user", collection: @users, as: :user %>
     </tbody>
   </table>
   <div class="row text-center pag">
-    <%= paginate @results, remote: true %>
+    <%= paginate @users, remote: true %>
   </div>
+  <div id = "page" data = "<%= @page %>"></div>
 <% else %>
   <p class="text-danger text-center">
     <i><%= t "not_results" %></i>
   </p>
 <% end %>
+<%= javascript_include_tag "edit_mark" %>

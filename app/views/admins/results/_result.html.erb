@@ -1,0 +1,8 @@
+<% @subjects.each do |subject| %>
+  <% result = results.detect {|r| r.subject_id == subject.id} %>
+  <% if result.present? %>
+    <td class="text-center" contenteditable= "<%= can? :edit, result %>" data="<%= user.id %>" role="<%= result.id %>" data-subject="<%= subject.id %>"><%= result.mark %></td>
+  <% else %>
+    <td contenteditable="<%= can? :edit, result %>" data="<%= user.id %>" role = "none" data-subject="<%= subject.id %>"></td>
+  <% end %>
+<% end %>

@@ -40,6 +40,8 @@ Rails.application.routes.draw do
       collection { post :import_students }
     end
     resources :schools
-    resources :results
+    resources :results do
+      collection { post :import_results }
+    end
   end
 end

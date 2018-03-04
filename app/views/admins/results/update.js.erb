@@ -1,0 +1,4 @@
+$('#table-result').html('<%= j render "admins/results/table_results" %>');
+<% if @flash.present? %>
+  alertify.success("<%= @flash %>") ;
+<% end %>

@@ -34,6 +34,8 @@ GEM
       activemodel (= 5.1.5)
       activesupport (= 5.1.5)
       arel (~> 8.0)
+    activerecord-import (0.22.0)
+      activerecord (>= 3.2)
     activesupport (5.1.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -41,6 +43,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    alertify-rails (0.2.0)
     arel (8.0.0)
     autoprefixer-rails (8.0.0)
       execjs
@@ -72,6 +75,7 @@ GEM
     climate_control (0.2.0)
     cocaine (0.6.0)
       terrapin (= 0.6.0)
+    cocoon (1.2.11)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -486,6 +490,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import
+  alertify-rails
   bcrypt
   bootstrap-sass (= 3.3.7)
   byebug
@@ -494,6 +500,7 @@ DEPENDENCIES
   carrierwave
   chartkick
   ckeditor
+  cocoon
   coffee-rails (~> 4.2)
   config
   devise
@@ -532,4 +539,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.0
+   1.16.1

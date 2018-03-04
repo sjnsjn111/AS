@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   scope :user_newest, ->{order created_at: :desc}
   scope :get_not_role, ->role{where.not role: :role}
+  scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
 
   def picture_size
     if avatar.size > 5.megabytes
