@@ -53,28 +53,30 @@
       <span class="sidebar-header-title">Widget Kit</span>
     </li>
 
-    <li>
-      <a href="javascript:void(0)" class="sidebar-nav-menu">
-        <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-        <i class="fa fa-reply sidebar-nav-icon"></i>
-        <span class="sidebar-nav-mini-hide"><%= t "remarking" %></span>
-      </a>
-      <ul class="side-nav-menu-content" style="display: none;">
-        <li>
-          <%= link_to remarkings_path do %>
-            <i class="fa fa-plus"></i> <%= t "new_remarking" %>
-          <% end %>
-        </li>
-        <li>
-          <a>Orders</a>
-        </li>
-        <li>
-          <a>Order View</a>
-        </li>
-        <li>
-          <a>Products</a>
-        </li>
-      </ul>
-    </li>
+    <% if current_user.student? %>
+      <li>
+        <a href="javascript:void(0)" class="sidebar-nav-menu">
+          <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+          <i class="fa fa-reply sidebar-nav-icon"></i>
+          <span class="sidebar-nav-mini-hide"><%= t "remarking" %></span>
+        </a>
+        <ul class="side-nav-menu-content" style="display: none;">
+          <li>
+            <%= link_to remarkings_path do %>
+              <i class="fa fa-plus"></i> <%= t "new_remarking" %>
+            <% end %>
+          </li>
+          <li>
+            <a>Orders</a>
+          </li>
+          <li>
+            <a>Order View</a>
+          </li>
+          <li>
+            <a>Products</a>
+          </li>
+        </ul>
+      </li>
+    <% end %>
   </ul>
 </div>

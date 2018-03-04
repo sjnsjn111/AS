@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20180224230218) do
     t.bigint "school_id"
     t.integer "status", default: 0
     t.text "content"
+    t.text "reply"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -156,7 +157,7 @@ ActiveRecord::Schema.define(version: 20180224230218) do
     t.string "phone"
     t.string "email"
     t.string "code"
-    t.string "logo"
+    t.text "logo"
     t.text "url_school"
     t.text "introducing"
     t.integer "level"
