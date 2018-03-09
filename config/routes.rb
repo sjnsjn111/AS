@@ -28,11 +28,13 @@ Rails.application.routes.draw do
   resources :results
   resources :majors
   resources :notes, only: :index
-  resources :remarkings, except: %i(edit update destroy)
+  resources :file_remarkings, except: %i(edit update destroy)
+  resources :remarkings, only: %i(show new create)
 
   namespace :teachers do
     resources :users, except: %i(new create destroy)
     resources :majors
+    resources :remarkings, except: %i(destroy new create)
   end
 
   namespace :admins do

@@ -1,0 +1,40 @@
+<% if @file_remarking_current.blank? %>
+  <div class="col-sm-6 col-lg-4">
+    <%= link_to "#", id: "btn-add-remarking",
+      class: "widget widget-hover-effect1 btn-add-remarking-#{result.id}",
+      data: {toggle: "modal", target: "#remarking-#{result.id}"} do %>
+      <div class="widget-simple theme-background-gray-light">
+        <div class="widget-options disabled" id="icon-<%= result.id %>">
+          <i class="fa fa-check text-success m-r-15"></i>
+        </div>
+        <div class="widget-icon pull-left themed-background-amethyst animation-fadeIn">
+          <%= result.mark %>
+        </div>
+        <h3 class="widget-content text-right animation-pullDown">
+          <strong id="name-result-<%= result.id %>"><%= result.subject_name %></strong><br>
+          <small id="text-remaring-<%= result.id %>"><%= t "click_to_remarking" %></small>
+        </h3>
+      </div>
+    <% end %>
+  </div>
+  <div class="modal fade" id="remarking-<%= result.id %>" role="dialog" tabindex="-1" aria-hidden="true">
+    <%= render partial: "remarking", locals: {result: result} %>
+  </div>
+<% else %>
+  <div class="col-sm-6 col-lg-4">
+    <%= link_to "#", class: "widget widget-hover-effect1 disable-link" do %>
+      <div class="widget-simple theme-background-gray-light">
+        <div class="widget-options disabled" id="icon-<%= result.id %>">
+          <i class="fa fa-check text-success m-r-15"></i>
+        </div>
+        <div class="widget-icon pull-left themed-background-amethyst animation-fadeIn">
+          <%= result.mark %>
+        </div>
+        <h3 class="widget-content text-right animation-pullDown">
+          <strong><%= result.subject_name %></strong><br>
+          <small><%= t "sent_remarking" %></small>
+        </h3>
+      </div>
+    <% end %>
+  </div>
+<% end %>

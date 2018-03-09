@@ -5,13 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :lockable
   acts_as_paranoid
 
+  has_many :file_remarkings, dependent: :destroy
   has_many :results, dependent: :destroy
   has_many :registers, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  has_many :schools, through: :majors
   has_many :majors, through: :registers
   has_many :major_departments, through: :majors
-  has_many :remarkings, through: :results
+  has_many :remarkings, through: :file_remarkings
   has_many :subjects, through: :results
   has_many :subject_departmants, through: :subjects
   has_many :departments, through: :subject_departmants

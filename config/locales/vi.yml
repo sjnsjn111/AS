@@ -168,3 +168,6 @@ vi:
   import_sucess: "Thành công"
   please_fill: "Hãy điền đầy đủ thông tin"
   process_errors: "Có lỗi xảy ra, vui lòng thử lại"
+  select: "Chọn"
+  selected_remarking: "Đã chọn phúc khảo."
+  not_remarking_selected: "Vui lòng chọn môn để phúc khảo."

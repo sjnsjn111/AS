@@ -1,5 +1,4 @@
 class Admins::UsersController < Admins::AdminsController
-  before_action :authenticate_user!
   before_action :find_user, only: %i(show destroy)
   before_action :load_result, only: :show
   before_action :load_notifications, :build_user, only: :index

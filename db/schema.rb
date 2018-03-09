@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180224230218) do
+ActiveRecord::Schema.define(version: 20180304034108) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 20180224230218) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_departments_on_name"
+  end
+
+  create_table "file_remarkings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "school_id"
+    t.bigint "user_id"
+    t.integer "status", default: 0
+    t.boolean "is_current", default: true
+    t.date "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_file_remarkings_on_school_id"
+    t.index ["user_id"], name: "index_file_remarkings_on_user_id"
   end
 
   create_table "major_departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -118,16 +130,14 @@ ActiveRecord::Schema.define(version: 20180224230218) do
 
   create_table "remarkings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "result_id"
-    t.bigint "school_id"
-    t.integer "status", default: 0
+    t.bigint "file_remarking_id"
     t.text "content"
     t.text "reply"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["result_id", "status"], name: "index_remarkings_on_result_id_and_status"
+    t.index ["file_remarking_id"], name: "index_remarkings_on_file_remarking_id"
     t.index ["result_id"], name: "index_remarkings_on_result_id"
-    t.index ["school_id"], name: "index_remarkings_on_school_id"
   end
 
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
