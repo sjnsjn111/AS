@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   namespace :teachers do
     resources :users, except: %i(new create destroy)
     resources :majors
-    resources :remarkings, except: %i(destroy new create)
+    resources :file_remarkings, except: %i(destroy new create)
   end
 
   namespace :admins do

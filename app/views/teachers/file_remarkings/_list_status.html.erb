@@ -1,0 +1,7 @@
+ <li class="active" id="all">
+  <%= link_to teachers_file_remarkings_path(role: :all), remote: true do %>
+    <span class="badge pull-right"><%= @statuses["total"] %></span>
+    <i class="fa fa-newspaper-o"></i> <strong><%= t "all" %></strong>
+  <% end %>
+</li>
+<%= render partial: "status_file_remarking", collection: FileRemarking.statuses, as: :status %>

@@ -1,0 +1,40 @@
+<tr role="row" class="file_remarking-<%= file_remarking.id %>">
+  <td class="text-center"><%= file_remarking.user_name %></td>
+  <td class="text-center"><%= file_remarking.user_identification_number %></td>
+  <td class="text-center"><%= l file_remarking.created_at, format: :short %></td>
+  <td class="text-center">
+    <span class="label label-<%= get_satus_remarking file_remarking %>">
+      <%= t ("status_remarking.#{file_remarking.status}") %>
+    </span>
+  </td>
+  <td class="text-center">
+    <div class="btn-group">
+      <%= link_to file_remarking_path(file_remarking), remote: true,
+        class: "btn btn-default btn-xs", title: t("show") do %>
+        <i class="fa fa-eye"></i>
+      <% end %>
+
+      <% if file_remarking.pending? %>
+        <%= link_to teachers_file_remarking_path(file_remarking, status: :approved, role: @role),
+          method: :patch, title: t("approve"),
+          remote: true, class: "btn btn-warning btn-xs", data: {confirm: t("sure")} do %>
+          <i class="fa fa-check"></i>
+        <% end %>
+
+        <%= link_to teachers_file_remarking_path(file_remarking, status: :rejected, is_current: false, role: @role),
+          method: :patch, remote: true, title: t("reject"),
+          class: "btn btn-danger btn-xs", data: {confirm: t("sure")} do %>
+          <i class="fa fa-times"></i>
+        <% end %>
+      <% end %>
+
+      <% if file_remarking.approved? %>
+        <%= link_to teachers_file_remarking_path(file_remarking, status: :processed,
+          role: @role, is_current: false), method: :patch, remote: true, title: t("done"),
+          class: "btn btn-primary btn-xs", data: {confirm: t("sure")} do %>
+          <i class="fa fa-gavel"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </td>
+</tr>

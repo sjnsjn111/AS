@@ -1,0 +1,15 @@
+<%= search_form_for @q, url: teachers_file_remarkings_path, remote: true do |f| %>
+  <div class="form-group">
+    <div class="icon-addon addon-lg">
+      <%= f.search_field :user_name_or_user_identification_number_cont, class: "form-control input-sm",
+        placeholder: t("enter_name_code_user") %>
+      <label for="name_or_code_cont" class="fa fa-newspaper-o" rel="tooltip"></label>
+    </div>
+  </div>
+
+  <%= f.button :submit, class: "btn btn-info" do %>
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <%= t "filter" %>
+  <% end %>
+  <%= hidden_field_tag :role, @role %>
+<% end %>
