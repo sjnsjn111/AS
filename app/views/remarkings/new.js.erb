@@ -1,6 +1,0 @@
-<% if @error %>
-  alertify.error('<%= @error %>');
-<% else %>
-  $('#remarking-new').html('<%= j render "form" %>');
-  $('#remarking-new').modal('show');
-<% end %>

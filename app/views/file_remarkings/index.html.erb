@@ -1,0 +1,30 @@
+<div class="row">
+  <div id="content-remarking">
+    <%= render "content_remarking" %>
+  </div>
+  <div id="timeline">
+    <% if @file_remarking_current.present? %>
+      <%= render "timeline_remarkings" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="modal fade" id="remarking-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>
+
+<div class="modal fade" id="remarking-guide" role="dialog" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t "remarking_guide" %></h4>
+      </div>
+      <div class="modal-body">
+        <%= render "remarking_guide" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "close" %></button>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag "remarking" %>

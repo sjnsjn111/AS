@@ -168,3 +168,6 @@ en:
   import_sucess: "Success"
   please_fill: "Please fill all input"
   process_errors: "Errors inprocess, please try again"
+  select: "Select"
+  selected_remarking: "Selected remarking"
+  not_remarking_selected: "Please select result to remarking."

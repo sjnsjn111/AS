@@ -1,0 +1,42 @@
+<% if @file_remarking_current.present? %>
+  <div class="col-md-12 opacity" id="remarking-table">
+<% else %>
+  <div class="col-md-12" id="remarking-table">
+<% end %>
+  <div class="widget">
+    <div class="widget-advanced">
+      <div class="widget-header text-center themed-background-dark-amethyst">
+        <div class="widget-options">
+          <%= link_to "javascript:void(0)", title: t("remarking_guide"),
+            data: {toggle: "modal", target: "#remarking-guide"} do %>
+            <i class="fa fa-question-circle fa-3x themed-color-autumn"></i>
+          <% end %>
+        </div>
+        <h3 class="widget-content-light">
+          <strong class="themed-color-amethyst"><%= t "results" %></strong><br>
+          <small><%= t "remarking" %></small>
+        </h3>
+      </div>
+      <%= simple_form_for @file_remarking, remote: true do |f| %>
+        <div class="widget-main">
+          <% if @file_remarking_current.blank? %>
+            <%= f.button :button, class: "widget-image-container animation-fadeIn" do %>
+              <span class="widget-icon themed-background-amethyst">
+                <i class="fa fa-globe"></i>
+              </span>
+            <% end %>
+          <% end %>
+          <hr>
+          <div class="row">
+            <%= render partial: "result", collection: @results, as: :result %>
+          </div>
+          <% if @file_remarking_current.blank? %>
+            <div class="row">
+              <%= render "tag_remarking" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

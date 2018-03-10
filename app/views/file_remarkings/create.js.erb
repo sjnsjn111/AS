@@ -1,0 +1,10 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% elsif @file_remarking.errors.any? %>
+  alertify.error('<%= j (render partial: "shared/error_messages", locals: {object: @file_remarking}) %>');
+<% else %>
+  $('#timeline').html('<%= j render "timeline_remarkings" %>');
+  $('#content-remarking').html('<%= j render "content_remarking" %>');
+  $('#remarking-new').modal('hide');
+  alertify.success('<%= @success %>');
+<% end %>

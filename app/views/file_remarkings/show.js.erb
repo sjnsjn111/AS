@@ -1,6 +1,6 @@
 <% if @error %>
   alertify.error('<%= @error %>');
 <% else %>
-  $('#remarking-detail').html('<%= j render "remarking_detail" %>');
+  $('#remarking-detail').html('<%= j render "file_remarking_detail" %>');
   $('#remarking-detail').modal('show');
 <% end %>

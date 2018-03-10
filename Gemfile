@@ -38,7 +38,7 @@ gem "chartkick"
 gem "cancancan"
 gem "roo"
 gem "ckeditor"
-gem 'alertify-rails'
+gem "alertify-rails"
 gem "activerecord-import"
 gem "cocoon"
 
