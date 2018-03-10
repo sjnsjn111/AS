@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="block full">
+      <div class="block-title clearfix">
+        <h2><i class="fa fa-tasks"></i> <%= t "status" %> <strong><%= t "list" %></strong></h2>
+      </div>
+      <ul class="nav nav-pills nav-stacked" id="status-file-remarking">
+        <%= render "list_status" %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="block full">
+      <div class="block-title">
+        <div class="block-options pull-right">
+          <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
+            <i class="fa fa-briefcase"></i>
+          </a>
+        </div>
+        <h3 class="widget-content-light"><%= t "remarking" %> <strong><%= t "list" %></strong></h3>
+      </div>
+      <div class="dataTables_wrapper form-inline no-footer">
+        <div id="table-file-remarking">
+          <%= render "table_file_remarking" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="remarking-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>

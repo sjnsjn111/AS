@@ -21,9 +21,9 @@ module ApplicationHelper
     case
     when remarking.pending?
       Settings.warning
-    when remarking.reject?
+    when remarking.rejected?
       Settings.danger
-    when remarking.approve?
+    when remarking.approved?
       Settings.info
     else
       Settings.success

@@ -26,3 +26,4 @@ default: "default"
 min_content: 20
 error_import: "error when input file"
 error_data: "has user exist"
+all: "all"

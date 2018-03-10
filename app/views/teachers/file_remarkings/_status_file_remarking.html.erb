@@ -1,0 +1,6 @@
+<li id="<%= status[0] %>">
+  <%= link_to teachers_file_remarkings_path(role: status[0]), remote: true do %>
+    <span class="badge pull-right"><%= @statuses[status[0]] %></span>
+    <i class="fa fa-newspaper-o"></i> <strong><%= t "status_remarking.#{status[0]}" %></strong>
+  <% end %>
+</li>

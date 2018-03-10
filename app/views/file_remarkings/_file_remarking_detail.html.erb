@@ -38,11 +38,23 @@
         <div class="col-md-6">
           <div class="form-group input-inline form-custom">
             <div class="input-group">
+              <span class="input-group-addon input-addonn-custom"><i class="fa fa-id-card"></i></span>
+              <input type="text" name="name" id="name"
+                value="<%= @file_remarking.user_identification_number %>"
+                class="form-control input-md input-custom"
+                placeholder="Name" disabled="disabled">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
               <span class="input-group-addon input-addonn-custom">
-                <i class="fa fa-magic"></i>
+                <i class="fa fa-birthday-cake"></i>
               </span>
               <input type="text" name="name" id="name"
-                value='<%= t("status_remarking.#{@file_remarking.status}") %>'
+                value="<%= l @file_remarking.user_birthday, format: :short %>"
                 class="form-control input-md input-custom"
                 placeholder="Name" disabled="disabled">
             </div>

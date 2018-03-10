@@ -20,7 +20,7 @@
       <%= simple_form_for @file_remarking, remote: true do |f| %>
         <div class="widget-main">
           <% if @file_remarking_current.blank? %>
-            <%= f.button :button, class: "widget-image-container animation-fadeIn" do %>
+            <%= f.button :button, data: {confirm: t("sure")}, class: "widget-image-container animation-fadeIn" do %>
               <span class="widget-icon themed-background-amethyst">
                 <i class="fa fa-globe"></i>
               </span>
