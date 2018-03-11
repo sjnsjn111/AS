@@ -181,3 +181,4 @@ vi:
   exist_remarking: "Đã tồn tại đơn phúc khảo."
   not_found_file_remarking: "Không tìm thấy đơn phúc khảo."
   updated_remarking: "Đã cập nhật trạng thái phúc khảo."
+  print_pdf: "in PDF"

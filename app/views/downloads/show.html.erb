@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="text-center"><strong>Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam</strong></h3>
+    <h4 class="text-center">Độc lập - Tự do - Hạnh phúc</h4>
+    <p class="text-center">__________***__________</p>
+    <br>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="text-center"><strong>ĐƠN XIN PHÚC KHẢO BÀI THI TUYÊN SINH ĐẠI HỌC</strong></h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p>Kính gửi: Hội Đồng tuyển sinh trường <strong><%= @file_remarking.school_name %></strong>.</p>
+    <p>Tên tôi là: <strong><%= @file_remarking.user_name %></strong>.</p>
+    <p>Sinh ngày: <%= l @file_remarking.user_birthday %>.</p>
+    <p>Nơi sinh: <%= @file_remarking.user_nationality %>.</p>
+    <p>Trong kì thi tuyển sinh đại học năm <%= DateTime.now.year %> - <%= DateTime.now.year + 1 %>,
+      tôi đăng kí dự thi tại hội đồng tuyển sinh  của <%= @file_remarking.school_name %>.</p>
+    <ul>
+      <li>Số báo danh: <strong><%= @file_remarking.user_identification_number %></strong>.</li>
+      <li>Chuyên ngành dự thi: <%= current_user.registers.aspiration_1.first %></li>
+      <li>Môn đề nghị chấm lại:
+        <ol>
+          <%= render partial: "subject_remarking", collection: @file_remarking.remarkings, as: :remarking %>
+        </ol>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-5 m-l-500">
+    <p class="text-center">
+      <small><%= @file_remarking.created_at.strftime "ngày %d tháng %m năm %Y" %></small>
+    </p>
+    <p class="text-center"><strong>Người làm đơn</strong></p>
+    <h3 class="text-center"><%= @file_remarking.user_name %></h3>
+  </div>
+</div>
