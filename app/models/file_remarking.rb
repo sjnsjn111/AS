@@ -11,7 +11,8 @@ class FileRemarking < ApplicationRecord
 
   enum status: %i(pending rejected approved processed)
 
-  delegate :name, :id, :identification_number, :birthday, to: :user, prefix: true, allow_nil: true
+  delegate :name, :id, :identification_number, :nationality, :birthday,
+    to: :user, prefix: true, allow_nil: true
   delegate :name, to: :school, prefix: true, allow_nil: true
 
   scope :get_newest, ->{order created_at: :desc}

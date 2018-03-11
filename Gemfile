@@ -41,6 +41,8 @@ gem "ckeditor"
 gem "alertify-rails"
 gem "activerecord-import"
 gem "cocoon"
+gem "pdfkit"
+gem "wkhtmltopdf-binary"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
