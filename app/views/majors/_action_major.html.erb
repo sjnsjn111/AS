@@ -1,0 +1,13 @@
+<%= link_to major_path(major), remote: true, class: "btn btn-default btn-xs" do %>
+  <i class="fa fa-eye"></i>
+<% end %>
+<% if get_id_favorite(major.id).blank? %>
+  <%= link_to favorites_path(major_id: major.id), method: :post, remote: true, class: "btn btn-default btn-xs", title: t("title_like") do %>
+    <i class="fa fa-heart"></i>
+  <% end %>
+<% elsif id = get_id_favorite(major.id).id %>
+  <%= link_to favorite_path(id: id, major_id: major.id),
+    method: :delete, remote: true, class: "btn btn-primary btn-xs", title: t("title_unlike") do %>
+    <i class="fa fa-heart"></i>
+  <% end %>
+<% end %>

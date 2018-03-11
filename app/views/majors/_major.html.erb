@@ -2,9 +2,7 @@
   <td class="text-center"><%= major.code %></td>
   <td class="text-center"><%= major.name %></td>
   <td class="text-center"><%= major.school_name %></td>
-  <td class="text-center">
-    <%= link_to major_path(major), remote: true, class: "btn btn-default btn-xs" do %>
-      <i class="fa fa-eye"></i>
-    <% end %>
+  <td class="text-center" id="action_btn_<%= major.id %>">
+    <%= render partial: "action_major", locals: {major: major} %>
   </td>
 </tr>

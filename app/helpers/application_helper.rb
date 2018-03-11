@@ -29,4 +29,8 @@ module ApplicationHelper
       Settings.success
     end
   end
+
+  def get_id_favorite major_id
+    current_user.favorites.find_by(major_id: major_id)
+  end
 end

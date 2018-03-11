@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :subjects, through: :results
   has_many :subject_departmants, through: :subjects
   has_many :departments, through: :subject_departmants
+  has_many :favorites, dependent: :destroy
   belongs_to :school, optional: true
 
   validates :name, presence: true
