@@ -16,7 +16,9 @@ $(document).ready(function () {
           window.location.href = response.link_redirect;
           alertify.success(response.message);
         } else {
-          alertify.error(response.message);
+          $.each(response.messages, function(key, message) {
+            alertify.error(message);
+          });
         }
       }
     });
