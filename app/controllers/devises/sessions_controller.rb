@@ -1,11 +1,19 @@
 class Devises::SessionsController < Devise::SessionsController
+
   def create
     if request.xhr?
-      @user = User.find_by email: params[:user][:email]
-      if @user
-        sign_in_user
-      else
+      session["user_auth"] = params[:user]
+      resource = warden.authenticate scope: resource_name
+      if resource.blank?
         failure
+      else
+        sign_in resource_name, resource
+        flash[:success] = I18n.t "devise.sessions.signed_in"
+
+        yield resource if block_given?
+
+        render json: {success: true, link_redirect: after_sign_in_path_for(resource),
+          message: t("login_success")}
       end
     else
       super
@@ -13,29 +21,21 @@ class Devises::SessionsController < Devise::SessionsController
   end
 
   def failure
-    message = t('login_invalid')
-    render json: {success: false, message: message}
+    user = User.where(email: session["user_auth"][:email]).first rescue nil
+    @messages = {}
+    check_locked_account(user.failed_attempts) if user.failed_attempts > 3
+    @messages[:error] = I18n.t "devise.failure.invalid", authentication_keys: "email" unless user.access_locked?
+    render :json => {success: false, messages: @messages}
   end
 
   private
 
-  def sign_in_user
-    if @user.valid_password?(params[:user][:password])
-      set_flash_message! :notice, :signed_in
-      sign_in resource_name, @user
-      flash[:success] = t 'login_success'
-      render json: {success: true, link_redirect: after_sign_in_path_for(@user),
-        message: t('login_success')}
-    else
-      failure
+  def check_locked_account failed_attempts
+    case failed_attempts
+    when 4
+      @messages[:lock] = t "devise.failure.last_attempt"
+    when 5
+      @messages[:lock] = t "devise.failure.locked"
     end
-  end
-
-  def after_sign_in_path_for(resource)
-    stored_location_for(resource) || root_path
-  end
-
-  def is_user_active?
-    @user.confirmed_at
   end
 end
