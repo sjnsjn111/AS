@@ -1,0 +1,8 @@
+<% if @note.errors.any? %>
+  $('#add-note').html('<%= j render "form" %>');
+<% else %>
+  $('.note-<%= @note.id %>').remove();
+  $('#body-table').prepend('<%= j render "table_notes", note: @note %>');
+  alertify.success('<%= @success %>');
+  $('#add-note').modal('hide');
+<% end %>

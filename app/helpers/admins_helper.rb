@@ -20,6 +20,14 @@ module AdminsHelper
     else
       Settings.admin
     end
+  end
 
+  def get_style_note style
+    case style
+    when Settings.remarking
+      Settings.success
+    when Settings.aspiration
+      Settings.primary
+    end
   end
 end

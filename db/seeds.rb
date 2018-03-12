@@ -159,14 +159,6 @@ User.student.each do |u|
   end
 end
 
-Note.create! time: 10.days.ago,
-  content: "allow remarking start at", style: 0, is_start: 1
+Note.create! start_time: 10.days.ago, end_time: 1.months.from_now, style: 0
 
-Note.create! time: 1.months.from_now,
-  content: "allow remarking end at", style: 0
-
-Note.create! time: 5.days.ago,
-  content: "allow change aspiration start at", style: 1, is_start: 1
-
-Note.create! time: 2.months.from_now,
-  content: "allow change aspiration end at", style: 1
+Note.create! start_time: 5.days.ago, end_time: 2.months.from_now, style: 1

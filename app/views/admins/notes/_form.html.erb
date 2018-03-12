@@ -1,0 +1,47 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title pull-left m-l-10"><strong><%= t "note" %></strong></h4>
+    </div>
+    <div class="modal-body">
+      <%= simple_form_for [:admins, @note], remote: true do |f| %>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.input :start_time %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.input :end_time %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <label class="control-label">
+                <abbr title="required">*</abbr> style
+              </label>
+              <div class="funkyradio">
+                <% Note.styles.each do |key, value| %>
+                  <div class="funkyradio-<%= get_style_note key %> col-md-6">
+                    <%= f.radio_button :style, value, id: "radio#{value}" %>
+                    <%= f.label :style, t("note_style.#{key}"), for: "radio#{value}" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <center>
+            <%= f.button :submit, class: "btn btn-primary btn-md" %>
+          </center>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
