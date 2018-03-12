@@ -10,6 +10,7 @@ class Major < ApplicationRecord
   has_many :departments, through: :major_departments
   has_many :subjects_departmants, through: :departments
   has_many :subjects, through: :subjects_departmants
+  has_many :favorites, dependent: :destroy
 
   validates :name, presence: true,
     length: {minimum: Settings.min_name}

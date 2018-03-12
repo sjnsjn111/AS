@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 20180304034108) do
     t.index ["name"], name: "index_departments_on_name"
   end
 
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "major_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["major_id"], name: "index_favorites_on_major_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "file_remarkings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "school_id"
     t.bigint "user_id"
@@ -132,7 +141,6 @@ ActiveRecord::Schema.define(version: 20180304034108) do
     t.bigint "result_id"
     t.bigint "file_remarking_id"
     t.text "content"
-    t.text "reply"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

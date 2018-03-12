@@ -1,0 +1,6 @@
+<% if @major %>
+  $('#action_btn_<%= @major.id %>').html('<%= j render partial: "majors/action_major", locals: {major: @major} %>');
+<% end %>
+<% if @flash.present? %>
+  alertify.success("<%= @flash %>") ;
+<% end %>

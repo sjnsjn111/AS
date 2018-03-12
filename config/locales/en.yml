@@ -182,3 +182,5 @@ en:
   not_found_file_remarking: "Not found file remarking."
   updated_remarking: "Updated remarking."
   print_pdf: "Print PDF"
+  title_like: "Click to favorite"
+  title_unlike: "Click to unfavorite"
