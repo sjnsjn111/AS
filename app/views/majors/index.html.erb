@@ -18,6 +18,11 @@
             <div class="col-md-10 form-search-major">
               <%= render "search_major" %>
             </div>
+            <div class="col-md-2">
+              <%= link_to favorites_path, remote: true, class: "btn btn-primary m-left-50", title: t("has_mark") do %>
+                <i class="fa fa-heart"> <%= t "has_mark" %></i>
+              <% end %>
+            </div>
           </div>
         </div>
 
