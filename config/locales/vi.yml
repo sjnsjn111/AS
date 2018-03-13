@@ -194,3 +194,8 @@ vi:
   not_found_note: "Không tìm thấy ghi chú."
   style: "Loại"
   notes: "Các ghi chú"
+  time_allow_aspiration: "Thời gian cho phép thay đổi nguyện vọng"
+  time_allow_remarking: "Thời gian cho phép nộp đơn phscu khảo"
+  format:
+    datetime:
+      v_1: "%H:%M %d/%m/%Y"

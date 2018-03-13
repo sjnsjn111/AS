@@ -5,6 +5,5 @@ class NotesController < ApplicationController
 
   def index
     @notes = Note.get_year(DateTime.now.year).notes_lastest
-    @note_cal = Note.notes_lastest.group_by &:style
   end
 end
