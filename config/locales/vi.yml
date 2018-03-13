@@ -199,3 +199,5 @@ vi:
   format:
     datetime:
       v_1: "%H:%M %d/%m/%Y"
+  not_time_remarking: "Không phải thời gian phúc khảo."
+  cancel: "Hủy bỏ"
