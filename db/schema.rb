@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304034108) do
+ActiveRecord::Schema.define(version: 20180311010317) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -98,11 +98,10 @@ ActiveRecord::Schema.define(version: 20180304034108) do
   end
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "time"
-    t.text "content"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer "style"
-    t.boolean "is_start", default: false
-    t.date "deleted_at"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -141,6 +140,7 @@ ActiveRecord::Schema.define(version: 20180304034108) do
     t.bigint "result_id"
     t.bigint "file_remarking_id"
     t.text "content"
+    t.text "reply"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

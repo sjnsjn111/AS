@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resources :results do
       collection { post :import_results }
     end
+    resources :notes
   end
   resources :favorites
 end

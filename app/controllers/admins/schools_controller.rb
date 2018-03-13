@@ -11,6 +11,7 @@ class Admins::SchoolsController < Admins::AdminsController
   end
 
   def create
+    return if @error
     @school = School.new school_params
     if @school.save
       @success = t "created_school"
@@ -18,6 +19,7 @@ class Admins::SchoolsController < Admins::AdminsController
   end
 
   def update
+    return if @error
     if @school.update_attributes school_params
       @success = t "updated_school"
     end

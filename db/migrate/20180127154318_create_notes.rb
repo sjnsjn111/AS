@@ -1,11 +1,10 @@
 class CreateNotes < ActiveRecord::Migration[5.1]
   def change
     create_table :notes do |t|
-      t.datetime :time
-      t.text :content
+      t.datetime :start_time
+      t.datetime :end_time
       t.integer :style
-      t.boolean :is_start, default: 0
-      t.date :deleted_at
+      t.datetime :deleted_at
 
       t.timestamps
     end
