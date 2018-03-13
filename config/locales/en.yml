@@ -194,3 +194,8 @@ en:
   not_found_note: "Not found note."
   style: "Style"
   notes: "Notes"
+  time_allow_aspiration: "Time allow change aspiration"
+  time_allow_remarking: "Time allow send remarking"
+  format:
+    datetime:
+      v_1: "%H:%M %d/%m/%Y"

@@ -3,8 +3,13 @@
 
   <div class="timeline-time">
     <small>
-      <%= time_ago_in_words note.time %>
-      <%= check_time_note note %>
+      <%= time_ago_in_words note.start_time %>
+      <%= check_time_note note.start_time %>
+    </small>
+    -
+    <small>
+      <%= time_ago_in_words note.end_time %>
+      <%= check_time_note note.end_time %>
     </small>
   </div>
 
@@ -13,7 +18,13 @@
       <strong><%= t "note_style.#{note.style}" %></strong>
     </p>
     <p class="push-bit">
-      <%= note.content %> <%= note.time.strftime("%H:%M") %>
+      <% if note.aspiration? %>
+        <%= t("time_allow_aspiration") %>: <%= l note.start_time, format: t("format.datetime.v_1") %> -
+          <%= l note.end_time, format: t("format.datetime.v_1") %>
+      <% elsif %>
+        <%= t("time_allow_remarking") %>: <%= l note.start_time, format: t("format.datetime.v_1") %> -
+          <%= l note.end_time, format: t("format.datetime.v_1") %>
+      <% end %>
     </p>
   </div>
 </li>

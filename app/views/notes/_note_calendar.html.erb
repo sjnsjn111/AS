@@ -1,11 +1,11 @@
 <tr role="row">
   <td class="text-center">
-    <%= show_style_note note.first %>
+    <%= show_style_note note.style %>
   </td>
   <td class="text-center">
-    <%= l note.second.first.time, format: :short %>
+    <%= l note.start_time, format: :long %>
   </td>
   <td class="text-center">
-    <%= l note.second.second.time, format: :short %>
+    <%= l note.end_time, format: :long %>
   </td>
 </tr>

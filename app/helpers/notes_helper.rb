@@ -1,20 +1,16 @@
 module NotesHelper
   def show_note note
     case
-    when note.is_start? && note.remarking?
-      [nil, "pencil-square-o"]
-    when note.is_start? && note.aspiration?
+    when note.remarking?
       [nil, "check-square-o"]
-    when !note.is_start? && note.aspiration?
-      ["themed-background-fire themed-border-fire", "check-square-o"]
-    when !note.is_start? && note.remarking?
+    when note.aspiration?
       ["themed-background-fire themed-border-fire", "pencil-square-o"]
     end
   end
 
-  def check_time_note note
-    case
-    when note.time > DateTime.now
+  def check_time_note time
+    case time
+    when time > DateTime.now
       t "next"
     else
       t "ago"
