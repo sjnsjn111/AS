@@ -1,11 +1,13 @@
 class FileRemarkingsController < ApplicationController
   before_action :authenticate_user!
   before_action :current_ability
+  before_action :load_file_remarking_current, :load_note_remarking, only: %i(create index)
   before_action :load_file_remarkings, :load_results, :build_file_remarking, only: :index
   before_action :load_file_remarking, only: :show
-  before_action :check_params, :load_schools, only: :create
-  before_action :load_file_remarking_current, only: %i(create index)
+  before_action :check_note_remarking, :check_params, :load_schools,  only: :create
   authorize_resource
+
+  include NotesHelper
 
   def new
     @remarking = @result.remarkings.build
@@ -66,6 +68,7 @@ class FileRemarkingsController < ApplicationController
   end
 
   def check_params
+    return if @error
     count = 0
     params[:content].each do |k,v|
       next if v.blank?
@@ -78,5 +81,16 @@ class FileRemarkingsController < ApplicationController
     @file_remarking = FileRemarking.find_by id: params[:id]
     return if @file_remarking
     @error = t "not_found_file_remarking"
+  end
+
+  def load_note_remarking
+    @note = Note.remarking.first
+    return if @note
+    @error = t "not_note_remarking"
+  end
+
+  def check_note_remarking
+    return if @error || allow_remarking?(@note)
+    @error = t "not_time_remarking"
   end
 end

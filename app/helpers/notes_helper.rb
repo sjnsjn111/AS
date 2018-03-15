@@ -39,4 +39,8 @@ module NotesHelper
       end
     end
   end
+
+  def allow_remarking? note
+    note.start_time < DateTime.now && note.end_time > DateTime.now ? true : false
+  end
 end
