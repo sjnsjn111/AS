@@ -1,4 +1,4 @@
-<% if @file_remarking_current.blank? && @note.present? && allow_remarking?(@note) %>
+<% if @file_remarking_current.blank? && @note.present? && allow_change_in_time?(@note) %>
   <div class="col-sm-6 col-lg-4">
     <%= link_to "#", id: "btn-add-remarking",
       class: "widget widget-hover-effect1 btn-add-remarking-#{result.id}",

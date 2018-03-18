@@ -11,7 +11,7 @@ class Register < ApplicationRecord
 
   enum aspiration: %i(aspiration_1 aspiration_2 aspiration_3)
 
-  delegate :name, to: :major, prefix: true, allow_nil: true
+  delegate :name, :id, to: :major, prefix: true, allow_nil: true
 
   scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
 

@@ -1,4 +1,4 @@
-<% if @file_remarking_current.present? || @note.blank?  || !allow_remarking?(@note) %>
+<% if @file_remarking_current.present? || @note.blank?  || !allow_change_in_time?(@note) %>
   <div class="col-md-12 opacity" id="remarking-table">
 <% else %>
   <div class="col-md-12" id="remarking-table">
@@ -20,7 +20,7 @@
 
       <%= simple_form_for @file_remarking, remote: true do |f| %>
         <div class="widget-main">
-          <% if @file_remarking_current.blank? && @note.present? && allow_remarking?(@note) %>
+          <% if @file_remarking_current.blank? && @note.present? && allow_change_in_time?(@note) %>
             <%= f.button :button, data: {confirm: t("sure")}, class: "widget-image-container animation-fadeIn" do %>
               <span class="widget-icon themed-background-amethyst">
                 <i class="fa fa-globe"></i>

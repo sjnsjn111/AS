@@ -23,6 +23,7 @@
 //= require alertify/lib/alertify.min
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require sweetalert/dist/sweetalert.min.js
 //= require highcharts
 //= require chartkick
 //= require cable

@@ -1,0 +1,21 @@
+<div class="col-md-4">
+  <div class="block">
+    <div class="block-title ui-sortable-handle">
+      <h2><%= t "aspiration" %> <%= register_counter + 1 %>: <%= register.major_name %></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 m-b-20">
+        <label class="control-label" for="school"><%= t "school" %></label>
+        <%= select_tag :school, options_for_select(option_school_for_select(@schools)),
+          include_blank: t("select_one_school"), class: "form-control select-school",
+          id: "school-#{register.id}", data: {id: register.id} %>
+        <%= simple_form_for register, method: :patch, remote: true, html: {class: "form-register-#{register_counter}"},
+          data: {id: register.id} do |f| %>
+          <%= f.input :major_id, as: :select, collection: option_major_for_select(@majors, register).unshift([t("no_change_major"), nil, class: "no-change-major"]),
+            input_html: {id: "select-major-#{register.id}", class: "select-aspiration-#{register_counter}", data: {id: register.major_id}} %>
+          <%= f.hidden_field :aspiration, value: register_counter, id: "aspiration-#{register.id}" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

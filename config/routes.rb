@@ -18,13 +18,15 @@ Rails.application.routes.draw do
     put "/signup", to: "devises/users#update"
     get "edit", to: "devises/users#edit", as: :edit_user_registration
     delete "logout", to: "devises/sessions#destroy", as: :destroy_user_session
+    get "/suggestion_register", to: "registers#edit"
+    patch "/change_register", to: "registers#update"
   end
 
   resources :set_language, only: :index
   resources :statistic_results, only: :index
 
   resources :users, except: %i(destroy new create index)
-  resources :registers
+  resources :registers,except: %i(destroy edit update)
   resources :results
   resources :majors
   resources :notes, only: :index
