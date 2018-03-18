@@ -4,7 +4,16 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="block">
+    <div class="block full">
+      <div class="block-title m-h-40">
+        <div class="block-options pull-right">
+          <%= link_to favorites_path(role: :register), remote: true,
+            class: "btn btn-alt btn-sm btn-danger", title: t("has_mark") do %>
+            <i class="fa fa-heart"></i>
+          <% end %>
+        </div>
+        <h3 class="widget-content-light"></h3>
+      </div>
       <% if allow_change_in_time?(@note) && !current_user.is_changed_register? %>
         <div id="change-aspiration">
           <div class="row">
@@ -42,5 +51,6 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="favorite-majors" role="dialog" tabindex="-1" aria-hidden="true"></div>
 <%= hidden_field_tag :major_registed_ids, get_major_registed_id(@registers) %>
 <%= javascript_include_tag "change_aspiration" %>

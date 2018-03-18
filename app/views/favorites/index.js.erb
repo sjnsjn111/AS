@@ -1,1 +1,6 @@
-$('#table-major').html('<%= j render "majors/table_major" %>');
+<% if params[:role] == Settings.role.register %>
+  $('#favorite-majors').html('<%= j render "registers/favorite_majors" %>');
+  $('#favorite-majors').modal('show');
+<% else %>
+  $('#table-major').html('<%= j render "majors/table_major" %>');
+<% end %>

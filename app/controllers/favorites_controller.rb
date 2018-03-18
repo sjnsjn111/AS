@@ -1,10 +1,6 @@
 class FavoritesController < ApplicationController
-  before_action :load_major, only: [:create, :destroy]
-
-  def index
-    major_favorite_ids = current_user.favorites.pluck(:major_id)
-    @majors = Major.get_by(major_favorite_ids).page(params[:page]).per(Settings.per_page)
-  end
+  before_action :load_major, only: %i(create destroy)
+  before_action :load_favorite_majors, only: :index
 
   def create
     if @major && is_not_favorite?
@@ -31,5 +27,10 @@ class FavoritesController < ApplicationController
 
   def is_not_favorite?
     current_user.favorites.find_by(major_id: params[:major_id]).blank?
+  end
+
+  def load_favorite_majors
+    major_favorite_ids = current_user.favorites.pluck(:major_id)
+    @majors = Major.get_by(major_favorite_ids).page(params[:page]).per Settings.per_page
   end
 end

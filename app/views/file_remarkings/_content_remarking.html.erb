@@ -5,7 +5,7 @@
 <% end %>
   <div class="widget">
     <div class="widget-advanced">
-      <div class="widget-header text-center themed-background-dark-amethyst">
+      <div class="widget-header text-center themed-background-dark">
         <div class="widget-options">
           <%= link_to "javascript:void(0)", title: t("remarking_guide"),
             data: {toggle: "modal", target: "#remarking-guide"} do %>
@@ -13,7 +13,7 @@
           <% end %>
         </div>
         <h3 class="widget-content-light">
-          <strong class="themed-color-amethyst"><%= t "results" %></strong><br>
+          <strong class="themed-color"><%= t "results" %></strong><br>
           <small><%= t "remarking" %></small>
         </h3>
       </div>
@@ -22,7 +22,7 @@
         <div class="widget-main">
           <% if @file_remarking_current.blank? && @note.present? && allow_change_in_time?(@note) %>
             <%= f.button :button, data: {confirm: t("sure")}, class: "widget-image-container animation-fadeIn" do %>
-              <span class="widget-icon themed-background-amethyst">
+              <span class="widget-icon themed-background">
                 <i class="fa fa-globe"></i>
               </span>
             <% end %>

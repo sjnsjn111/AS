@@ -30,3 +30,5 @@ all: "all"
 a4: "A4"
 remarking: "remarking"
 aspiration: "aspiration"
+role:
+  register: "register"
