@@ -24,6 +24,7 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require sidenav
+//= require sweetalert/dist/sweetalert.min.js
 //= require highcharts
 //= require chartkick
 //= require login_custom

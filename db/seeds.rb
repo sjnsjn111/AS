@@ -97,13 +97,13 @@ end
   Department.create!(name: name, school_id: school_id)
 end
 
-1.upto(10) do |x|
-  Major.create! school_id: 1, name: Faker::Name.name, code: Faker::Code.asin,
+1.upto(20) do |x|
+  Major.create! school_id: 1, name: Faker::Name.name, code: "#{Faker::Code.asin}-#{x*2}",
     introducing: Faker::Lorem.sentence(50)
 end
 
-1.upto(12) do |x|
-  Major.create! school_id: 2, name: Faker::Name.name, code: Faker::Code.asin,
+1.upto(20) do |x|
+  Major.create! school_id: 2, name: Faker::Name.name, code: "#{Faker::Code.asin}-#{x*3}",
     introducing: Faker::Lorem.sentence(50)
 end
 
@@ -146,16 +146,15 @@ Major.all.each do |m|
 end
 
 User.student.each do |u|
-  array = (1..22).to_a
-  # major_departments = Major.all.group_by(&:department_ids)
-  departments = u.find_user_departments
-  departments.each_with_index do |department_id, index|
-    b = array.sample
+  department_ids = u.find_user_departments
+  major_ids = MajorDepartment.get_by_depart(department_ids).pluck :major_id
+  department_ids.each_with_index do |department_id, index|
+    major_id = major_ids.sample
     # major = Major.find_by id: b
     # department_major_ids = major.departments.pluck(:id)
     # major_id = department_major_ids.sample
-    array.delete b
-    u.registers.create! major_id: b, department_id: department_id, aspiration: index if index < 3
+    major_ids.delete major_id
+    u.registers.create! major_id: major_id, department_id: department_id, aspiration: index if index < 3
   end
 end
 

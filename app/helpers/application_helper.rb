@@ -33,4 +33,22 @@ module ApplicationHelper
   def get_id_favorite major_id
     current_user.favorites.find_by(major_id: major_id)
   end
+
+  def option_major_for_select majors, register
+    majors.map do |major|
+      [major.name, major.id, class: "option-major-#{register.id}-#{major.school_id}"]
+    end
+  end
+
+  def option_school_for_select schools
+    schools.map do |school|
+      [school.name, school.id]
+    end
+  end
+
+  def get_major_registed_id registers
+    registers.map do |register|
+      register.major_id
+    end
+  end
 end

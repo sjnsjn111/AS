@@ -1,0 +1,33 @@
+<div class="col-sm-12 col-lg-6 center-block">
+  <%= link_to "javascript:void(0)", class: "widget widget-hover-effect2" do %>
+    <div class="widget-extra themed-background-dark">
+      <h4 class="text-center widget-content-light">
+        <strong>
+          <%= t "start_time" %>
+        </strong>
+      </h4>
+    </div>
+    <div class="widget-extra-full">
+      <span class="hanimation-expandOpen">
+        <h2 class="text-center"><b><%= l @note.start_time, format: t("format.datetime.v_1") %></b></h2>
+      </span>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-sm-12 col-lg-6 center-block">
+  <%= link_to "javascript:void(0)", class: "widget widget-hover-effect2" do %>
+    <div class="widget-extra themed-background-dark">
+      <h4 class="text-center widget-content-light">
+        <strong>
+          <%= t "end_time" %>
+        </strong>
+      </h4>
+    </div>
+    <div class="widget-extra-full">
+      <span class="h2 animation-expandOpen text-center">
+        <h2 class="text-center"><b><%= l @note.end_time, format: t("format.datetime.v_1") %></b></h2>
+      </span>
+    </div>
+  <% end %>
+</div>

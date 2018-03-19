@@ -90,7 +90,7 @@ class FileRemarkingsController < ApplicationController
   end
 
   def check_note_remarking
-    return if @error || allow_remarking?(@note)
+    return if @error || allow_change_in_time?(@note)
     @error = t "not_time_remarking"
   end
 end

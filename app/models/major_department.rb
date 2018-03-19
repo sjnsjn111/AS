@@ -7,4 +7,6 @@ class MajorDepartment < ApplicationRecord
   has_many :subject_departments, through: :department
   has_many :subjects, through: :subject_departments
   has_many :targets, through: :major
+
+  scope :get_by_depart, ->ids{where department_id: ids}
 end

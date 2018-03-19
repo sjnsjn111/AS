@@ -40,7 +40,8 @@ module NotesHelper
     end
   end
 
-  def allow_remarking? note
+  def allow_change_in_time? note
+    return false if note.blank?
     note.start_time < DateTime.now && note.end_time > DateTime.now ? true : false
   end
 end

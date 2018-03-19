@@ -14,13 +14,6 @@
     </li>
 
     <li>
-      <%= link_to "#" do %>
-        <i class="fa fa-exchange"></i>
-        <span><%= t "change_aspiration" %></span>
-      <% end %>
-    </li>
-
-    <li>
       <%= link_to statistic_results_path do %>
         <i class="fa fa-bar-chart"></i>
         <span><%= t "statistics_resuls" %></span>
@@ -34,48 +27,45 @@
       <% end %>
     </li>
 
-    <li>
-      <%= link_to "#" do %>
-        <i class="fa fa-star"></i>
-        <span><%= t "suggestions" %></span>
-      <% end %>
-    </li>
-
-    <li class="sidebar-header">
-      <span class="sidebar-header-options clearfix">
-        <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Quick Settings">
-        <i class="gi gi-settings"></i>
-        </a>
-        <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Create the most amazing pages with the widget kit!">
-          <i class="gi gi-lightbulb"></i>
-        </a>
-      </span>
-      <span class="sidebar-header-title">Widget Kit</span>
-    </li>
-
     <% if current_user.student? %>
+      <li class="sidebar-header">
+        <span class="sidebar-header-options clearfix">
+          <a href="javascript:void(0)" data-toggle="tooltip">
+          <i class="gi gi-settings"></i>
+          </a>
+          <a href="javascript:void(0)" data-toggle="tooltip">
+            <i class="gi gi-lightbulb"></i>
+          </a>
+        </span>
+        <span class="sidebar-header-title"><%= t "student_area" %></span>
+      </li>
+
       <li>
         <a href="javascript:void(0)" class="sidebar-nav-menu">
           <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-          <i class="fa fa-reply sidebar-nav-icon"></i>
-          <span class="sidebar-nav-mini-hide"><%= t "remarking" %></span>
+          <i class="gi gi-lightbulb"></i>
+          <span><%= t "registers" %></span>
         </a>
         <ul class="side-nav-menu-content" style="display: none;">
           <li>
-            <%= link_to file_remarkings_path do %>
-              <i class="fa fa-plus"></i> <%= t "new_remarking" %>
+            <%= link_to "#" do %>
+              <span><%= t "suggestions" %></span>
             <% end %>
           </li>
+
           <li>
-            <a>Orders</a>
-          </li>
-          <li>
-            <a>Order View</a>
-          </li>
-          <li>
-            <a>Products</a>
+            <%= link_to registers_path do %>
+              <span><%= t "change_aspiration" %></span>
+            <% end %>
           </li>
         </ul>
+      </li>
+
+      <li>
+        <%= link_to file_remarkings_path do %>
+          <i class="fa fa-reply"></i>
+          <span><%= t "remarking" %></span>
+        <% end %>
       </li>
     <% end %>
   </ul>

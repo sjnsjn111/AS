@@ -17,6 +17,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :religion
       t.date :deleted_at
       t.references :school
+      t.boolean :is_changed_register, default: 0
 
       t.timestamps
     end

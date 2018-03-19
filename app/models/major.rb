@@ -18,7 +18,7 @@ class Major < ApplicationRecord
     length: {minimum: Settings.min_code}
   validate :name_unique_in_school
 
-  delegate :name, to: :school, prefix: true, allow_nil: true
+  delegate :name, :id, to: :school, prefix: true, allow_nil: true
 
   scope :get_by, ->ids {where id: ids}
   scope :newest, ->{order created_at: :desc}

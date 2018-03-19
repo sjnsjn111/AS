@@ -131,7 +131,6 @@ ActiveRecord::Schema.define(version: 20180311010317) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_registers_on_department_id"
-    t.index ["major_id", "user_id"], name: "index_registers_on_major_id_and_user_id", unique: true
     t.index ["major_id"], name: "index_registers_on_major_id"
     t.index ["user_id"], name: "index_registers_on_user_id"
   end
@@ -235,6 +234,7 @@ ActiveRecord::Schema.define(version: 20180311010317) do
     t.string "religion"
     t.date "deleted_at"
     t.bigint "school_id"
+    t.boolean "is_changed_register", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
