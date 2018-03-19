@@ -1,13 +1,15 @@
 class FileRemarking < ApplicationRecord
-  attr_accessor :remarkings_ids
+  attr_accessor :remarkings_ids, :results_ids, :marks
 
   belongs_to :user
   belongs_to :school
   has_many :remarkings, dependent: :destroy
+  has_many :results, through: :remarkings
 
   accepts_nested_attributes_for :remarkings, allow_destroy: true
 
   after_create :save_remarking
+  after_update :update_result, :destroy_remarking, if: :is_processed_or_rejected?
 
   enum status: %i(pending rejected approved processed)
 
@@ -22,6 +24,11 @@ class FileRemarking < ApplicationRecord
 
   def self_attr_after_create remarkings_ids
     self.remarkings_ids = remarkings_ids
+  end
+
+  def self_attr_after_update results_ids, marks
+    self.results_ids = results_ids
+    self.marks = marks
   end
 
   def save_remarking
@@ -49,5 +56,23 @@ class FileRemarking < ApplicationRecord
       hashes["total"] = total
       hashes
     end
+  end
+
+  private
+
+  def is_processed_or_rejected?
+    self.processed? || self.rejected?
+  end
+
+  def update_result
+    return unless self.is_changed?
+    results_ids.each_with_index do |result_id, index|
+      result = self.results.find_by id: result_id
+      result.update_attributes mark: marks[index]
+    end
+  end
+
+  def destroy_remarking
+    self.remarkings.destroy_all unless self.remarkings.blank?
   end
 end

@@ -22,7 +22,6 @@ $(document).ready(function() {
     var registed_ids = $('input[name=major_registed_ids]').val();
     if (registed_ids !== '') {
       var ids = $('input[name=major_registed_ids]').val().split(' ');
-      debugger
       if (checkArray(dataForm.aspiration_1.major_id,  ids) || checkArray(dataForm.aspiration_2.major_id,  ids) || checkArray(dataForm.aspiration_3.major_id,  ids) || checkNullRepeat(dataForm.aspiration_1.major_id, dataForm.aspiration_2.major_id, dataForm.aspiration_3.major_id)) {
         swal('Information invalid!', 'Please check again information', 'error');
       } else {

@@ -1,0 +1,7 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% else %>
+  $('#remarking-edit').html('<%= j render "edit_results" %>');
+  $('input[name="role"]').val('<%= params[:role] %>');
+  $('#remarking-edit').modal('show');
+<% end %>

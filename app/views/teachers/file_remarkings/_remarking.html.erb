@@ -1,0 +1,9 @@
+<div class="col-sm-6">
+  <%= f.simple_fields_for remarking.result do |ff| %>
+    <%= ff.hidden_field :user_id, name: "file_remarking[results][#{remarking.result_id}][user_id]" %>
+    <%= ff.hidden_field :subject_id, name: "file_remarking[results][#{remarking.result_id}][subject_id]" %>
+    <%= ff.input :mark, label: remarking.subject_name,
+      input_html: {name: "file_remarking[results][#{remarking.result_id}][mark]",
+      step: 0.25, min: 0, max: 10} %>
+  <% end %>
+</div>

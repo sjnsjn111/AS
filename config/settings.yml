@@ -32,3 +32,4 @@ remarking: "remarking"
 aspiration: "aspiration"
 role:
   register: "register"
+string_true: "1"

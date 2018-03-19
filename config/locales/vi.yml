@@ -228,3 +228,7 @@ vi:
   new_style_major: "Tạo mới loại"
   name_style: "Tên loại"
   style_major: "Loại ngành"
+  edit_results: "Kết quả"
+  change_result: "Thay đổi kết quả"
+  results_not_changed: "Kết quả chưa đưọc thay đổi."
+  not_change: "Không thay đổi!"

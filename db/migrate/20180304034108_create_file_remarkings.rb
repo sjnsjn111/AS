@@ -5,7 +5,7 @@ class CreateFileRemarkings < ActiveRecord::Migration[5.1]
       t.references :user
       t.integer :status, default: 0
       t.boolean :is_current, default: true
-      t.boolean :changed, default: false
+      t.boolean :is_changed, default: false
       t.date :deleted_at
 
       t.timestamps
