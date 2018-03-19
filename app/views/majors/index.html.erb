@@ -6,9 +6,9 @@
     <div class="block full">
       <div class="block-title">
         <div class="block-options pull-right">
-          <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
-            <i class="fa fa-briefcase"></i>
-          </a>
+          <%= link_to favorites_path(), remote: true, class: "btn btn-alt btn-sm btn-danger", title: t("has_mark") do %>
+            <i class="fa fa-heart"></i>
+          <% end %>
         </div>
         <h3 class="widget-content-light"><%= t "individual" %> <strong><%= t "result" %></strong></h3>
       </div>
@@ -19,9 +19,7 @@
               <%= render "search_major" %>
             </div>
             <div class="col-md-2">
-              <%= link_to favorites_path, remote: true, class: "btn btn-primary m-left-50", title: t("has_mark") do %>
-                <i class="fa fa-heart"> <%= t "has_mark" %></i>
-              <% end %>
+
             </div>
           </div>
         </div>

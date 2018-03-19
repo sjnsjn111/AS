@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180311010317) do
     t.bigint "user_id"
     t.integer "status", default: 0
     t.boolean "is_current", default: true
+    t.boolean "changed", default: false
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
