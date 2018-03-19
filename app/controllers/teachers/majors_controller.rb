@@ -31,6 +31,6 @@ class Teachers::MajorsController < Teachers::TeachersController
   end
 
   def major_params
-    params.require(:major).permit :name, :code, :picture, :introducing
+    params.require(:major).permit :name, :code, :picture, :introducing, :style_major_id
   end
 end

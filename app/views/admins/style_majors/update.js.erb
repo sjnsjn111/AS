@@ -1,0 +1,3 @@
+$('#style_major-<%= @style_major.id %>').remove();
+$('#body-table-style-majors').prepend('<%= j render "style_major", style_major: @style_major %>');
+alertify.success('<%= @success %>');

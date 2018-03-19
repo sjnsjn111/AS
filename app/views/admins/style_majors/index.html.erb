@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="block full">
+      <div class="block-title">
+        <div class="block-options pull-right">
+          <%= link_to "#", class: "btn btn-alt btn-sm btn-info m-left-50", title: t("add_student"),
+                data: {toggle: "collapse", target: "#add-style-major"} do %>
+            <i class="fa fa-user-plus"></i>
+          <% end %>
+        </div>
+        <h3 class="widget-content-light"><%= t "individual" %> <strong><%= t "result" %></strong></h3>
+      </div>
+      <div class="collapse" id="add-style-major">
+        <%= render "form" %>
+      </div>
+      <div class="dataTables_wrapper form-inline no-footer">
+        <div id="table-style-major">
+          <%= render "table_style_major" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="major-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>
+<%= javascript_include_tag "edit_style_major" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311010317) do
+ActiveRecord::Schema.define(version: 20180317142027) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -94,15 +94,18 @@ ActiveRecord::Schema.define(version: 20180311010317) do
     t.text "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "style_major_id"
     t.index ["name", "code"], name: "index_majors_on_name_and_code"
     t.index ["school_id"], name: "index_majors_on_school_id"
+    t.index ["style_major_id"], name: "index_majors_on_style_major_id"
   end
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "time"
+    t.text "content"
     t.integer "style"
-    t.datetime "deleted_at"
+    t.boolean "is_start", default: false
+    t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -138,14 +141,15 @@ ActiveRecord::Schema.define(version: 20180311010317) do
 
   create_table "remarkings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "result_id"
-    t.bigint "file_remarking_id"
+    t.bigint "school_id"
+    t.integer "status", default: 0
     t.text "content"
-    t.text "reply"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["file_remarking_id"], name: "index_remarkings_on_file_remarking_id"
+    t.index ["result_id", "status"], name: "index_remarkings_on_result_id_and_status"
     t.index ["result_id"], name: "index_remarkings_on_result_id"
+    t.index ["school_id"], name: "index_remarkings_on_school_id"
   end
 
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -184,6 +188,12 @@ ActiveRecord::Schema.define(version: 20180311010317) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "level"], name: "index_schools_on_name_and_level"
+  end
+
+  create_table "style_majors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subject_departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -257,4 +267,5 @@ ActiveRecord::Schema.define(version: 20180311010317) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "majors", "style_majors"
 end

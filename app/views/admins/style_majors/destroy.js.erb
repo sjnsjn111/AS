@@ -1,0 +1,6 @@
+<% if @success %>
+  $('#style_major-<%= @style_major.id %>').remove();
+  alertify.success('<%= @success %>');
+<% elsif @errors %>
+  alertify.error('<%= @error %>');
+<% end %>

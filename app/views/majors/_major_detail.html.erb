@@ -32,6 +32,11 @@
               <strong><%= t "type" %>:</strong>
               <span></span>
             </li>
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "style_major" %>: <%= @major.style_major.name if @major.style_major %></strong>
+              <span></span>
+            </li>
             <li>
               <i class="fa fa-bookmark fa-li text-warning"></i>
               <strong><%= t "bench_mark_old" %>:</strong>

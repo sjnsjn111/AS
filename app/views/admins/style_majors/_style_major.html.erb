@@ -1,0 +1,17 @@
+<tr role="row" id="style_major-<%= style_major.id %>">
+  <td class="text-center"><%= style_major.name %></td>
+  <td class="text-center"><%= l style_major.created_at, format: :short %></td>
+  <td class="text-center"><%= style_major.majors.size %></td>
+  <td class="text-center">
+    <div class="btn-group btn-group-xs">
+      <%= link_to edit_admins_style_major_path(style_major), remote: true, class: "btn btn-warning btn-xs" do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+
+      <%= link_to admins_style_major_path(style_major), method: :delete, remote: true,
+        data: {confirm: t("sure")}, class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

@@ -1,1 +1,46 @@
-<%= link_to t("add_user"), teachers_users_path, class: "btn btn-sm btn-primary" %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="block full">
+      <div class="block-title">
+        <div class="block-options pull-right">
+        </div>
+        <h3 class="widget-content-light"><%= t "all" %> <strong><%= t "user" %></strong></h3>
+      </div>
+      <div class="dataTables_wrapper form-inline no-footer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-search-user pull-right">
+              <%= render "search_student" %>
+            </div>
+            <!-- <div class="col-md-2">
+              <%= link_to "#", class: "btn btn-sm btn-info m-left-50",
+                data: {toggle: "modal", target: "#add-student"} do %>
+                <i class="fa fa-plus"></i>
+                <%= t "student" %>
+              <% end %>
+            </div> -->
+          </div>
+        </div>
+
+        <div id="table-user">
+          <%= render "table_student" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="user-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>
+<div class="modal fade" id="edit-student" role="dialog" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><strong>
+          <%= t "edit_student" %>
+        </strong></h4>
+      </div>
+      <div class="modal-body" id="body-edit-student">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<% if @style_majors.present? %>
+  <table role="grid" class="table table-bordered table-striped table-vcenter dataTable no-footer">
+    <thead>
+      <tr role="row">
+        <th class="text-center width-25"><%= t "name" %></th>
+        <th class="text-center"><%= t "created_at" %></th>
+        <th class="text-center"><%= t "major_size" %></th>
+        <th class="text-center"><%= t "action" %></th>
+      </tr>
+    </thead>
+    <tbody id="body-table-style-majors">
+      <%= render @style_majors %>
+    </tbody>
+  </table>
+  <div class="row text-center pag">
+    <%= paginate @style_majors, remote: true %>
+  </div>
+<% else %>
+  <p class="text-danger text-center">
+    <i><%= t "not_majors" %></i>
+  </p>
+<% end %>

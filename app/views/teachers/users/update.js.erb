@@ -1,0 +1,9 @@
+$('#edit-student').modal('hide');
+<% if @success %>
+  $('#add-student').modal('hide');
+  alertify.success('<%= @success %>');
+<% elsif @error %>
+  alertify.error('<%= @error %>');
+  alertify.error('<%= j render partial: "shared/error_messages",
+    locals: {object: @user} %>');
+<% end %>

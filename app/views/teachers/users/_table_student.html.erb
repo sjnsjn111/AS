@@ -1,0 +1,22 @@
+<% if @users.present? %>
+  <table role="grid" class="table table-bordered table-striped table-vcenter dataTable no-footer">
+    <thead>
+      <tr role="row">
+        <th class="text-center"><%= t "people_id" %></th>
+        <th class="text-center"><%= t "name" %></th>
+        <th class="text-center"><%= t "birthday" %></th>
+        <th class="text-center"><%= t "action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "student", collection: @users, as: :user %>
+    </tbody>
+  </table>
+  <div class="row text-center pag">
+    <%= paginate @users, remote: true %>
+  </div>
+<% else %>
+  <p class="text-danger text-center">
+    <i><%= t "not_users" %></i>
+  </p>
+<% end %>

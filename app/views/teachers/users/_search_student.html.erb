@@ -1,0 +1,14 @@
+<%= search_form_for @q, url: teachers_users_path(), remote: true do |f| %>
+  <div class="form-group">
+    <div class="icon-addon addon-lg">
+      <%= f.search_field :name_or_identification_number_or_people_id_cont,
+      class: "form-control input-sm", placeholder: t("enter_name_code_user") %>
+      <label for="name_or_identification_number_or_people_id_cont" class="fa fa-id-badge" rel="tooltip"></label>
+    </div>
+  </div>
+
+  <%= f.button :submit, class: "btn btn-info" do %>
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <%= t "filter" %>
+  <% end %>
+<% end %>

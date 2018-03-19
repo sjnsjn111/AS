@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= simple_form_for [:teachers, @user], remote: true do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :name %>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group date user_birthday">
+            <label class="control-label date optional" for="user_birthday">
+              <abbr title="required">*</abbr>
+              <%= t "birthday" %>
+            </label>
+            <%= f.text_field :birthday, type: "date", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :email %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :phone %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :address, as: :string %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :people_id, label: t("people_id") %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :nation %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :nationality %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :identification_number %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :religion %>
+        </div>
+      </div>
+      <%= f.hidden_field :role, value: @user.role %>
+
+      <div class="row">
+        <center>
+          <%= f.submit t("submit"), class: "btn btn-primary" %>
+        </center>
+      </div>
+    <% end %>
+  </div>
+</div>
