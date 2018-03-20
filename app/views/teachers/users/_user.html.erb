@@ -1,0 +1,112 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title"><strong><%= @user.name %></strong></h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-5">
+          <%= image_tag @user.avatar.url, class: "img-rounded col-md-12",
+            alt: t("avatar") %>
+        </div>
+
+        <div class="col-md-7">
+          <ul class="fa-ul">
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "name" %>:</strong>
+              <span><%= @user.name %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "birthday" %>:</strong>
+              <span><%= @user.birthday %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "email" %>:</strong>
+              <span><%= @user.email %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "phone" %>:</strong>
+              <span><%= @user.phone %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "address" %>:</strong>
+              <span><%= @user.address %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "sex" %>:</strong>
+              <span><%= @user.sex %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "people_id" %>:</strong>
+              <span><%= @user.people_id %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "nation" %>:</strong>
+              <span><%= @user.nation %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "nationality" %>:</strong>
+              <span><%= @user.nationality %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "identification_number" %>:</strong>
+              <span><%= @user.identification_number %></span>
+            </li>
+
+            <li class="inline-items">
+              <i class="fa fa-bookmark fa-li text-warning"></i>
+              <strong><%= t "religion" %>:</strong>
+              <span><%= @user.religion %></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <% if @results.present? %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-extra themed-background-blackberry">
+                <div class="widget-options">
+                  <div class="btn-group btn-group-xs">
+                    <a href="javascript:void(0)" class="btn btn-default"
+                      data-toggle="tooltip" title="" data-original-title="Edit Widget">
+                      <i class="fa fa-pencil"></i>
+                    </a>
+                  </div>
+                </div>
+                <h3 class="widget-content-light">
+                  <%= t "result" %>
+                </h3>
+              </div>
+              <div class="widget-extra-full  themed-background-flatie">
+                <div class="row text-center">
+                  <%= render partial: "result_user", collection: @results, as: :result %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

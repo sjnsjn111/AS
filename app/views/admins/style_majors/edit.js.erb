@@ -1,0 +1,2 @@
+$('#table-style-major').html('<%= j render "table_style_major" %>')
+$('#style_major-<%= @style_major.id %>').html('<%= j render partial: "style_major_edit", locals: {style_major: @style_major} %>');

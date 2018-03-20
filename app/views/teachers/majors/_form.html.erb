@@ -20,8 +20,14 @@
           </div>
 
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <%= f.input :picture, as: :file, input_html: {class: "btn btn-warning", accept: "image/jpeg,image/gif,image/png"} %>
+            </div>
+            <div class="col-md-6">
+              <label class="control-label"><%= t "style_major" %></label>
+              <%= f.select :style_major_id, StyleMajor.all
+                .collect{|s| [s.name, s.id]}.unshift([t("all_style"), nil]), {},
+                {class: "form-control"} %>
             </div>
           </div>
 

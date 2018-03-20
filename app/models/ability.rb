@@ -26,6 +26,7 @@ class Ability
     return unless user.teacher?
     school = user.school
     manage_school user, school
+    manage_user user
   end
 
   def manage_school user, school
@@ -51,5 +52,9 @@ class Ability
 
   def undefine_user
     cannot :manage, :all
+  end
+
+  def manage_user user
+    can [:update, :read], User
   end
 end

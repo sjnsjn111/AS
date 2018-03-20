@@ -1,0 +1,19 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left m-l-10"><strong><%= t "new_style_major" %></strong></h4>
+    </div>
+    <div class="modal-body">
+      <%= simple_form_for [:admins, StyleMajor.new], remote: true do |f| %>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :name %>
+          </div>
+        </div>
+        <center>
+          <%= f.button :submit, class: "btn btn-primary btn-md" %>
+        </center>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ class Major < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :school
+  belongs_to :style_major
   has_many :major_departments, dependent: :destroy
   has_many :targets, dependent: :destroy
   has_many :reviews, dependent: :destroy

@@ -1,0 +1,7 @@
+<% if @style_major.errors.any? %>
+  $('#add_style-major').html('<%= j render "form" %>');
+<% else %>
+  $('#body-table-style-majors').prepend('<%= j render "style_major", style_major: @style_major %>');
+  alertify.success('<%= @success %>');
+  $('#add-style-major').toggle();
+<% end %>

@@ -1,0 +1,13 @@
+<td class="text-center">
+  <%= text_field_tag :name_style_major, style_major.name , class: "form-control string optional"%>
+</td>
+<td class="text-center"><%= l style_major.created_at, format: :short %></td>
+<td class="text-center"><%= style_major.majors.size %></td>
+<td class="text-center">
+  <div class="btn-group btn-group-xs">
+    <%= link_to "", class: "btn btn-primary btn-xs", id: "js-save-style-major",
+      data: {style: style_major.id} do %>
+      <i class="fa fa-save"></i>
+    <% end %>
+  </div>
+</td>
