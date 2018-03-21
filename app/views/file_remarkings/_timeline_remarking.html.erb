@@ -7,17 +7,28 @@
 
   <div class="timeline-content">
     <p class="push-bit">
-      <%= t "from" %>:
+      <small class="text-muted"><%= t "from" %>:</small>
       <strong><%= file_remarking.user_name %></strong>
     </p>
 
     <p class="push-bit">
-      <%= t "to" %>:
+      <small class="text-muted"><%= t "to" %>:</small>
       <strong><%= file_remarking.school_name %></strong>
     </p>
 
+    <% if file_remarking.processed? %>
+      <p class="push-bit">
+        <small class="text-muted"><%= t "has_change" %>:</small>&ensp;&ensp;
+        <% if file_remarking.is_changed? %>
+          <i class="fa fa-check fa-2x text-success"></i>
+        <% else %>
+          <i class="fa fa-times fa-2x text-danger"></i>
+        <% end %>
+      </p>
+    <% end %>
+
     <p class="push-bit">
-      <%= t "status" %>:
+      <small class="text-muted"><%= t "status" %>:</small>
       <span class="label label-<%= get_satus_remarking file_remarking %>">
         <%= t "status_remarking.#{file_remarking.status}" %>
       </span>

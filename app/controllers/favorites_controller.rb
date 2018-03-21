@@ -1,6 +1,11 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :current_ability
   before_action :load_major, only: %i(create destroy)
   before_action :load_favorite_majors, only: :index
+  load_and_authorize_resource
+
+  def index; end
 
   def create
     if @major && is_not_favorite?
@@ -19,6 +24,7 @@ class FavoritesController < ApplicationController
   end
 
   private
+
   def load_major
     @major = Major.find_by id: params[:major_id]
     return if @major
