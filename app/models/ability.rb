@@ -43,6 +43,7 @@ class Ability
     can :manage, Register, user_id: user.id
     can :read, FileRemarking, user_id: user.id
     can :create, FileRemarking
+    can :manage, Favorite, user_id: user.id
   end
 
   def permission_admin user

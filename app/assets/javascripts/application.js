@@ -29,3 +29,4 @@
 //= require chartkick
 //= require login_custom
 //= require ckeditor/init
+//= require hide_flash

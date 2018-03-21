@@ -16,15 +16,15 @@
     <div id="main" class="p-0">
       <%= render "layouts/user_header" %>
       <div id="content-body-custom" class="p-15">
-        <div class="row">
-          <center>
-            <div class="w-1200">
-              <% flash.each do |message_type, message| %>
-                <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
-              <% end %>
-            </div>
-          </center>
+        <div class="row"">
           <div id="page-content">
+            <center id="message-flash">
+              <div class="w-1200">
+                <% flash.each do |message_type, message| %>
+                  <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
+                <% end %>
+              </div>
+            </center>
             <%= yield %>
             <a href="#" id="to-top" style="display: block;"><i class="fa fa-angle-double-up"></i></a>
           </div>

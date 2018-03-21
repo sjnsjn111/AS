@@ -232,3 +232,5 @@ vi:
   change_result: "Thay đổi kết quả"
   results_not_changed: "Kết quả chưa đưọc thay đổi."
   not_change: "Không thay đổi!"
+  has_change: "Kết quả thay đổi"
+  not_favorite_majors: "Không có ngành yêu thích."

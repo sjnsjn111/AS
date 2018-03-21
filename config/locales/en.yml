@@ -232,3 +232,5 @@ en:
   change_result: "Change result"
   results_not_changed: "Results weren't changed."
   not_change: "No have change!"
+  has_change: "Has change"
+  not_favorite_majors: "No have favorite majors."

@@ -28,3 +28,4 @@
 //= require chartkick
 //= require cable
 //= require ckeditor/init
+//= require hide_flash
