@@ -1,10 +1,19 @@
 class Teachers::FileRemarkingsController < Teachers::TeachersController
   before_action :get_size_status, :load_notifications,
     :get_file_remarkings, only: :index
-  before_action :load_file_remarking, only: %i(update destroy)
+  before_action :load_file_remarking, only: %i(edit update destroy)
+
+  def edit
+    return if @error
+    @remarkings = @file_remarking.remarkings
+  end
 
   def update
     return if @error
+    params_permit = params.require(:file_remarking).permit results: [:id, :mark]
+    if params_permit.present? && params[:change_register] == Settings.string_true
+      update_with_changed_result params_permit
+    end
     if @file_remarking.update_attributes file_remarking_params
       get_size_status
       get_file_remarkings
@@ -36,6 +45,13 @@ class Teachers::FileRemarkingsController < Teachers::TeachersController
   end
 
   def file_remarking_params
-    params.permit :status, :is_current
+    params.require(:file_remarking).permit :status, :is_current
+  end
+
+  def update_with_changed_result params_permit
+    results_ids = params_permit[:results].keys
+    marks = params_permit[:results].values.pluck :mark
+    @file_remarking.self_attr_after_update results_ids, marks
+    @file_remarking.is_changed = true
   end
 end

@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20180317142027) do
     t.bigint "user_id"
     t.integer "status", default: 0
     t.boolean "is_current", default: true
-    t.boolean "changed", default: false
+    t.boolean "is_changed", default: false
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,11 +101,10 @@ ActiveRecord::Schema.define(version: 20180317142027) do
   end
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "time"
-    t.text "content"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer "style"
-    t.boolean "is_start", default: false
-    t.date "deleted_at"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -141,15 +140,14 @@ ActiveRecord::Schema.define(version: 20180317142027) do
 
   create_table "remarkings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "result_id"
-    t.bigint "school_id"
-    t.integer "status", default: 0
+    t.bigint "file_remarking_id"
     t.text "content"
+    t.text "reply"
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["result_id", "status"], name: "index_remarkings_on_result_id_and_status"
+    t.index ["file_remarking_id"], name: "index_remarkings_on_file_remarking_id"
     t.index ["result_id"], name: "index_remarkings_on_result_id"
-    t.index ["school_id"], name: "index_remarkings_on_school_id"
   end
 
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

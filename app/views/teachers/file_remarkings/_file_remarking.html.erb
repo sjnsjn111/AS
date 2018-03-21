@@ -15,13 +15,13 @@
       <% end %>
 
       <% if file_remarking.pending? %>
-        <%= link_to teachers_file_remarking_path(file_remarking, status: :approved, role: @role),
+        <%= link_to teachers_file_remarking_path(file_remarking, file_remarking: {status: :approved}, role: @role),
           method: :patch, title: t("approve"),
           remote: true, class: "btn btn-warning btn-xs", data: {confirm: t("sure")} do %>
           <i class="fa fa-check"></i>
         <% end %>
 
-        <%= link_to teachers_file_remarking_path(file_remarking, status: :rejected, is_current: false, role: @role),
+        <%= link_to teachers_file_remarking_path(file_remarking, file_remarking: {status: :rejected, is_current: false}, role: @role),
           method: :patch, remote: true, title: t("reject"),
           class: "btn btn-danger btn-xs", data: {confirm: t("sure")} do %>
           <i class="fa fa-times"></i>
@@ -29,9 +29,8 @@
       <% end %>
 
       <% if file_remarking.approved? %>
-        <%= link_to teachers_file_remarking_path(file_remarking, status: :processed,
-          role: @role, is_current: false), method: :patch, remote: true, title: t("done"),
-          class: "btn btn-primary btn-xs", data: {confirm: t("sure")} do %>
+        <%= link_to edit_teachers_file_remarking_path(file_remarking, role: @role), remote: true,
+          class: "btn btn-primary btn-xs" do %>
           <i class="fa fa-gavel"></i>
         <% end %>
       <% end %>

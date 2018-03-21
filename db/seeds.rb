@@ -38,7 +38,7 @@ User.create! name: Faker::Name.name, email: "admin@gmail.com", password: "123123
   nation: "kinh", religion: "không", identification_number: Faker::Code.asin, nationality: "Việt Nam",
   birthday: Faker::Date.between(50.years.ago, 40.years.ago), year: DateTime.now.year
 
-1.upto(50) do |x|
+1.upto(100) do |x|
   name = Faker::Name.name
   email = "user#{x}@gmail.com"
   address = "Hai chau, Da Nang"
@@ -79,6 +79,10 @@ School.create! name: "Đại Học Kinh Tế", address: "54 Ngô Quyền",
   sáng tạo, nuôi dưỡng lòng nhân ái đã hướng đến mục tiêu đào tạo ra những con người đầy trí tuệ",
   level: 0, city: "Đà Nẵng"
 
+1.upto(20) do |school|
+  StyleMajor.create! name: Faker::Job.field
+end
+
 1.upto(10) do |x|
   name = Faker::Name.initials(2)
   school_id = [1]
@@ -99,12 +103,12 @@ end
 
 1.upto(20) do |x|
   Major.create! school_id: 1, name: Faker::Name.name, code: "#{Faker::Code.asin}-#{x*2}",
-    introducing: Faker::Lorem.sentence(50)
+    introducing: Faker::Lorem.sentence(50), style_major_id: rand(1..20)
 end
 
 1.upto(20) do |x|
   Major.create! school_id: 2, name: Faker::Name.name, code: "#{Faker::Code.asin}-#{x*3}",
-    introducing: Faker::Lorem.sentence(50)
+    introducing: Faker::Lorem.sentence(50), style_major_id: rand(1..20)
 end
 
 1.upto(8) do |x|
@@ -161,3 +165,12 @@ end
 Note.create! start_time: 10.days.ago, end_time: 1.months.from_now, style: 0
 
 Note.create! start_time: 5.days.ago, end_time: 2.months.from_now, style: 1
+
+User.student.limit(50).each do |user|
+  school_id = user.registers.first ? user.registers.first.school.id : 1
+  file_remarking = user.file_remarkings.build school_id: school_id
+  remarkings_ids = {"#{user.results.first.id}" => Faker::Lorem.sentence(50),
+    "#{user.results.second.id}" => Faker::Lorem.sentence(50)}
+  file_remarking.self_attr_after_create remarkings_ids
+  file_remarking.save!
+end

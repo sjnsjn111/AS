@@ -228,3 +228,7 @@ en:
   new_style_major: "New style major"
   name_style: "Name style"
   style_major: "Style major"
+  edit_results: "Edit results"
+  change_result: "Change result"
+  results_not_changed: "Results weren't changed."
+  not_change: "No have change!"

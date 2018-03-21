@@ -12,7 +12,7 @@ class Remarking < ApplicationRecord
   delegate :name, to: :subject, prefix: true, allow_nil: true
   delegate :name, :id, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :school, prefix: true, allow_nil: true
-  delegate :mark, to: :result, prefix: true, allow_nil: true
+  delegate :mark, :id, to: :result, prefix: true, allow_nil: true
 
   scope :get_newest, ->{order created_at: :desc}
 end

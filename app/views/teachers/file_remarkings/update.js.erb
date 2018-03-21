@@ -3,8 +3,15 @@
 <% elsif @file_remarking.errors.any? %>
   alertify.error('<%= j (render partial: "shared/error_messages",
     locals: {object: @file_remarking}) %>');
-<% else %>
+<% elsif @success %>
+  $('#remarking-edit').modal('hide');
   $('#table-file-remarking').html('<%= j render "table_file_remarking" %>');
   $('#status-file-remarking').html('<%= j render "list_status" %>');
+  $('#status-file-remarking li').removeClass();
+  <% if params[:role] %>
+    $('#<%= params[:role] %>').attr('class', 'active');
+  <% else %>
+    $('#all').attr('class', 'active');
+  <% end %>
   alertify.success('<%= @success %>');
 <% end %>
