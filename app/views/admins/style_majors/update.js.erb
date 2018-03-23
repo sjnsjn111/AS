@@ -1,3 +1,9 @@
-$('#style_major-<%= @style_major.id %>').remove();
-$('#body-table-style-majors').prepend('<%= j render "style_major", style_major: @style_major %>');
-alertify.success('<%= @success %>');
+<% if @style_major.errors.any? %>
+  alertify.error('<%= j render partial: "shared/error_messages", locals: {object: @style_major} %>');
+<% elsif @error %>
+  alertify.error('<%= @error %>');
+<% else @success %>
+  $('#style_major-<%= @style_major.id %>').remove();
+  $('#body-table-style-majors').prepend('<%= j render "style_major", style_major: @style_major %>');
+  alertify.success('<%= @success %>');
+<% end %>

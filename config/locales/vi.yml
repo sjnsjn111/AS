@@ -234,3 +234,7 @@ vi:
   not_change: "Không thay đổi!"
   has_change: "Kết quả thay đổi"
   not_favorite_majors: "Không có ngành yêu thích."
+  not_found: "Không tìm thấy %{error_message}!"
+  filter_type_major: "Lọc theo loại"
+  all_style: "Tất cả các loại"
+  add_style_major: "Thêm loại ngành"

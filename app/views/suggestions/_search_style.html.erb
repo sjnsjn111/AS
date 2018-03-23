@@ -1,0 +1,11 @@
+<%= search_form_for @q, url: user_suggestions_path, remote: true do |f| %>
+  <div class="form-group">
+    <div class="icon-addon addon-lg">
+      <%= f.select :style_major_id_eq, StyleMajor.all
+        .collect{|s| [s.name, s.id]}.unshift([t("all_style"), nil]), {},
+        {class: "form-control input-lg"} %>
+      <label for="school_id_eq" class="fa fa-filter" rel="tooltip"></label>
+    </div>
+    <%= f.button :submit, id: "filter-style", class: "display-none" %>
+  </div>
+<% end %>

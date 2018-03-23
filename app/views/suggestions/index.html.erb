@@ -1,0 +1,29 @@
+<div class="row">
+  <section class="col-md-3">
+    <div class="block">
+      <div class="block-title">
+        <h2><strong><%= t "filter_type_major" %></strong></h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= render "search_style" %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="col-md-9">
+    <div class="block">
+      <div class="block-title">
+        <h2><strong><%= t "majors" %></strong></h2>
+      </div>
+      <div class="table-responsive">
+        <div class="dataTables_wrapper form-inline no-footer">
+          <%= render "majors/table_major" %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="modal fade" id="major-detail" role="dialog" tabindex="-1" aria-hidden="true"></div>
+<%= javascript_include_tag "filter_major" %>

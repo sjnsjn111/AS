@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_url
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    @error_message = exception.model
+    respond_to do |format|
+      format.js{render "errors/error", status: 401}
+    end
+  end
+
   protected
 
   def current_ability
