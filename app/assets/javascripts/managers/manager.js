@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery-ujs
+//= require rails-ujs
 //= require modernizr.min
 //= require plugins
 //= require bootstrap

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get "login", to: "devises/sessions#new", as: :new_user_session
     post "login", to: "devises/sessions#create", as: :user_session
     put "/signup", to: "devises/users#update"
+    get "signup", to: "devises/registrations#new", as: :new_user_registration
+    post "signup", to: "devises/registrations#create", as: :user_registration
     get "edit", to: "devises/users#edit", as: :edit_user_registration
     delete "logout", to: "devises/sessions#destroy", as: :destroy_user_session
     get "/suggestion_register", to: "registers#edit"

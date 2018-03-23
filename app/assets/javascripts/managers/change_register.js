@@ -23,10 +23,10 @@ $(document).ready(function() {
       if (x === marks.length) {
         alertify.error(I18n.t('results_not_changed'));
       } else {
-        $('form.edit_file_remarking').submit();
+        $('#btn-submit-form').click();
       }
     } else {
-      $('form.edit_file_remarking').submit();
+      $('#btn-submit-form').click();
     }
   });
 });
