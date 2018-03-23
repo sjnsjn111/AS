@@ -44,6 +44,13 @@ class Ability
     can :read, FileRemarking, user_id: user.id
     can :create, FileRemarking
     can :manage, Favorite, user_id: user.id
+    can :read, :suggestion do |user|
+      if user.keys.first[1]
+        user.keys.first[0] == user.keys.first[1].to_i
+      else
+        true
+      end
+    end
   end
 
   def permission_admin user

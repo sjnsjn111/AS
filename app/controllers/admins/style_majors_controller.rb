@@ -2,6 +2,10 @@ class Admins::StyleMajorsController < Admins::AdminsController
   before_action :load_notifications, only: :index
   before_action :load_style_major, only: %i(edit update destroy)
 
+  def new
+    @style_major = StyleMajor.new
+  end
+
   def index
     @style_majors = StyleMajor.newest.includes(:majors)
       .page(params[:page]).per Settings.per_page
@@ -17,7 +21,7 @@ class Admins::StyleMajorsController < Admins::AdminsController
   end
 
   def update
-    if @style_major.update_attribute :name, params[:name]
+    if @style_major.update_attributes style_params
       @success = t "updated_style_major"
     else
       @error = t "errors_style_major"

@@ -1,9 +1,9 @@
 class MajorsController < ApplicationController
   before_action :authenticate_user!
   before_action :current_ability
-  before_action :load_major, :load_target, only: :show
+  before_action :load_target, only: :show
   before_action :top_major, :hot_major, only: :index
-  authorize_resource
+  load_and_authorize_resource
 
   def index
     @q = Major.newest.search params[:q]
@@ -13,11 +13,6 @@ class MajorsController < ApplicationController
   def show; end
 
   private
-
-  def load_major
-    @major = Major.find_by id: params[:id]
-    @error = t "not_found_major" unless @major
-  end
 
   def load_target
     return Settings.default_value unless @major

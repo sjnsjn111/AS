@@ -3,16 +3,13 @@
     <div class="block full">
       <div class="block-title">
         <div class="block-options pull-right">
-          <%= link_to "#", class: "btn btn-alt btn-sm btn-info m-left-50", title: t("add_student"),
-                data: {toggle: "collapse", target: "#add-style-major"} do %>
-            <i class="fa fa-user-plus"></i>
+          <%= link_to new_admins_style_major_path, remote: true, class: "btn btn-alt btn-sm btn-default m-left-50", title: t("add_style_major") do %>
+            <i class="fa fa-plus"></i>
           <% end %>
         </div>
         <h3 class="widget-content-light"><%= t "individual" %> <strong><%= t "result" %></strong></h3>
       </div>
-      <div class="collapse" id="add-style-major">
-        <%= render "form" %>
-      </div>
+      <div class="collapse" id="add-style-major"></div>
       <div class="dataTables_wrapper form-inline no-footer">
         <div id="table-style-major">
           <%= render "table_style_major" %>

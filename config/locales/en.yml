@@ -234,3 +234,7 @@ en:
   not_change: "No have change!"
   has_change: "Has change"
   not_favorite_majors: "No have favorite majors."
+  not_found: "Not found %{error_message}!"
+  filter_type_major: "Filter by style"
+  all_style: "All style"
+  add_style_major: "Add style major"
