@@ -15,4 +15,8 @@ class Devises::PasswordsController < Devise::PasswordsController
       super
     end
   end
+
+  def update
+    super
+  end
 end

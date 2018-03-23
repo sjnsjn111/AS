@@ -238,3 +238,6 @@ vi:
   filter_type_major: "Lọc theo loại"
   all_style: "Tất cả các loại"
   add_style_major: "Thêm loại ngành"
+  password_confirmation: "Mật khẩu xác nhận"
+  current_password: "Mật khảu hiện tại"
+  password_new: "Mật khẩu mới"

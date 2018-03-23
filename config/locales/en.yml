@@ -238,3 +238,6 @@ en:
   filter_type_major: "Filter by style"
   all_style: "All style"
   add_style_major: "Add style major"
+  password_confirmation: "Password confirmation"
+  current_password: "Current password"
+  password_new: "Password new"

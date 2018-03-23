@@ -1,45 +1,65 @@
-<%= stylesheet_link_tag "validate" %>
-<div class="form-group col-md-7 m-left-275">
-  <div class="panel panel-danger">
-    <div class="panel-heading">
-      <h3 class="text-center"><%= t "change_pass" %> <%= resource_name.to_s.humanize %></h3>
-    </div>
-    <div class="panel-body">
-      <%= simple_form_for resource, as: resource_name, url: registration_path(resource_name), html:{method: :put} do |f| %>
+<div id="login-container" class="animation-fadeIn">
+  <div class="login-title text-center color-title-login">
+    <h1>
+      <i class="fa fa-flash"></i>
+      <strong><%= t "app" %></strong><br>
+      <small>
+        <%= t "please" %>
+        <strong><%= t "login" %></strong>
+      </small>
+    </h1>
+  </div>
+  <div class="block push-bit">
+    <%= simple_form_for resource,as: resource_name, url: registration_path(resource_name),
+      html:{method: :put, class: "form-horizontal form-bordered form-control-borderless"} do |f| %>
 
-        <div class="center-block w-600">
-          <%= f.error_notification %>
+      <div class="center-block m-5">
+        <%= f.error_notification %>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= f.password_field :password, autofocus: true, class: "form-control input-lg",
+              placeholder: t("password_new") %>
+          </div>
+          <%= f.full_error :password %>
         </div>
+      </div>
 
-        <div class="form-inputs center-block w-600">
-
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p><%= t "not_cofirm" %> <%= resource.unconfirmed_email %></p>
-          <% end %>
-
-          <%= f.input :password, autocomplete: "off", hint: t("min_pass"), required: true %>
-          <%= f.input :password_confirmation, required: true %>
-          <%= f.input :current_password, hint: t("content_current_pass"), required: true %>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= f.password_field :password_confirmation, class: "form-control input-lg",
+              placeholder: t("password_confirmation") %>
+          </div>
+          <%= f.full_error :password_confirmation %>
         </div>
+      </div>
 
-        <div class="form-actions">
-          <center>
-            <%= f.button :submit, class: "btn btn-primary btn-md" do %>
-              <%= t ".change_pass" %>
-            <% end %>
-          </center>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= f.password_field :current_password, class: "form-control input-lg",
+              placeholder: t("current_password") %>
+          </div>
+          <%= f.full_error :current_password %>
         </div>
-      <% end %>
-      <center>
-        <h3><%= t("cancel_account") %></h3>
+      </div>
 
-        <p><%= t "unhappy" %> <%= link_to t("cancel_account"),
-          registration_path(resource_name), method: :delete,
-          data: {confirm: t("sure")} %></p>
-
-        <%= link_to t("back"), :back %>
-      </center>
-    </div>
+      <div class="form-group ">
+        <div class="row">
+          <div class="col-xs-12">
+            <center>
+              <%= f.button :submit, class: "btn btn-sm btn-primary" %>
+            </center>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= javascript_include_tag "validates/change_pass" %>
