@@ -23,7 +23,7 @@ $(document).ready(function() {
     if (registed_ids !== '') {
       var ids = $('input[name=major_registed_ids]').val().split(' ');
       if (checkArray(dataForm.aspiration_1.major_id,  ids) || checkArray(dataForm.aspiration_2.major_id,  ids) || checkArray(dataForm.aspiration_3.major_id,  ids) || checkNullRepeat(dataForm.aspiration_1.major_id, dataForm.aspiration_2.major_id, dataForm.aspiration_3.major_id)) {
-        swal('Information invalid!', 'Please check again information', 'error');
+        swal(I18n.t('information_invalid'), I18n.t('check_again_information'), 'error');
       } else {
         swal({
           title: I18n.t('sure'),
@@ -89,7 +89,7 @@ $(document).ready(function() {
             } else {
               $('#btn-change-aspiration').remove();
               $('#suggestions').remove();
-              swal('Changed success!', 'You clicked the button!', 'success');
+              swal(I18n.t('change_success'), I18n.t('click_button'), 'success');
             }
           },
           error: function (result) {

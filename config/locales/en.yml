@@ -242,3 +242,8 @@ en:
   current_password: "Current password"
   password_new: "Password new"
   home: "Home"
+  information_invalid: "Information invalid!"
+  check_again_information: "Please check again information"
+  change_success: "Changed success!"
+  click_button: "You clicked the button!"
+  success: "Success"

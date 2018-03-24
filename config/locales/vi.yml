@@ -310,3 +310,7 @@ vi:
             people_id:
               blank: " không được bỏ trống"
   home: "Trang chủ"
+  information_invalid: "Thông tin không hợp lệ!"
+  check_again_information: "Vui lòng kiểm tra lại thông tin"
+  change_success: "Thay đổi thành công!"
+  click_button: "Chọn nút 'OK'!"

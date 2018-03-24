@@ -9,4 +9,5 @@ class MajorDepartment < ApplicationRecord
   has_many :targets, through: :major
 
   scope :get_by_depart, ->ids{where department_id: ids}
+  scope :get_by_major, ->id{where major_id: id}
 end
