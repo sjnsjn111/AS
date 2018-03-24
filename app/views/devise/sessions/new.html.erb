@@ -1,4 +1,4 @@
-<div id="login-container" class="animation-fadeIn">
+<div id="login-ajax" class="animation-fadeIn">
   <div class="login-title text-center color-title-login">
     <h1>
       <i class="fa fa-flash"></i>
@@ -9,9 +9,14 @@
       </small>
     </h1>
   </div>
-  <div class="block push-bit">
-    <%= form_for resource, as: resource_name, url: session_path(resource_name),
-      html: {class: "form-horizontal form-bordered form-control-borderless"} do |f| %>
+  <div class="block">
+    <%= simple_form_for resource, as: resource_name, url: session_path(resource_name),
+      html: {class: "form-horizontal form-bordered form-control-borderless form-login"} do |f| %>
+
+      <% flash.each do |message_type, message| %>
+        <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
+      <% end %>
+
       <div class="form-group">
         <div class="col-xs-12">
           <div class="input-group">
@@ -43,9 +48,7 @@
               <% end %>
             </div>
             <div class="col-xs-8 text-right">
-              <%= f.button :submit, class: "btn btn-sm btn-primary" do %>
-                <%= t "login" %>
-              <% end %>
+              <%= f.button :submit, t("login"), class: "btn btn-sm btn-primary" %>
             </div>
           </div>
         </div>
@@ -58,3 +61,4 @@
     </div>
   </div>
 </div>
+<%= javascript_include_tag "validates/change_pass" %>

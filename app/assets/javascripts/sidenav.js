@@ -17,3 +17,9 @@ function closeNav() {
   $('#user-search').css('width','1200px');
   $('#user-search').css('margin-left','0');
 }
+
+$(document).ready(function() {
+  $(document).on('click', 'nav.navbar-user li', function() {
+    $(this).addClass('active');
+  });
+});

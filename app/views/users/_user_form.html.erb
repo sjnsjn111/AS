@@ -1,12 +1,17 @@
 <div class="col-sm-2 col-md-2 col-lg-2">
-  <%= image_tag @user.avatar.url, class: "img-rounded avatar",
-    alt: t("avatar"), width: 185, height: 230 %>
-  <center>
-    <%= link_to edit_user_registration_url(current_user),
-      class: "btn btn-warning btn-md m-10 btn-avatar" do %>
-      <i class="fa fa-key"></i> <%= t "change_pass" %>
-    <% end %>
+  <div class="row">
+    <%= image_tag @user.avatar.url, class: "img-rounded col-md-12",
+      alt: t("avatar"), height: 180 %>
+  </div>
+
+  <div class="row">
+    <center>
+      <%= link_to edit_user_registration_url(current_user),
+        class: "btn btn-warning btn-sm m-t-20" do %>
+        <i class="fa fa-key"></i> <%= t "change_pass" %>
+      <% end %>
   </center>
+  </div>
 </div>
 <div class="col-sm-10 col-md-10 col-lg-10" >
   <div class="panel panel-default">

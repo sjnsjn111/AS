@@ -15,9 +15,9 @@ class Department < ApplicationRecord
   scope :get_by, ->(ids){where id: ids}
 
   class << self
-    def average_results_by_departments
+    def average_results_by_departments departments
       hashes = {}
-      Department.all.each do |department|
+      departments.all.each do |department|
         average = Settings.default_value
         department_users = department.results.includes(:user).group_by &:user_id
         count = Settings.default_value

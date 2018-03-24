@@ -14,7 +14,7 @@
   .login-title {
     position: relative;
     padding: 20px 10px;
-    background: rgba(65, 92, 167, 0.7);
+    background: $blue-trans-title;
     h1 {
       margin: 15px 0;
       font-size: 26px;
@@ -59,6 +59,11 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
     padding: 5px 15px;
+    .input-group {
+      span.input-group-addon {
+        background-color: $white;
+      }
+    }
   }
   .form-control {
     font-size: 13px;
@@ -168,4 +173,12 @@
 }
 .display-none {
   display: none;
+}
+form.form-login {
+  div.alert {
+    margin-left: 8px;
+  }
+  span.help-block {
+    margin-left: 8px;
+  }
 }
