@@ -1,4 +1,6 @@
 vi:
+  too_short: &too_short " quá ngắn (ít nhất %{count} ký tự)"
+  too_long: &too_long " quá dài (nhiều nhất %{count} ký tự)"
   app: "Hỗ trợ tuyển sinh"
   title_main: "Hệ Thống Tuyển Sinh - Đại Học Đà Nẵng"
   please: "Vui lòng"
@@ -241,3 +243,70 @@ vi:
   password_confirmation: "Mật khẩu xác nhận"
   current_password: "Mật khảu hiện tại"
   password_new: "Mật khẩu mới"
+  activerecord:
+    attributes:
+      note:
+        start_time: "Thời gian bắt đầu"
+        end_time: "Thời gian kết thúc"
+      remarking:
+        content: "Nội dung"
+      school:
+        name: "Tên trường"
+        code: "Mã trường"
+        introducing: "Giới thiệu"
+        level: "Bậc"
+        city: "Thành phố"
+      style_major:
+        name: "Tên loại"
+      user:
+        name: "Tên"
+        email: "Email"
+        identification_number: "Số báo danh"
+        birthday: "Ngày sinh"
+        people_id: "Số CMTND"
+    errors:
+      messages:
+        record_invalid: "Bản ghi không hợp lệ"
+      models:
+        note:
+          attributes:
+            start_time:
+              blank: " không được bỏ trống"
+            end_time:
+              blank: " không được bỏ trống"
+        remarking:
+          attributes:
+            content:
+              blank: " không được bỏ trống"
+              too_long: *too_long
+        school:
+          attributes:
+            name:
+              blank: " không được bỏ trống"
+              too_short: *too_short
+            code:
+              blank: " không được bỏ trống"
+              too_short: *too_short
+            introducing:
+              blank: " không được bỏ trống"
+            level:
+              blank: " không được bỏ trống"
+            city:
+              blank: " không được bỏ trống"
+        style_major:
+          attributes:
+            name:
+              blank: " không được bỏ trống"
+        user:
+          attributes:
+            name:
+              blank: " không được bỏ trống"
+            email:
+              blank: " không được bỏ trống"
+            identification_number:
+              blank: " không được bỏ trống"
+            birthday:
+              blank: " không được bỏ trống"
+            people_id:
+              blank: " không được bỏ trống"
+
