@@ -1,29 +1,76 @@
 <nav class="navbar navbar-user m-0">
   <div class="container-fluid">
-    <ul class="nav navbar-nav navbar-left">
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "javascript:void(0)", onclick: "openNav()" do %>
-            <i class="fa fa-bars"></i>
-          <% end %>
-        </li>
-      <% end %>
-      <li class="active">
+    <ul class="nav navbar-nav navbar-left site-nav">
+      <li>
         <%= link_to root_path do %>
-          <span class="glyphicon glyphicon-home"></span> Home
+          <span class="glyphicon glyphicon-home"></span> <%= t "home" %>
         <% end %>
       </li>
-      <li>
-        <h3 class="title-main"><strong><%= t "title_main" %></strong></h3>
-      </li>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to notes_path do %>
+            <i class="  fa fa-calendar"></i>
+            <span><%= t "competition_calendar" %></span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to statistic_results_path do %>
+            <i class="fa fa-bar-chart"></i>
+            <span><%= t "statistics_resuls" %></span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to majors_path do %>
+            <i class="fa fa-archive"></i>
+            <span><%= t "majors" %></span>
+          <% end %>
+        </li>
+
+        <% if current_user.student? %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+              <i class="gi gi-lightbulb"></i>
+              <span><%= t "registers" %></span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu min-w-180">
+              <li>
+                <%= link_to user_suggestions_path(current_user) do %>
+                  <span><%= t "suggestions" %></span>
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to registers_path do %>
+                  <span><%= t "change_aspiration" %></span>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <%= link_to file_remarkings_path do %>
+              <i class="fa fa-reply"></i>
+              <span><%= t "remarking" %></span>
+            <% end %>
+          </li>
+        <% end %>
+      <% else %>
+        <li>
+          <h3 class="title-main"><strong><%= t "title_main" %></strong></h3>
+        </li>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right site-nav">
       <% if user_signed_in? %>
-          <li class="dropdown">
+        <li class="dropdown">
           <a class="dropdown-toggle h-50 p-top-5" data-toggle="dropdown" href="#">
-          <%= image_tag current_user.avatar.url, class: "img-circle", size: 40 %>
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu min-w-180">
+            <%= image_tag current_user.avatar.url, class: "img-circle", size: 40 %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu min-w-200">
             <% if current_user.teacher? %>
               <li>
                 <%= link_to teachers_users_path do %>
@@ -54,9 +101,10 @@
               <% end %>
             </li>
           </ul>
+        </li>
       <% else %>
         <li>
-          <%= link_to "javascript:void(0)", class: "btn-login-user" do %>
+          <%= link_to new_user_session_path, class: "btn-login-user" do %>
             <i class="fa fa-sign-in"></i> <%= t("login") %>
           <% end %>
         </li>
@@ -65,4 +113,3 @@
     </ul>
   </div>
 </nav>
-<%= render "devise_custom/login" %>

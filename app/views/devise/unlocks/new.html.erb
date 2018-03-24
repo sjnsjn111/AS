@@ -1,4 +1,4 @@
-<div id="login-container" class="animation-fadeIn">
+<div id="login-ajax" class="animation-fadeIn">
   <div class="login-title text-center color-title-login">
     <h1>
       <i class="fa fa-flash"></i>
@@ -11,8 +11,11 @@
   </div>
   <div class="block push-bit">
     <%= simple_form_for resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post,
-      class: "form-horizontal form-bordered form-control-borderless"} do |f| %>
+      class: "form-horizontal form-bordered form-control-borderless form-login"} do |f| %>
       <%= f.error_notification %>
+      <%= f.input :unlock_token, as: :hidden %>
+      <%= f.full_error :unlock_token %>
+
       <div class="form-group">
         <div class="col-xs-12">
           <div class="input-group">
@@ -41,3 +44,4 @@
     </div>
   </div>
 </div>
+<%= javascript_include_tag "validates/change_pass" %>

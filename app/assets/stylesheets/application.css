@@ -23,4 +23,5 @@
  *= require hidepaginate
  *= require_tree ../../../vendor/assets/stylesheets/fonts
  *= require form_custom
+ *= require login
  */

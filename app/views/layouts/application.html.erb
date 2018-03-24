@@ -15,19 +15,20 @@
     <% end %>
     <div id="main" class="p-0">
       <%= render "layouts/user_header" %>
+      <div id="login-background" class="display-none"></div>
       <div id="content-body-custom" class="p-15">
-        <div class="row"">
-          <div id="page-content">
+        <div id="page-content-custom">
+          <div class="row"">
             <center id="message-flash">
-              <div class="w-1200">
+              <div class="col-md-12">
                 <% flash.each do |message_type, message| %>
                   <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
                 <% end %>
               </div>
             </center>
-            <%= yield %>
-            <a href="#" id="to-top" style="display: block;"><i class="fa fa-angle-double-up"></i></a>
           </div>
+          <%= yield %>
+          <a href="#" id="to-top" style="display: block;"><i class="fa fa-angle-double-up"></i></a>
         </div>
       </div>
     </div>
