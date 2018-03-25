@@ -4,7 +4,7 @@ class Admins::UsersController < Admins::AdminsController
   before_action :load_notifications, :build_user, only: :index
 
   def index
-    if params[:q] && params[:q][:role] == Settings.teacher
+    if params[:q] && params[:q][:role] == Settings.teacher || params[:role] == Settings.teacher
       load_teachers
     else
       load_students
@@ -13,20 +13,20 @@ class Admins::UsersController < Admins::AdminsController
 
   def create
     @user = User.new user_params
-    @user.password = params[:user][:people_id] + params[:user][:identification_number] if params[:user]
+    get_password
     if @user.save
       notification
-      load_students
-      @success = t "created_student"
+      after_handlind_user
+      @success = t "created_user"
     else
-      @error = t "created_student_error"
+      @error = t "created_user_error"
     end
   end
 
   def destroy
     unless @error
       if @user.destroy
-        load_students
+        after_handlind_user
         @success = t "deleted_success"
       else
         @message = t "deleted_failure"
@@ -66,7 +66,7 @@ class Admins::UsersController < Admins::AdminsController
   def user_params
     params.require(:user).permit :birthday, :address, :phone,
       :religion, :nation, :nationality, :name, :identification_number,
-      :email, :people_id
+      :email, :people_id, :role, :school_id
   end
 
   def find_user
@@ -85,5 +85,21 @@ class Admins::UsersController < Admins::AdminsController
     user_read.delete(current_user.id) if current_user
     Notification.create_notification user_read, current_user, :add_student
   rescue ActiveRecord::RecordInvalid
+  end
+
+  def get_password
+    if @user.student? && params[:user] && params[:user][:people_id] && params[:user][:identification_number]
+      @user.password = params[:user][:people_id] + params[:user][:identification_number]
+    else @user.teacher? && params[:user] && params[:user][:people_id]
+      @user.password = params[:user][:people_id]
+    end
+  end
+
+  def after_handlind_user
+    if @user.student?
+      load_students
+    else
+      load_teachers
+    end
   end
 end

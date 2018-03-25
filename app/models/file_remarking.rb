@@ -6,6 +6,8 @@ class FileRemarking < ApplicationRecord
   has_many :remarkings, dependent: :destroy
   has_many :results, through: :remarkings
 
+  validates :reason_reject, presence: true, if: :is_rejected?
+
   accepts_nested_attributes_for :remarkings, allow_destroy: true
 
   after_create :save_remarking
@@ -40,6 +42,10 @@ class FileRemarking < ApplicationRecord
     Remarking.transaction do
       Remarking.import! remarkings
     end
+  end
+
+  def is_rejected?
+    self.rejected?
   end
 
   class << self

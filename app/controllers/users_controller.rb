@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :current_ability
   before_action :load_user, only: %i(show edit update)
-  before_action :load_aspiration, only: :show
+  before_action :load_aspiration, :load_results, only: :show
   load_and_authorize_resource param_method: :user_params
 
   def show; end
@@ -43,5 +43,9 @@ class UsersController < ApplicationController
   def load_aspiration
     return if @user.blank?
     @registers = @user.registers
+  end
+
+  def load_results
+    @results = current_user.results
   end
 end

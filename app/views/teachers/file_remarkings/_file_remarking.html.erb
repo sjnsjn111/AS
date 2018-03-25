@@ -21,8 +21,8 @@
           <i class="fa fa-check"></i>
         <% end %>
 
-        <%= link_to edit_teachers_file_remarking_path(file_remarking, status: :reject), remote: :true,
-          class: "btn btn-danger btn-xs" do %>
+        <%= link_to edit_teachers_file_remarking_path(file_remarking, status: :reject,
+          role: @role), remote: :true, class: "btn btn-danger btn-xs" do %>
           <i class="fa fa-times"></i>
         <% end %>
       <% end %>

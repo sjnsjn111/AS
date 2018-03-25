@@ -11,10 +11,10 @@
         <div class="col-md-12">
           <%= simple_form_for [:teachers, @file_remarking], remote: true do |f| %>
             <%= f.hidden_field :status, value: :rejected %>
-            <%= f.hidden_field :is_current, value: :false %>
+            <%= hidden_field_tag :role, params[:role] %>
             <div class="row">
               <div class="col-md-12">
-                <%= f.input :reason_reject, input_html: {class: "height-150"} %>
+                <%= f.input :reason_reject, as: :ckeditor, required: true %>
               </div>
             </div>
             <div class="row">

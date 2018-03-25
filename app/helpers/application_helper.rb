@@ -51,4 +51,10 @@ module ApplicationHelper
       register.major_id
     end
   end
+
+  def get_mark_register register
+    subject_ids = register.department.subjects.pluck :id
+    mark = current_user.results.get_by_subject(subject_ids).sum :mark
+    mark
+  end
 end

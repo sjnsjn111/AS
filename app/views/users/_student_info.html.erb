@@ -4,6 +4,13 @@
       <%= t "info_register" %>
     <% end %>
   </li>
+
+  <li>
+    <%= link_to "#tab-3", data: {toggle: "tab"} do %>
+      <%= t "info_results" %>
+    <% end %>
+  </li>
+
   <li>
     <%= link_to "#tab-2", data: {toggle: "tab"} do %>
       <%= t "info_others" %>
@@ -13,6 +20,13 @@
 <div class="tab-content">
   <div id="tab-1" class="tab-pane fade in active">
     <table class="table table-hover">
+      <thead>
+        <tr>
+          <td></td>
+          <td><strong><%= t "major" %></strong></td>
+          <td><strong><%= t "mark" %></strong></td>
+        </tr>
+      </thead>
       <tbody>
         <% if @registers.present? %>
           <%= render partial: "aspiration", collection: @registers, as: :register %>
@@ -20,6 +34,7 @@
       </tbody>
     </table>
   </div>
+
   <div id="tab-2" class="tab-pane fade">
     <table class="table table-hover">
       <tbody>
@@ -69,6 +84,16 @@
             <%= @user.phone %>
           </td>
         </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tab-3" class="tab-pane fade">
+    <table class="table table-hover">
+      <tbody>
+        <% if @results.present? %>
+          <%= render partial: "result", collection: @results, as: :result %>
+        <% end %>
       </tbody>
     </table>
   </div>

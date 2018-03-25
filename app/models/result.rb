@@ -14,6 +14,7 @@ class Result < ApplicationRecord
   scope :get_newest, ->{order created_at: :desc}
   scope :order_by_subject, ->{order subject_id: :asc}
   scope :get_by_deparment, ->department_ids{where department_id: department_ids}
+  scope :get_by_subject, ->subject_ids{where subject_id: subject_ids}
 
   delegate :id, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :subject, prefix: true, allow_nil: true
