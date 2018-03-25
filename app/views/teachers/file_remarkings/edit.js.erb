@@ -1,5 +1,8 @@
 <% if @error %>
   alertify.error('<%= @error %>');
+<% elsif params[:status] == "reject" %>
+  $('#remarking-edit').html('<%= j render "form_reject" %>');
+  $('#remarking-edit').modal('show');
 <% else %>
   $('#remarking-edit').html('<%= j render "edit_results" %>');
   $('input[name="role"]').val('<%= params[:role] %>');

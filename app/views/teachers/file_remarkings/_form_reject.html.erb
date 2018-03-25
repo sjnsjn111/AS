@@ -1,0 +1,31 @@
+<div class="modal-dialog modal-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title"><strong>
+        <%= t "title_reject" %>
+      </strong></h4>
+    </div>
+    <div class="modal-body" id="body-reason-reject">
+      <div class="row">
+        <div class="col-md-12">
+          <%= simple_form_for [:teachers, @file_remarking], remote: true do |f| %>
+            <%= f.hidden_field :status, value: :rejected %>
+            <%= f.hidden_field :is_current, value: :false %>
+            <div class="row">
+              <div class="col-md-12">
+                <%= f.input :reason_reject, input_html: {class: "height-150"} %>
+              </div>
+            </div>
+            <div class="row">
+              <center>
+                <%= f.button :submit, value: t("status_remarking.rejected"),
+                  class: "btn btn-primary btn-md", id: "btn-submit-form" %>
+              </center>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -41,7 +41,7 @@ class Ability
     can :read, [Major, Department, Note, Notification, Result, Review, School, Subject]
     can :manage, User, id: user.id
     can :manage, Register, user_id: user.id
-    can :read, FileRemarking, user_id: user.id
+    can [:read, :update], FileRemarking, user_id: user.id
     can :create, FileRemarking
     can :manage, Favorite, user_id: user.id
     can :read, :suggestion do |user|

@@ -1,0 +1,38 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title pull-left m-l-10"><strong><%= t "title_update_remarking" %></strong></h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <%= simple_form_for [@file_remarking], method: :patch, remote: true do |f| %>
+            <%= f.hidden_field :is_current, value: false %>
+            <%= f.hidden_field :status, value: :pending %>
+            <%= hidden_field_tag :role, nil %>
+            <%= f.fields_for :remarkings do |ff| %>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group text optional">
+                    <label class="control-label text optional">
+                      <%= ff.object.result.subject.name %>
+                    </label>
+                    <%= ff.cktext_area :content, class: "form-control text optional" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="row">
+              <center>
+                <%= f.button :submit, value: t("update_remarking"),
+                  class: "btn btn-primary btn-md", id: "btn-submit-form" %>
+              </center>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

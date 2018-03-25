@@ -1,0 +1,7 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% else %>
+  alertify.success('<%= @success %>');
+  $('#remarking-edit').modal('hide');
+  $('#timeline').html('<%= j render "timeline_remarkings" %>')
+<% end %>
