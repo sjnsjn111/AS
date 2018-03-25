@@ -10,14 +10,18 @@ class Teachers::FileRemarkingsController < Teachers::TeachersController
 
   def update
     return if @error
-    params_permit = params.require(:file_remarking).permit results: [:id, :mark]
-    if params_permit.present? && params[:change_register] == Settings.string_true
-      update_with_changed_result params_permit
-    end
-    if @file_remarking.update_attributes file_remarking_params
-      get_size_status
-      get_file_remarkings
-      @success = t "updated_remarking"
+    if params[:file_remarking] && params[:file_remarking][:status] == "rejected"
+      reject_file_remarking
+    else
+      params_permit = params.require(:file_remarking).permit results: [:id, :mark]
+      if params_permit.present? && params[:change_register] == Settings.string_true
+        update_with_changed_result params_permit
+      end
+      if @file_remarking.update_attributes file_remarking_params
+        get_size_status
+        get_file_remarkings
+        @success = t "updated_remarking"
+      end
     end
   end
 
@@ -53,5 +57,16 @@ class Teachers::FileRemarkingsController < Teachers::TeachersController
     marks = params_permit[:results].values.pluck :mark
     @file_remarking.self_attr_after_update results_ids, marks
     @file_remarking.is_changed = true
+  end
+
+  def reject_file_remarking
+    params_permit = params.require(:file_remarking).permit(:status, :is_current, :reason_reject)
+    if @file_remarking.update_attributes params_permit
+      get_size_status
+      get_file_remarkings
+      @success = t "reject_remarking"
+    else
+      @error = t "reject_failse"
+    end
   end
 end

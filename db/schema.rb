@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317142027) do
+ActiveRecord::Schema.define(version: 20180324084846) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20180317142027) do
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "reason_reject"
     t.index ["school_id"], name: "index_file_remarkings_on_school_id"
     t.index ["user_id"], name: "index_file_remarkings_on_user_id"
   end

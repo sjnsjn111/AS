@@ -9,7 +9,7 @@ class FileRemarking < ApplicationRecord
   accepts_nested_attributes_for :remarkings, allow_destroy: true
 
   after_create :save_remarking
-  after_update :update_result, :destroy_remarking, if: :is_processed_or_rejected?
+  after_update :update_result, :destroy_remarking, if: :is_processed?
 
   enum status: %i(pending rejected approved processed)
 
@@ -60,8 +60,8 @@ class FileRemarking < ApplicationRecord
 
   private
 
-  def is_processed_or_rejected?
-    self.processed? || self.rejected?
+  def is_processed?
+    self.processed?
   end
 
   def update_result

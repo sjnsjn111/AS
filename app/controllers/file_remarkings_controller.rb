@@ -3,7 +3,7 @@ class FileRemarkingsController < ApplicationController
   before_action :current_ability
   before_action :load_file_remarking_current, :load_note_remarking, only: %i(create index)
   before_action :load_file_remarkings, :load_results, :build_file_remarking, only: :index
-  before_action :load_file_remarking, only: :show
+  before_action :load_file_remarking, only: [:show, :edit, :update]
   before_action :check_note_remarking, :check_params, :load_schools,  only: :create
   authorize_resource
 
@@ -34,7 +34,22 @@ class FileRemarkingsController < ApplicationController
     @error = exception.message
   end
 
+  def update
+    return if @error
+    if @file_remarking.update_attributes params_file_remarking
+      @success = t "update_file_remarking"
+      load_file_remarkings
+    else
+      @error = t "errors_update_file_remarking"
+    end
+  end
+
   private
+
+  def params_file_remarking
+    params.require(:file_remarking).permit(:status, remarkings_attributes: [:content, :id])
+      .merge reason_reject: ""
+  end
 
   def load_result
     @result = Result.find_by id: params[:result_id]

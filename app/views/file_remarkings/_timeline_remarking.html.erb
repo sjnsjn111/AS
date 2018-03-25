@@ -39,6 +39,13 @@
         class: "btn btn-xs btn-primary" do %>
         <i class="fa fa-file"></i> <%= t "detail_remarking" %>
       <% end %>
+      <% if file_remarking.rejected? %>
+        <%= link_to edit_file_remarking_path(file_remarking), remote: true,
+          class: "btn btn-xs btn-success" do %>
+          <i class="fa fa-edit"></i> <%= t "update_remarking" %>
+        <% end %>
+      <% end %>
     </p>
+
   </div>
 </li>

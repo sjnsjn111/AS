@@ -264,6 +264,8 @@ vi:
         identification_number: "Số báo danh"
         birthday: "Ngày sinh"
         people_id: "Số CMTND"
+      file_remarking:
+        reason_reject: "Lý do từ chối"
     errors:
       messages:
         record_invalid: "Bản ghi không hợp lệ"
@@ -314,3 +316,11 @@ vi:
   check_again_information: "Vui lòng kiểm tra lại thông tin"
   change_success: "Thay đổi thành công!"
   click_button: "Chọn nút 'OK'!"
+  success: "Thành công"
+  reject_remarking: "Từ chối thành công"
+  reject_failse: "Từ chối thất bại"
+  update_remarking: "Cập nhật"
+  update_file_remarking: "Cập nhật thành công"
+  errors_update_file_remarking: "Cập nhật thất bại"
+  title_update_remarking: "Cập nhật phúc khảo"
+  title_reject: "Từ chối phúc khảo"
