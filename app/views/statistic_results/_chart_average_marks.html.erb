@@ -1,0 +1,7 @@
+<%= line_chart @average_marks, height: "500px", stacked: true,
+  library: {
+    title: {text: t("statistic_results"), style: {color: "red"}, x: -20},
+    yAxis: {allowDecimals: false, title:{text: t("amount")}},
+    xAxis: {title: {text: t("mark")}}
+  }
+%>
