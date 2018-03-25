@@ -21,9 +21,10 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :people_id, presence: true
-  validates :identification_number, presence: true
+  validates :identification_number, presence: true, if: :is_student?
   validates :birthday, presence: true
   validate :picture_size
+  validates :school_id, presence: true, if: :user_teacher?
 
   enum role: %i(student teacher admin)
   enum sex: %i(unknown male female)
@@ -48,6 +49,14 @@ class User < ApplicationRecord
       array << subject.first if (subject.second.pluck(:subject_id) - subject_ids).blank?
     end
     array
+  end
+
+  def user_teacher?
+    self.teacher?
+  end
+
+  def is_student?
+    self.student?
   end
 
   def sum_mark

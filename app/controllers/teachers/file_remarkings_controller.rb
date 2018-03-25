@@ -65,8 +65,6 @@ class Teachers::FileRemarkingsController < Teachers::TeachersController
       get_size_status
       get_file_remarkings
       @success = t "reject_remarking"
-    else
-      @error = t "reject_failse"
     end
   end
 end

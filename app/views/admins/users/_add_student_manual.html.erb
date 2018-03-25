@@ -41,10 +41,14 @@
         <%= f.input :nationality %>
       </div>
     </div>
-
     <div class="row">
       <div class="col-md-6">
-        <%= f.input :identification_number %>
+        <% if @user.student? %>
+          <%= f.input :identification_number, required: true %>
+        <% else %>
+          <%= f.input :school_id, required: true, as: :select,
+            collection: School.all.map{|s| [s.name, s.id]} %>
+        <% end %>
       </div>
       <div class="col-md-6">
         <%= f.input :religion %>

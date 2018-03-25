@@ -1,4 +1,4 @@
-<% if current_user.student? %>
+<% if current_user.student? && @results_user.present? %>
   <div class="row">
     <div class="col-md-9">
       <div class="block full">
@@ -14,22 +14,18 @@
           <table id="example-datatable" class="table table-bordered table-striped table-vcenter dataTable no-footer" role="grid">
             <thead>
               <tr role="row">
-                <% if @results_user.present? %>
-                  <%= render partial: "subject_user", collection: @results_user, as: :result_user %>
-                <% end %>
+                <%= render partial: "subject_user", collection: @results_user, as: :result_user %>
               </tr>
             </thead>
             <tbody>
               <tr role="row">
-                <% if @results_user.present? %>
-                  <%= render partial: "mark_user", collection: @results_user, as: :result_user %>
-                <% end %>
+                <%= render partial: "mark_user", collection: @results_user, as: :result_user %>
               </tr>
             </tbody>
           </table>
           <div class="row">
             <div class="col-md-12">
-              <h3><%= t "total" %> <strong class="text-info"><%= @total.round Settings.round %></strong></h3>
+              <h3><%= t "total" %> <strong class="text-info"><%= @total&.round Settings.round %></strong></h3>
             </div>
           </div>
         </div>
@@ -47,7 +43,7 @@
         </div>
         <div class="widget-extra-full">
           <br/>
-          <h1 class="text-center text-primary"><b><%= @rank.first.rank.to_i %> / <%= User.all.size %></b></h1>
+          <h1 class="text-center text-primary"><b><%= @rank.first&.rank.to_i %> / <%= User.all.size %></b></h1>
           <p class="text-center text-warning"><%= t "notice_rank" %></p>
         </div>
       </div>

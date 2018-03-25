@@ -7,11 +7,11 @@ class Register < ApplicationRecord
   has_one :school, through: :major
   has_many :subject_departments, through: :department
   has_many :subjects, through: :subject_departments
-  has_many :results, through: :subjects
 
   enum aspiration: %i(aspiration_1 aspiration_2 aspiration_3)
 
   delegate :name, :id, to: :major, prefix: true, allow_nil: true
+  delegate :name, :id, to: :department, prefix: true, allow_nil: true
 
   scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
 
