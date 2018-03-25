@@ -1,5 +1,6 @@
 class BaseNotificationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_notifications, only: :index
 
   protected
 

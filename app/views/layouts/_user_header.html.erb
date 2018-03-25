@@ -66,6 +66,10 @@
     <ul class="nav navbar-nav navbar-right site-nav">
       <% if user_signed_in? %>
         <li class="dropdown">
+          <%= render "notifications/notifications" %>
+        </li>
+
+        <li class="dropdown">
           <a class="dropdown-toggle h-50 p-top-5" data-toggle="dropdown" href="#">
             <%= image_tag current_user.avatar.url, class: "img-circle", size: 40 %>
             <span class="caret"></span>

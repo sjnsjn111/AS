@@ -1,5 +1,4 @@
 class Admins::NotesController < Admins::AdminsController
-  before_action :load_notifications, only: :index
   before_action :build_note, only: :new
   before_action :load_note, only: %i(edit update destroy)
 

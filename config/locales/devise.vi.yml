@@ -12,7 +12,7 @@ vi:
       last_attempt: "Bạn còn một lần thử nữa trước khi tài khoản bị khóa."
       not_found_in_database: "%{authentication_keys} hoặc mật khẩu không hợp lệ."
       timeout: "Phiên làm việc hết hạn. Xin vui lòng đăng nhập lại."
-      unauthenticated: "Bạn cần đăng ký hoặc đăng nhập trước."
+      unauthenticated: "Bạn cần đăng nhập trước."
       unconfirmed: "Bạn cần xác nhận địa chỉ email trước."
     mailer:
       confirmation_instructions:

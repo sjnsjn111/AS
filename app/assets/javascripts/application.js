@@ -30,3 +30,4 @@
 //= require login_custom
 //= require ckeditor/init
 //= require hide_flash
+//= require cable

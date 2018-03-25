@@ -1,5 +1,5 @@
 class Admins::SchoolsController < Admins::AdminsController
-  before_action :load_notifications, :load_statistic_school, only: :index
+  before_action :load_statistic_school, only: :index
   before_action :load_school, only: %i(show edit update)
 
   def index

@@ -1,6 +1,5 @@
 class Teachers::FileRemarkingsController < Teachers::TeachersController
-  before_action :get_size_status, :load_notifications,
-    :get_file_remarkings, only: :index
+  before_action :get_size_status, :get_file_remarkings, only: :index
   before_action :load_file_remarking, only: %i(edit update destroy)
 
   def edit
@@ -17,6 +16,7 @@ class Teachers::FileRemarkingsController < Teachers::TeachersController
       if params_permit.present? && params[:change_register] == Settings.string_true
         update_with_changed_result params_permit
       end
+      @file_remarking.self_attr_after_save current_user
       if @file_remarking.update_attributes file_remarking_params
         get_size_status
         get_file_remarkings
@@ -61,6 +61,7 @@ class Teachers::FileRemarkingsController < Teachers::TeachersController
 
   def reject_file_remarking
     params_permit = params.require(:file_remarking).permit(:status, :is_current, :reason_reject)
+    @file_remarking.self_attr_after_save current_user
     if @file_remarking.update_attributes params_permit
       get_size_status
       get_file_remarkings

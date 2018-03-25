@@ -1,5 +1,4 @@
 class Teachers::MajorsController < Teachers::TeachersController
-  before_action :load_notifications, only: :index
   before_action :top_major, :hot_major, only: :index
   before_action :load_major, only: %i(show edit update)
 

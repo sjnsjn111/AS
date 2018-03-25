@@ -1,7 +1,7 @@
 <a href="#" class="dropdown-toggle no-background" data-toggle="dropdown" aria-expanded="false">
   <i class="fa fa-bell-o fa-lg"></i>
   <span class="label label-warning noti-number" id="noti-counter">
-    <%= @notifications.size %>
+    <%= @notifications&.size %>
   </span>
 </a>
 <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">

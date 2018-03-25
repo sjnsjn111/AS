@@ -1,5 +1,4 @@
 class Admins::StyleMajorsController < Admins::AdminsController
-  before_action :load_notifications, only: :index
   before_action :load_style_major, only: %i(edit update destroy)
 
   def new

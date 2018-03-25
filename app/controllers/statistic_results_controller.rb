@@ -1,5 +1,4 @@
-class StatisticResultsController < ApplicationController
-  before_action :authenticate_user!
+class StatisticResultsController < BaseNotificationsController
   before_action :load_deparment, only: :show
 
   def index

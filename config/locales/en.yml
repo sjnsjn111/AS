@@ -263,3 +263,12 @@ en:
   add_teacher: "Add teacher"
   created_user: "Created_user."
   created_user_error: "Created user failure!"
+  notification:
+    add_student: "Added student."
+    delete_student: "Deleted student."
+    add_teacher: "Added teacher."
+    delete_teacher: "Deleted teacher."
+    remarking_pending: "Sent file remraking."
+    remarking_rejected: "Rejected your file remarking, please check again information."
+    remarking_approved: "Approved your file remarking, please watting processing."
+    remarking_processed: "Processed completely your file remarking, please check again your reults."

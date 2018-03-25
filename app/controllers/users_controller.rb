@@ -1,8 +1,8 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!
+class UsersController < BaseNotificationsController
   before_action :current_ability
   before_action :load_user, only: %i(show edit update)
   before_action :load_aspiration, :load_results, only: :show
+  before_action :load_notifications, only: :show
   load_and_authorize_resource param_method: :user_params
 
   def show; end
@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update_attributes user_params
+        load_aspiration
+        load_results
         format.js{@success = t "update_success"}
       else
         format.js{@errors = t "update_failure"}
