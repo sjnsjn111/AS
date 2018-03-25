@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :set_language, only: :index
   resources :statistic_results, only: :index
+  get "/statistic_result", to: "statistic_results#show"
 
   resources :users, except: %i(destroy new create index) do
     get "/suggestion", to: "suggestions#index", as: :suggestions

@@ -55,30 +55,6 @@
   </div>
 <% end %>
 
-<% if @average_results.present? %>
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      <div class="block full">
-        <div class="block-title">
-          <div class="block-options pull-right">
-            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
-              <i class="fa fa-bar-chart"></i>
-            </a>
-          </div>
-          <h3 class="widget-content-light"><%= t "statistic" %> <strong><%= t "result" %></strong></h3>
-        </div>
-        <%= column_chart @average_results, height: "300px", stacked: true,
-          library: {
-            title: {text: t("average_results_by_department"), style: {color: "red"}, x: -20},
-            yAxis: {allowDecimals: false, title:{text: t("average_mark")}},
-            xAxis: {title: {text: t("departments")}}
-          }
-        %>
-      </div>
-    </div>
-  </div>
-<% end %>
-
 <% if @average_marks.present? %>
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -91,13 +67,47 @@
           </div>
           <h3 class="widget-content-light"><%= t "statistic" %> <strong><%= t "mark" %></strong></h3>
         </div>
-        <%= line_chart @average_marks, height: "500px", stacked: true,
-          library: {
-            title: {text: t("statistic_results"), style: {color: "red"}, x: -20},
-            yAxis: {allowDecimals: false, title:{text: t("amount")}},
-            xAxis: {title: {text: t("mark")}}
-          }
-        %>
+        <div class="row">
+          <div class="col-md-2 pull-right">
+            <div class="form-group">
+              <div class="icon-addon addon-lg">
+                <%= select_tag :department, options_from_collection_for_select(@departments, :id, :name), include_blank: true, class: "form-control" %>
+                <label for="department" class="fa fa-mortar-board" rel="tooltip"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="chart-average-marks">
+          <%= render "chart_average_marks" %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
+
+<% if @average_results.present? %>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="block full">
+        <div class="block-title">
+          <div class="block-options pull-right">
+            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
+              <i class="fa fa-bar-chart"></i>
+            </a>
+          </div>
+          <h3 class="widget-content-light"><%= t "statistic" %> <strong><%= t "result" %></strong></h3>
+        </div>
+        <div id="chart-average-results">
+          <%= column_chart @average_results, height: "300px", stacked: true,
+            library: {
+              title: {text: t("average_results_by_department"), style: {color: "red"}, x: -20},
+              yAxis: {allowDecimals: false, title:{text: t("average_mark")}},
+              xAxis: {title: {text: t("departments")}}
+            }
+          %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= javascript_include_tag "statistic_results" %>

@@ -1,0 +1,5 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% else %>
+  $('#chart-average-marks').html('<%= j render "chart_average_marks" %>');
+<% end %>

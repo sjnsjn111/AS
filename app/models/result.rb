@@ -13,6 +13,7 @@ class Result < ApplicationRecord
   scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
   scope :get_newest, ->{order created_at: :desc}
   scope :order_by_subject, ->{order subject_id: :asc}
+  scope :get_by_deparment, ->department_ids{where department_id: department_ids}
 
   delegate :id, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :subject, prefix: true, allow_nil: true
