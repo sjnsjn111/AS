@@ -1,4 +1,4 @@
-class StaticPagesController < ApplicationController
+class StaticPagesController < BaseNotificationsController
   def index
     @q = User.search params[:q]
     if request.xhr?

@@ -1,7 +1,7 @@
 class Admins::UsersController < Admins::AdminsController
   before_action :find_user, only: %i(show destroy)
   before_action :load_result, only: :show
-  before_action :load_notifications, :build_user, only: :index
+  before_action :build_user, only: :index
 
   def index
     if params[:q] && params[:q][:role] == Settings.teacher || params[:role] == Settings.teacher

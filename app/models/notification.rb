@@ -8,7 +8,8 @@ class Notification < ApplicationRecord
   serialize :user_read, Array
   serialize :user_readed, Array
 
-  enum style: %i(add_student delete_student add_teacher delete_teacher)
+  enum style: %i(add_student delete_student add_teacher delete_teacher remarking_pending
+    remarking_rejected remarking_approved remarking_processed)
 
   scope :get_newest, ->{order created_at: :desc}
 

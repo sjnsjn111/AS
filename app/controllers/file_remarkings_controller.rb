@@ -1,5 +1,4 @@
-class FileRemarkingsController < ApplicationController
-  before_action :authenticate_user!
+class FileRemarkingsController < BaseNotificationsController
   before_action :current_ability
   before_action :load_file_remarking_current, :load_note_remarking, only: %i(create index)
   before_action :load_file_remarkings, :load_results, :build_file_remarking, only: :index
@@ -20,6 +19,7 @@ class FileRemarkingsController < ApplicationController
         school_id = current_user.registers.first ? current_user.registers.first.school.id : 1
         @file_remarking = current_user.file_remarkings.build school_id: school_id
         @file_remarking.self_attr_after_create params[:content]
+        @file_remarking.self_attr_after_save current_user
         if @file_remarking.save!
           load_file_remarkings
           load_results
@@ -36,6 +36,7 @@ class FileRemarkingsController < ApplicationController
 
   def update
     return if @error
+    @file_remarking.self_attr_after_save current_user
     if @file_remarking.update_attributes params_file_remarking
       @success = t "update_file_remarking"
       load_file_remarkings

@@ -1,5 +1,4 @@
-class NotesController < ApplicationController
-  before_action :authenticate_user!
+class NotesController < BaseNotificationsController
   before_action :current_ability
   authorize_resource
 

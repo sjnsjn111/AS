@@ -1,5 +1,4 @@
-class RegistersController < ApplicationController
-  before_action :authenticate_user!
+class RegistersController < BaseNotificationsController
   before_action :current_ability
   before_action :load_registers, only: %i(index update)
   before_action :load_notes_remarking, :load_major_valid,

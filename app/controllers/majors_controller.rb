@@ -1,5 +1,4 @@
-class MajorsController < ApplicationController
-  before_action :authenticate_user!
+class MajorsController < BaseNotificationsController
   before_action :current_ability
   before_action :load_target, only: :show
   before_action :top_major, :hot_major, only: :index

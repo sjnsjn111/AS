@@ -4,7 +4,7 @@
       <%= image_tag "add_student.ico", class: "notifimage" %>
     </div>
     <div class="messageblock">
-      <div class="message"><b><%= notification.user.name %></b> <%= t "added_student" %></div>
+      <div class="message"><b><%= notification.user.name %></b> <%= t "notification.#{notification.style}" %></div>
       <div class="messageinfo">
         <i class="icon-trophy"></i>
         <%= time_ago_in_words(notification.created_at) %> <%= t "ago" %>

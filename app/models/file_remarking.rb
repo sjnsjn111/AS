@@ -1,5 +1,5 @@
 class FileRemarking < ApplicationRecord
-  attr_accessor :remarkings_ids, :results_ids, :marks
+  attr_accessor :remarkings_ids, :results_ids, :marks, :current_user
 
   belongs_to :user
   belongs_to :school
@@ -12,6 +12,7 @@ class FileRemarking < ApplicationRecord
 
   after_create :save_remarking
   after_update :update_result, :destroy_remarking, if: :is_processed?
+  after_save :create_notification
 
   enum status: %i(pending rejected approved processed)
 
@@ -31,6 +32,10 @@ class FileRemarking < ApplicationRecord
   def self_attr_after_update results_ids, marks
     self.results_ids = results_ids
     self.marks = marks
+  end
+
+  def self_attr_after_save current_user
+    self.current_user = current_user
   end
 
   def save_remarking
@@ -80,5 +85,28 @@ class FileRemarking < ApplicationRecord
 
   def destroy_remarking
     self.remarkings.destroy_all unless self.remarkings.blank?
+  end
+
+  def create_notification
+    user_ids = []
+    case status
+    when "pending"
+      user_read = User.get_teacher_by_school(school_id).pluck(:id)
+      style = :remarking_pending
+    when "rejected"
+      user_ids << user_id
+      user_read = user_ids
+      style = :remarking_rejected
+    when "approved"
+      user_ids << user_id
+      user_read = user_ids
+      style = :remarking_approved
+    else
+      user_ids << user_id
+      user_read = user_ids
+      style = :remarking_processed
+    end
+    Notification.create_notification user_read, current_user, style
+  rescue ActiveRecord::RecordInvalid
   end
 end

@@ -67,15 +67,12 @@
 
         <% if @file_remarking.rejected? %>
           <div class="col-md-12">
-            <div class="form-group input-inline form-custom">
+            <div class="form-group input-inline form-custom form-danger">
               <div class="input-group">
                 <span class="input-group-addon input-addonn-custom">
                   <i class="fa fa-trash"></i>
                 </span>
-                  <input type="text" name="reason" id="reason"
-                    value="<%= @file_remarking.reason_reject %>"
-                    class="form-control input-md input-custom"
-                    placeholder="Name" disabled="disabled">
+                <%= raw @file_remarking.reason_reject %>
               </div>
             </div>
           </div>

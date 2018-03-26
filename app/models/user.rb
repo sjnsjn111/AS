@@ -33,6 +33,7 @@ class User < ApplicationRecord
 
   scope :user_newest, ->{order created_at: :desc}
   scope :get_not_role, ->role{where.not role: :role}
+  scope :get_teacher_by_school, ->school_id{where role: :teacher, school_id: school_id}
   scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
 
   def picture_size

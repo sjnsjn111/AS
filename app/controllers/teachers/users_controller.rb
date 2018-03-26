@@ -1,6 +1,5 @@
 class Teachers::UsersController < Teachers::TeachersController
   before_action :find_user, only: %i(show destroy edit update)
-  before_action :load_notifications, only: :index
 
   def index
     load_students

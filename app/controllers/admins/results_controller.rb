@@ -1,5 +1,4 @@
 class Admins::ResultsController < Admins::AdminsController
-  before_action :load_notifications, only: :index
 
   def index
     @subjects = Subject.all
