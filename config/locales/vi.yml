@@ -350,3 +350,8 @@ vi:
     remarking_approved: "Đã duyệt đơn phúc khảo của bạn, vui lòng chờ quá trình xử lí đơn."
     remarking_processed: "Đã xử lí hoàn thành đơn phúc khảo của bạn, vui lòng kiểm tra lại kết quả."
   bench_mark_old: "Điểm chuẩn cũ"
+  mail_reject: "Đơn phúc khảo của bạn đã bị từ chối."
+  click_url: "Nhấn vào đây để xem chi tiết"
+  hi: "Xin chào"
+  remarking_title_mail: "Phúc khảo"
+  mail_processed: "Đơn phúc khảo của bạn đã được xử lý"

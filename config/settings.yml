@@ -12,7 +12,7 @@ logo:
 teacher: "teacher"
 student: "student"
 admin: "admin"
-min_name: 5
+min_name: 3
 min_code: 3
 college: "college"
 intermediate: "intermediate"
