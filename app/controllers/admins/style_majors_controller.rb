@@ -6,7 +6,8 @@ class Admins::StyleMajorsController < Admins::AdminsController
   end
 
   def index
-    @style_majors = StyleMajor.newest.includes(:majors)
+    @q = StyleMajor.search params[:q]
+    @style_majors = @q.result.newest.includes(:majors)
       .page(params[:page]).per Settings.per_page
   end
 

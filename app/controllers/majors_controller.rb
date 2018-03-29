@@ -1,8 +1,8 @@
 class MajorsController < BaseNotificationsController
   before_action :current_ability
+  load_and_authorize_resource
   before_action :load_target, only: :show
   before_action :top_major, :hot_major, only: :index
-  load_and_authorize_resource
 
   def index
     @q = Major.newest.search params[:q]

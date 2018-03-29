@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   def load_school_teacher
     @school = current_user.school if current_user.teacher?
     return if @school
+    flash[:danger] = t "permission_denied"
     redirect_to root_url
   end
 
