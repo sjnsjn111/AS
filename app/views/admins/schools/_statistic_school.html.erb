@@ -18,12 +18,12 @@
   <a href="javascript:void(0)" class="widget widget-hover-effect2">
     <div class="widget-extra themed-background-blackberry">
       <h4 class="widget-content-light">
-        <strong><%= t "top" %></strong> <%= t "school" %>
+        <strong><%= t "top" %></strong>
       </h4>
     </div>
     <div class="widget-extra-full">
       <span class="h2 h2 animation-expandOpen">
-        <%= @top.code %> / <%= @top.mark %>
+        <%= @top.code %> / <%= @top.mark.round 1 %>
       </span>
     </div>
   </a>
@@ -48,7 +48,7 @@
   <a href="javascript:void(0)" class="widget widget-hover-effect2">
     <div class="widget-extra themed-background-fire">
       <h4 class="widget-content-light">
-        <strong><%= t "hot" %></strong> <%= t "school" %>
+        <strong><%= t "hot" %></strong>
       </h4>
     </div>
     <div class="widget-extra-full">

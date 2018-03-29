@@ -1,4 +1,4 @@
-<%= search_form_for @q, url: teachers_file_remarkings_path, remote: true do |f| %>
+<%= search_form_for @q, url: teachers_file_remarkings_path, remote: true, class: "pull-right" do |f| %>
   <div class="form-group">
     <div class="icon-addon addon-lg">
       <%= f.search_field :user_name_or_user_identification_number_cont, class: "form-control input-sm",
