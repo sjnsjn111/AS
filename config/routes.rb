@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :results
   resources :majors
   resources :notes, only: :index
+  resources :departments, only: :index
   resources :file_remarkings, except: %i(destroy) do
     resource :downloads, only: :show
   end

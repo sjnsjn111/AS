@@ -7,4 +7,6 @@ class SubjectDepartment < ApplicationRecord
   has_many :users, through: :results
   has_many :major_departments, through: :department
   has_many :majors, through: :major_departments
+
+  scope :newest, ->{order created_at: :desc}
 end

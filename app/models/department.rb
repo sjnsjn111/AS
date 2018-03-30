@@ -13,6 +13,7 @@ class Department < ApplicationRecord
   serialize :school_id, Array
 
   scope :get_by, ->(ids){where id: ids}
+  scope :newest, ->{order created_at: :desc}
 
   class << self
     def average_results_by_departments departments
