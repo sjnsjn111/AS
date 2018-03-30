@@ -66,6 +66,7 @@ class Teachers::FileRemarkingsController < Teachers::TeachersController
       get_size_status
       get_file_remarkings
       @success = t "reject_remarking"
+      RemarkingMailer.reject_remarking(@file_remarking).deliver_now
     end
   end
 end

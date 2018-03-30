@@ -11,7 +11,7 @@ class FileRemarking < ApplicationRecord
   accepts_nested_attributes_for :remarkings, allow_destroy: true
 
   after_create :save_remarking
-  after_update :update_result, :destroy_remarking, if: :is_processed?
+  after_update :update_result, :destroy_remarking, :send_email, if: :is_processed?
   after_save :create_notification
 
   enum status: %i(pending rejected approved processed)
@@ -108,5 +108,9 @@ class FileRemarking < ApplicationRecord
     end
     Notification.create_notification user_read, current_user, style
   rescue ActiveRecord::RecordInvalid
+  end
+
+  def send_email
+    RemarkingMailer.processed_remarking(self).deliver_now
   end
 end
