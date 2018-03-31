@@ -57,9 +57,9 @@
       <div class="block full">
         <div class="block-title">
           <div class="block-options pull-right">
-            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
-              <i class="fa fa-line-chart"></i>
-            </a>
+            <%= link_to departments_path, remote: true, class: "btn btn-alt btn-sm btn-default" do %>
+              <i class="fa fa-question"></i>
+            <% end %>
           </div>
           <h3 class="widget-content-light"><%= t "statistic" %> <strong><%= t "mark" %></strong></h3>
         </div>
@@ -106,4 +106,5 @@
     </div>
   </div>
 <% end %>
+<div class="modal fade" id="subject-department" role="dialog" tabindex="-1" aria-hidden="true"></div>
 <%= javascript_include_tag "statistic_results" %>

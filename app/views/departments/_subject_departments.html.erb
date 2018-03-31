@@ -1,0 +1,15 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title pull-left m-l-10">
+        <strong><%= t "subjects_of" %></strong> <%= t "departments" %>
+      </h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <%= render partial: "department", collection: @departments, as: :department %>
+      </div>
+    </div>
+  </div>
+</div>
