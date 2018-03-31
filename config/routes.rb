@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :users, except: %i(new create destroy)
     resources :majors
     resources :file_remarkings, except: %i(destroy new create)
+    resources :targets, only: %i(index create)
   end
 
   namespace :admins do

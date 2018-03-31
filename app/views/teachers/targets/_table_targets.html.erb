@@ -1,0 +1,25 @@
+<% if @targets.present? %>
+  <table role="grid" class="table table-bordered table-striped table-vcenter no-footer background-white">
+    <thead>
+      <tr role="row">
+        <th class="text-center"><%= t "name_major" %></th>
+        <th class="text-center"><%= t "amount" %></th>
+        <th class="text-center"><%= t "bench_mark" %></th>
+        <th class="text-center"><%= t "job" %></th>
+        <th class="text-center"><%= t "update_last" %></th>
+      </tr>
+    </thead>
+    <tbody id="body-table-target">
+      <% @majors.each do |major| %>
+        <%= render partial: "major", locals: {major: major, target: major.targets.get_year(@year).first} %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="row text-center pag">
+    <%= paginate @majors, remote: true %>
+  </div>
+<% else %>
+  <p class="text-danger text-center">
+    <i><%= t "not_results" %></i>
+  </p>
+<% end %>

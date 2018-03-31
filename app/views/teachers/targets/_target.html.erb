@@ -1,0 +1,23 @@
+<% if target.present? %>
+  <td class="text-center" contenteditable= "<%= can? :edit, target %>"
+    data="<%= target.id %>" role="amount" data-major="<%= major.id %>">
+    <%= target.amount %>
+  </td>
+  <td class="text-center" contenteditable= "<%= can? :edit, target %>"
+    data="<%= target.id %>" role="benchmark" data-major="<%= major.id %>">
+    <%= target.benchmark %>
+  </td>
+  <td class="text-center" contenteditable= "<%= can? :edit, target %>"
+    data="<%= target.id %>" role="job" data-major="<%= major.id %>">
+    <%= target.job %>
+  </td>
+  <td class="text-center"><%= l target.updated_at, format: :short %></td>
+<% else %>
+  <td class="text-center" contenteditable= "<%= can? :edit, major.targets.build %>"
+    role="amount" data-major="<%= major.id %>"></td>
+  <td class="text-center" contenteditable= "<%= can? :edit, major.targets.build %>"
+    role="benchmark" data-major="<%= major.id %>"></td>
+  <td class="text-center" contenteditable= "<%= can? :edit, major.targets.build %>"
+    role="job" data-major="<%= major.id %>"></td>
+  <td class="text-center"></td>
+<% end %>
