@@ -1,0 +1,5 @@
+<% if @flash.present? %>
+  alertify.error("<%= @flash %>") ;
+<% else %>
+  $('#js-tr-<%= @major.id %>').replaceWith('<%= j render partial: "major", locals: {major: @major, target: @target} %>')
+<% end %>

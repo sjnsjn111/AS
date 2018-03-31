@@ -32,6 +32,7 @@ class Ability
   def manage_school user, school
     can :update, School, id: school.id
     can :manage, Major, school_id: school.id
+    can :create, Target
     can :manage, Target, major_id: school.majors.pluck(:id)
     can %i(update read), User, user_id: school.users.pluck(:id)
     can :manage, FileRemarking, school_id: school.id

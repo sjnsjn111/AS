@@ -33,3 +33,9 @@ aspiration: "aspiration"
 role:
   register: "register"
 string_true: "1"
+per_page_target: 10
+year_ago: 10
+target_columns:
+  benchmark: "benchmark"
+  amount: "amount"
+  job: "job"

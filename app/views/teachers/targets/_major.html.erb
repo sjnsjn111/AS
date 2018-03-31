@@ -1,0 +1,5 @@
+<tr role="row" id="js-tr-<%= major.id %>">
+  <td class="text-center"><%= major.name %></td>
+  <%= render partial: "target", locals: {target: target,
+    major: major} %>
+</tr>
