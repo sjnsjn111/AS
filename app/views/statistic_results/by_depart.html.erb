@@ -1,6 +1,6 @@
 <% if current_user.student? && @results_user.present? %>
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
       <div class="block full">
         <div class="block-title">
           <div class="block-options pull-right">
@@ -31,48 +31,46 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="widget h-232">
-        <div class="widget-extra themed-background-dark">
-          <div class="widget-options">
-            <div class="btn-group btn-group-xs">
-              <i class="fa fa-certificate color-white"></i>
-            </div>
-          </div>
-          <h4 class="widget-content-light text-center"><%= t "rank" %></h4>
-        </div>
-        <div class="widget-extra-full">
-          <br/>
-          <h1 class="text-center text-primary"><b><%= @rank.first&.rank.to_i %> / <%= User.student.all.size %></b></h1>
-          <p class="text-center text-warning"><%= t "notice_rank" %></p>
-        </div>
-      </div>
-    </div>
   </div>
 <% end %>
 
-<% if @average_marks.present? %>
+<% if @average_results.present? %>
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
       <div class="block full">
         <div class="block-title">
           <div class="block-options pull-right">
-            <%= link_to departments_path, remote: true, class: "btn btn-alt btn-sm btn-default" do %>
-              <i class="fa fa-question"></i>
-            <% end %>
+            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
+              <i class="fa fa-bar-chart"></i>
+            </a>
           </div>
-          <h3 class="widget-content-light"><%= t "statistic" %> <strong><%= t "mark" %></strong></h3>
+          <h3 class="widget-content-light"><%= t "statistic" %> <strong><%= t "result" %></strong></h3>
         </div>
         <div class="row">
-          <%= render "search_average" %>
+          <div class="col-md-12">
+            <h4 class="sub-header">
+              <%= t "rank_by" %> <strong><%= t "department" %></strong>
+            </h4>
+            <div class="widget-extra-full">
+              <div class="row text-center">
+                <%= render partial: "rank_by_department", collection: @rank_by_departments, as: :rank_by_department %>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="chart-average-marks">
-          <%= render "chart_average_marks" %>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="sub-header">
+              <%= t "statistic_results_by" %> <strong><%= t "department" %></strong>
+            </h4>
+            <div class="widget-extra-full">
+              <div id="chart-average-results">
+                <%= render "chart_deparments" %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 <% end %>
-
-<div class="modal fade" id="subject-department" role="dialog" tabindex="-1" aria-hidden="true"></div>
-<%= javascript_include_tag "statistic_results" %>

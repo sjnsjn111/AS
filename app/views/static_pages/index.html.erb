@@ -1,30 +1,29 @@
 <%= stylesheet_link_tag "static_pages" %>
-<div class="container">
-  <p class="small-text-hero"><i class="icon-localizer text-primary mr-1"></i>Hello, <span class="text-primary">Wish you</span> have a fun experience</p>
-  <h1>Let's <span class="text-primary">go </span> anywhere</h1>
-  <p class="text-hero"> Look up the scores</p>
-  <div class="search-bar">
-    <%= search_form_for @q, url: root_path, remote: true do |f| %>
-      <div class="row">
-        <div class="form-group rightLine col-lg-3  col-sm-3 col-md-3">
-          <div class="btn-group bootstrap-select listing-categories dropdown">
-            <i class="fa fa-calendar icon-search"></i>
-            <%= f.select :year_eq, (3.years.ago.year..DateTime.now.year)
-              .collect{|y| [y, y]}.unshift([t("all_years"), nil]), {},
-              class: "search-user" %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="search-bar">
+      <%= search_form_for @q, url: root_path, remote: true do |f| %>
+        <div class="row">
+          <div class="form-group rightLine col-lg-3  col-sm-3 col-md-3">
+            <div class="btn-group bootstrap-select listing-categories dropdown">
+              <i class="fa fa-calendar icon-search"></i>
+              <%= f.select :year_eq, (3.years.ago.year..DateTime.now.year)
+                .collect{|y| [y, y]}.unshift([t("all_years"), nil]), {},
+                class: "search-user" %>
+            </div>
+          </div>
+
+          <div class="form-group col-lg-7  col-sm-7 col-md-7">
+            <%= f.search_field :name_or_identification_number_cont,
+              placeholder: t("enter_id_name_number") %>
+          </div>
+
+          <div class="form-group col-lg-2  col-sm-2 col-md-2">
+            <%= f.submit t("search"), class: "submit" %>
           </div>
         </div>
-
-        <div class="form-group col-lg-7  col-sm-7 col-md-7">
-          <%= f.search_field :name_or_identification_number_cont,
-            placeholder: t("enter_id_name_number") %>
-        </div>
-
-        <div class="form-group col-lg-2  col-sm-2 col-md-2">
-          <%= f.submit t("search"), class: "submit" %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   <div id="user-search"></div>
 </div>

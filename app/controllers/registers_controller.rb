@@ -22,7 +22,7 @@ class RegistersController < BaseNotificationsController
         next if @registers_params[register.aspiration][:major_id] == Settings.default_value
         get_department_best @registers_params[register.aspiration][:major_id]
         register.update_attributes! @registers_params[register.aspiration]
-          .merge! department_id: @department_best.first.department_id
+          .merge! department_id: @department_best, mark: @mark_best
       end
       current_user.update_attributes! is_changed_register: true
     end
@@ -65,19 +65,8 @@ class RegistersController < BaseNotificationsController
   end
 
   def get_department_best major_id
-    department_ids = MajorDepartment.get_by_major(major_id).pluck :department_id
-    @department_best = Result.mark_department_best convert(department_ids), current_user.id
-  end
-
-  def convert ids
-    str = "("
-    ids.each_with_index do |id, i|
-      if i != ids.size - 1
-        str += "#{id}, "
-      else
-        str += "#{id})"
-      end
-    end
-    str
+    get_department = RegistersService.new current_user, major_id
+    @department_best = get_department.get_best_depart
+    @mark_best = get_department.get_mark_from_depart
   end
 end

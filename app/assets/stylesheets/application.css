@@ -25,4 +25,5 @@
  *= require form_custom
  *= require login
  *= require notification
+ *= require header
  */

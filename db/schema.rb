@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20180331043238) do
     t.bigint "department_id"
     t.integer "aspiration"
     t.boolean "status", default: false
+    t.float "mark", limit: 24
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

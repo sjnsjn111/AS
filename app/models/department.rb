@@ -22,13 +22,19 @@ class Department < ApplicationRecord
         average = Settings.default_value
         department_users = department.results.includes(:user).group_by &:user_id
         count = Settings.default_value
+        user_ids_temp = []
         department_users.each do |department_user|
           if department_user.second.size == Settings.num_standard
             count += 1
             average += department_user.second.pluck(:mark).inject(0){|sum,x| sum + x}
+            user_ids_temp << department_user.first
           end
         end
-        hashes[department.name] = average / (count*Settings.num_standard) unless count == Settings.default_value
+        next if count == Settings.default_value
+        hashes[department.name] = {}
+        hashes[department.name][:average] = average / (count*Settings.num_standard) unless count == Settings.default_value
+        hashes[department.name][:size] = count
+        hashes[department.name][:user_ids] = user_ids_temp
       end
       hashes
     end

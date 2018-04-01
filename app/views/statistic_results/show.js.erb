@@ -1,5 +1,8 @@
 <% if @error %>
   alertify.error('<%= @error %>');
 <% else %>
+  $('#search-by-subject').html('<%= j select_tag :subjects, options_for_select(@subjects
+    .map{|s| [s.name, s.id]}.unshift([t("subjects"), nil])), class: "form-control" %>');
+  $('select[name="subjects"]').val('<%= params[:subjects] %>');
   $('#chart-average-marks').html('<%= j render "chart_average_marks" %>');
 <% end %>
