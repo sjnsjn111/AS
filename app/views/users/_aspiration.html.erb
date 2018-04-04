@@ -5,5 +5,5 @@
     </strong>
   </td>
   <td class="col-md-5"><%= register.major_name %></td>
-  <td class="col-md-4"><%= get_mark_register(register)&.round 1 %>(<%= register.department_name %>)</td>
+  <td class="col-md-4"><%= register.mark.round 1 %>(<%= register.department_name %>)</td>
 </tr>

@@ -1,0 +1,12 @@
+<div class="col-xs-6 col-lg-4">
+  <h2>
+    <strong class="text-danger">
+      <%= rank_by_department.second.first.rank.round 0 %>
+    </strong>
+    <small>/ <%= @results_important[rank_by_department.first][:size] %></small>
+    <br>
+  </h2>
+  <h4 class="text-info">
+    <i class="fa fa-cubes"></i> <strong class="text-muted"><%= rank_by_department.first %></strong>
+  </h4>
+</div>

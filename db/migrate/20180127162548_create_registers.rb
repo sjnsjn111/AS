@@ -6,6 +6,7 @@ class CreateRegisters < ActiveRecord::Migration[5.1]
       t.references :department
       t.integer :aspiration
       t.boolean :status, default: 0
+      t.float :mark
       t.date :deleted_at
 
       t.timestamps

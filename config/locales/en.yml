@@ -287,3 +287,8 @@ en:
   name_major: "Name major"
   job: "Job (%)"
   update_last: "Update"
+  subjects: "Subjects"
+  rank_by: "Rank by"
+  statistic_results_by: "Statistic results by"
+  by_mark: "By mark"
+  by_depart: "By department"

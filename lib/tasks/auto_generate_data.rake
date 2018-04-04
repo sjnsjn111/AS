@@ -2,7 +2,7 @@ namespace :data do
   desc "Auto generate data"
   task generate_data: :environment do
 
-      Rake::Task["db:migrate:reset"].invoke
+    Rake::Task["db:migrate:reset"].invoke
 
     User.create!(name: "Nguyen Van A", email: "nguyenvana@gmail.com", password: "123456",
       phone: "01698624222", role: 0, address: "hai chau, Da Nang", year: DateTime.now.year,
@@ -337,27 +337,32 @@ namespace :data do
       end
       array1 = [hoa.id, dia.id]
       array2 = [ly.id, su.id]
-      array3 = [anh.id, sinh.id, nangkhieu.id]
+      array3 = [sinh.id, nangkhieu.id]
       s.results.create! subject_id: array1.sample, mark: Faker::Number.rand(1.0..10.0).round(1)
       s.results.create! subject_id: array2.sample, mark: Faker::Number.rand(1.0..10.0).round(1)
       s.results.create! subject_id: array3.sample, mark: Faker::Number.rand(1.0..10.0).round(1)
     end
 
     Major.all.each do |m|
-      m.targets.create! amount: Faker::Number.rand(50..100), year: 2016, benchmark: Faker::Number.rand(15..30)
-      m.targets.create! amount: Faker::Number.rand(50..100), year: 2017, benchmark: Faker::Number.rand(15..30)
-      m.targets.create! amount: Faker::Number.rand(50..100), year: 2018
-      m.reviews.create! amount: Faker::Number.rand(40.0..100.0).round(2)
+      m.targets.create! amount: Faker::Number.rand(50..100), year: 2016,
+        benchmark: Faker::Number.rand(15..30),job: Faker::Number.rand(0.0..1.0).round(2)
+      m.targets.create! amount: Faker::Number.rand(50..100), year: 2017,
+        benchmark: Faker::Number.rand(15..30), job: Faker::Number.rand(0.0..1.0).round(2)
+      m.targets.create! amount: Faker::Number.rand(50..100), year: 2018,
+        job: Faker::Number.rand(0.0..1.0).round(2)
+      # m.reviews.create! amount: Faker::Number.rand(40.0..100.0).round(2)
     end
 
     User.student.each do |u|
       department_ids = u.find_user_departments
       major_ids = MajorDepartment.get_by_depart(department_ids).pluck :major_id
-      major_ids.each_with_index do |major_id, index|
-        department_major_ids = MajorDepartment.get_by_major(major_id).pluck :department_id
-        department_id = (department_ids&department_major_ids).first
+      1.upto(3) do |n|
+        major_id = major_ids.sample
+        next if major_id.blank?
         major_ids.delete major_id
-        u.registers.create! major_id: major_id, department_id: department_id, aspiration: index if index < 3
+        get_department = RegistersService.new u, major_id
+        u.registers.create! major_id: major_id, department_id: get_department.get_best_depart,
+          aspiration: (n-1), mark: get_department.get_mark_from_depart
       end
     end
 

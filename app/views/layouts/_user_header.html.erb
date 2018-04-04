@@ -1,80 +1,26 @@
-<nav class="navbar navbar-user m-0">
+<div class="topbar-main">
   <div class="container-fluid">
-    <ul class="nav navbar-nav navbar-left site-nav">
-      <li>
-        <%= link_to root_path do %>
-          <span class="glyphicon glyphicon-home"></span> <%= t "home" %>
-        <% end %>
-      </li>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to notes_path do %>
-            <i class="  fa fa-calendar"></i>
-            <span><%= t "competition_calendar" %></span>
-          <% end %>
-        </li>
+    <div class="logo">
+      <a href="index.html" class="logo">
+        <%= image_tag "logo.png", height: 35 %>
+      </a>
+    </div>
 
-        <li>
-          <%= link_to statistic_results_path do %>
-            <i class="fa fa-bar-chart"></i>
-            <span><%= t "statistics_resuls" %></span>
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to majors_path do %>
-            <i class="fa fa-archive"></i>
-            <span><%= t "majors" %></span>
-          <% end %>
-        </li>
-
-        <% if current_user.student? %>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
-              <i class="gi gi-lightbulb"></i>
-              <span><%= t "registers" %></span>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu min-w-180">
-              <li>
-                <%= link_to user_suggestions_path(current_user) do %>
-                  <span><%= t "suggestions" %></span>
-                <% end %>
-              </li>
-
-              <li>
-                <%= link_to registers_path do %>
-                  <span><%= t "change_aspiration" %></span>
-                <% end %>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <%= link_to file_remarkings_path do %>
-              <i class="fa fa-reply"></i>
-              <span><%= t "remarking" %></span>
-            <% end %>
-          </li>
-        <% end %>
-      <% else %>
-        <li>
-          <h3 class="title-main"><strong><%= t "title_main" %></strong></h3>
-        </li>
-      <% end %>
-    </ul>
     <ul class="nav navbar-nav navbar-right site-nav">
+      <%= render "shared/language_local" %>
       <% if user_signed_in? %>
-        <li class="dropdown">
+        <li class="dropdown m-r-10">
           <%= render "notifications/notifications" %>
         </li>
 
         <li class="dropdown">
-          <a class="dropdown-toggle h-50 p-top-5" data-toggle="dropdown" href="#">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <%= image_tag current_user.avatar.url, class: "img-circle", size: 40 %>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu min-w-200">
+            <div class="arrow-up-border"></div>
+            <div class="arrow-up"></div>
             <% if current_user.teacher? %>
               <li>
                 <%= link_to teachers_users_path do %>
@@ -107,13 +53,81 @@
           </ul>
         </li>
       <% else %>
-        <li>
-          <%= link_to new_user_session_path, class: "btn-login-user" do %>
-            <i class="fa fa-sign-in"></i> <%= t("login") %>
+        <li class="w-120">
+          <%= link_to new_user_session_path, class: "btn-login-user w-120" do %>
+            <i class="fa fa-sign-in"></i> <small class="font-size-16"><%= t "login" %></small>
           <% end %>
         </li>
       <% end %>
-      <%= render "shared/language_local" %>
     </ul>
+    <div class="clearfix"></div>
   </div>
-</nav>
+  <div class="navbar-custom active">
+    <div class="container-fluid">
+      <div id="navigation" class="active">
+        <ul class="navigation-menu">
+          <% if user_signed_in? %>
+            <li class="has-submenu">
+              <%= link_to root_path do %>
+                <i class="glyphicon glyphicon-home"></i> <%= t "home" %>
+              <% end %>
+            </li>
+
+            <li class="has-submenu">
+              <%= link_to notes_path do %>
+              <i class="  fa fa-calendar"></i> <%= t "competition_calendar" %>
+            <% end %>
+            </li>
+
+            <li class="has-submenu">
+              <a href="#"><i class="fa fa-bar-chart"></i> <%= t "statistics_resuls" %></a>
+              <ul class="submenu">
+                <li class="menu-custom"><%= link_to statistic_results_path do %>
+                  <%= t "by_mark" %>
+                <% end %></li>
+                <li class="menu-custom"><%= link_to statistic_results_by_department_path do %>
+                  <%= t "by_depart" %>
+                <% end %></li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              <%= link_to majors_path do %>
+                <i class="fa fa-archive"></i>
+                <%= t "majors" %>
+              <% end %>
+            </li>
+
+            <% if current_user.student? %>
+              <li class="has-submenu">
+                <a href="#"><i class="gi gi-lightbulb"></i> <%= t "registers" %></a>
+                <ul class="submenu">
+                  <li class="menu-custom">
+                    <%= link_to user_suggestions_path(current_user) do %>
+                      <%= t "suggestions" %>
+                    <% end %>
+                  </li>
+
+                  <li class="menu-custom">
+                    <%= link_to registers_path do %>
+                      <%= t "change_aspiration" %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="has-submenu">
+                <%= link_to file_remarkings_path do %>
+                  <i class="fa fa-reply"></i>
+                  <%= t "remarking" %>
+                <% end %>
+              </li>
+            <% end %>
+          <% else %>
+            <h2 class="text-center color-white"><strong><%= t "title_main" %></strong></h2>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

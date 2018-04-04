@@ -1,4 +1,4 @@
-<li class="dropdown">
+<li class="dropdown m-r-10">
   <% if I18n.locale == Settings.language.vi.to_sym %>
     <%= link_to "javascript:void(0)", data: {toggle: "dropdown"},
       class: "dropdown-toggle lang-sel-sel icl-vi" do %>
@@ -11,6 +11,8 @@
     <% end %>
   <% end %>
   <ul class="dropdown-menu text-center">
+    <div class="arrow-up-border"></div>
+    <div class="arrow-up"></div>
     <li>
       <%= link_to set_language_index_path(locale: Settings.language.en) do %>
         <%= image_tag "en.png", height: 15, witdh: 25 %>

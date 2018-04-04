@@ -55,7 +55,7 @@ class Result < ApplicationRecord
     # end
     def rank user_id
       Result.find_by_sql "SELECT Test1.n as rank
-        from(SELECT @n := @n + 1 n, Test.user_id,Test.total from
+        from(SELECT @n := @n + 1 n, Test.user_id, Test.total from
         (SELECT user_id, sum(results.mark) as total
         FROM results
         GROUP BY results.user_id
@@ -69,6 +69,17 @@ class Result < ApplicationRecord
         FROM results
         inner join subjects on subjects.id = results.subject_id
         group by results.subject_id"
+    end
+
+    def rank_by_department user_ids, subject_ids, user_id
+      Result.find_by_sql "select temp1.rank as rank, temp1.user_id, temp1.sum_mark as sum from
+        (select @n := @n + 1 rank, temp.user_id, temp.sum_mark from
+        (SELECT sum(mark) as sum_mark, user_id FROM results
+        where user_id in #{user_ids}
+        and subject_id in #{subject_ids}
+        group by results.user_id) as temp, (SELECT @n := 0) m
+        order by sum_mark desc) as temp1
+        where temp1.user_id = #{user_id}"
     end
 
     def open_spreadsheet file
