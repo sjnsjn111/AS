@@ -1,12 +1,10 @@
 <%= form_tag teachers_targets_path, remote: true, method: :get do |f| %>
-  <div class="input-group">
-    <div class="input-group-addon">
-      <i class="fa fa-id-badge"></i>
-    </div>
-    <%= select_year 0, {start_year: Date.current.year, end_year: 2010}, {class: "form-control", name: "year", id: "year-selected"}  %>
+  <div class="form-group">
+      <div class="icon-addon addon-lg">
+        <%= select_year 0, {start_year: Date.current.year, end_year: 2010},
+          {class: "form-control", name: "year", id: "year-selected"} %>
+        <label for="year" class="fa fa-id-badge" rel="tooltip"></label>
+      </div>
   </div>
-  <%= button_tag :submit, class: "btn btn-info" do %>
-    <i class="fa fa-search" aria-hidden="true"></i>
-    <%= t "filter" %>
-  <% end %>
+  <%= button_tag :submit, class: "display-none btn-search-year" %>
 <% end %>

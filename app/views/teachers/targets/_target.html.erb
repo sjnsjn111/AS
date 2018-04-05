@@ -9,7 +9,7 @@
   </td>
   <td class="text-center" contenteditable= "<%= can? :edit, target %>"
     data="<%= target.id %>" role="job" data-major="<%= major.id %>">
-    <%= target.job %>
+    <%= target.job * 100 %>
   </td>
   <td class="text-center"><%= l target.updated_at, format: :short %></td>
 <% else %>

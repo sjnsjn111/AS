@@ -2,12 +2,12 @@
   <div id="sidebar-scroll">
     <div class="sidebar-content">
       <%= link_to "#", class: "sidebar-brand" do %>
-         <%= image_tag "logo.ico", size: Settings.logo.size %>
+        <%= image_tag "logo.ico", size: Settings.logo.size %>
         <span class="sidebar-nav-mini-hide"><strong><%= t "teacher" %></strong></span>
       <% end %>
       <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
         <div class="sidebar-user-avatar">
-
+          <%= image_tag @school.logo.url %>
         </div>
         <div class="sidebar-user-name"><%= @school.name %></div>
       </div>
