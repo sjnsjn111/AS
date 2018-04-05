@@ -3,7 +3,7 @@ class Teachers::TargetsController < Teachers::TeachersController
   before_action :load_target, only: :create
 
   def index
-    @majors = @school.majors.newest.page(params[:page]).per Settings.per_page
+    @majors = @school.majors.includes(:targets).newest.page(params[:page]).per Settings.per_page
     @year = params[:year] || Date.current.year
   end
 
@@ -23,6 +23,7 @@ class Teachers::TargetsController < Teachers::TeachersController
   end
 
   private
+
   def load_target
     if @major
       @target = @major.targets.find_by(id: params[:target_id])

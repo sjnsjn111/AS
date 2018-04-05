@@ -4,7 +4,7 @@ $(document).on('keypress', '#body-table-target td', function(e) {
     target_id = $(this).attr('data');
     role = $(this).attr('role');
     major_id = $(this).attr('data-major');
-    value = parseFloat($(this).html());
+    value = parseFloat($(this).html()) / 100;
     year = $('#year-selected').val();
     $.ajax({
       url: 'targets',
@@ -13,4 +13,8 @@ $(document).on('keypress', '#body-table-target td', function(e) {
         target_id: target_id, year: year}
     });
   }
+});
+
+$(document).on('change', 'select#year-selected', function() {
+  $('.btn-search-year').click();
 });
