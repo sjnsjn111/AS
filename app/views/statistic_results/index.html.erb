@@ -1,59 +1,10 @@
-<% if current_user.student? && @results_user.present? %>
+<% if current_user.student? && @results_user.present? && @average_marks.present? %>
   <div class="row">
-    <div class="col-md-9">
-      <div class="block full">
-        <div class="block-title">
-          <div class="block-options pull-right">
-            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Settings">
-              <i class="fa fa-drivers-license"></i>
-            </a>
-          </div>
-          <h3 class="widget-content-light"><%= t "individual" %> <strong><%= t "result" %></strong></h3>
-        </div>
-        <div class="dataTables_wrapper form-inline no-footer">
-          <table id="example-datatable" class="table table-bordered table-striped table-vcenter dataTable no-footer" role="grid">
-            <thead>
-              <tr role="row">
-                <%= render partial: "subject_user", collection: @results_user, as: :result_user %>
-              </tr>
-            </thead>
-            <tbody>
-              <tr role="row">
-                <%= render partial: "mark_user", collection: @results_user, as: :result_user %>
-              </tr>
-            </tbody>
-          </table>
-          <div class="row">
-            <div class="col-md-12">
-              <h3><%= t "total" %> <strong class="text-info"><%= @total&.round Settings.round %></strong></h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="col-md-3">
-      <div class="widget h-232">
-        <div class="widget-extra themed-background-dark">
-          <div class="widget-options">
-            <div class="btn-group btn-group-xs">
-              <i class="fa fa-certificate color-white"></i>
-            </div>
-          </div>
-          <h4 class="widget-content-light text-center"><%= t "rank" %></h4>
-        </div>
-        <div class="widget-extra-full">
-          <br/>
-          <h1 class="text-center text-primary"><b><%= @rank.first&.rank.to_i %> / <%= User.student.all.size %></b></h1>
-          <p class="text-center text-warning"><%= t "notice_rank" %></p>
-        </div>
-      </div>
+      <%= render "result_individual" %>
     </div>
-  </div>
-<% end %>
 
-<% if @average_marks.present? %>
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="col-sm-12 col-md-9 col-lg-9">
       <div class="block full">
         <div class="block-title">
           <div class="block-options pull-right">

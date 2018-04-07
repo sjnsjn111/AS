@@ -17,7 +17,7 @@ class RegistersService
 
   def set_best_depart
     department_ids = MajorDepartment.get_by_major(@major_id).pluck :department_id
-    Result.mark_department_best(convert_array2string(department_ids), @user.id).first.department_id
+    Result.mark_department_best(department_ids, @user.id).first.department_id
   end
 
   def convert_array2string ids

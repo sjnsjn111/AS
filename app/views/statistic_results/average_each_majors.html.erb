@@ -1,0 +1,33 @@
+<% if @results.present? %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "result_individual" %>
+    </div>
+
+    <div class="col-sm-9 col-md-9 col-lg-9">
+      <div class="block full">
+        <div class="block-title">
+          <div class="block-options pull-right">
+            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
+              <i class="fa fa-bar-chart"></i>
+            </a>
+          </div>
+          <h3 class="widget-content-light"><%= t "statistic_results_by" %> <strong><%= t "majors" %></strong></h3>
+        </div>
+
+        <div class="row">
+          <%= render "search_majors" %>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div id="chart-average-results">
+              <%= render "chart_average_result_major" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= javascript_include_tag "statistic_results" %>

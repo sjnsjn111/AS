@@ -14,6 +14,15 @@ class Register < ApplicationRecord
   delegate :name, :id, to: :department, prefix: true, allow_nil: true
 
   scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
+  scope :get_by_major, ->ids{where major_id: ids}
+  scope :get_average_majors, ->(major_ids, year = nil) do
+    year = year ? year : Time.now.year
+    hashes = {}
+    get_by_major(major_ids).get_year(year).includes(:major).group_by(&:major).each do |x|
+      hashes[x.first.name] = (x.second.sum{|result| result.mark} / x.second.size).round 1
+    end
+    hashes
+  end
 
   class << self
     def hot_school datetime
@@ -33,5 +42,10 @@ class Register < ApplicationRecord
     #     order by num desc
     #     limit 1"
     # end
+    # def get_average_majors major_ids, year
+    #   get_by_major(major_ids).get_year(year).includes(:major).group_by(&:major).
+
+    # end
+
   end
 end

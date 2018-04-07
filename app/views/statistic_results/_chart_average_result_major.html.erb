@@ -1,0 +1,8 @@
+<%= column_chart @results, height: "500px", stacked: true,
+  colors: ["#f7941d"],
+  library: {
+    title: {text: t("average_results_by_major"), style: {color: "red"}, x: -20},
+    yAxis: {allowDecimals: false, title:{text: t("average_mark")}},
+    xAxis: {title: {text: t("majors")}}
+  }
+%>

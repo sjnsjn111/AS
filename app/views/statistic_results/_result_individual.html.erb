@@ -1,0 +1,27 @@
+<div class="block">
+  <div class="block-title">
+    <h2><i class="fa fa-file-o"></i> <%= t "info" %> <strong><%= t "result_individual" %></strong></h2>
+  </div>
+  <div class="block-section text-center">
+    <a href="javascript:void(0)">
+      <%= image_tag current_user.avatar, class: "img-circle", size: 128 %>
+    </a>
+    <h3>
+      <strong><%= current_user.name %></strong><br><small></small>
+    </h3>
+  </div>
+  <table class="table table-borderless table-striped table-vcenter">
+    <tbody>
+      <%= render partial: "result_subject", collection: @results_user, as: :result %>
+      <tr class="background-white">
+        <td class="text-right border-none"><strong><%= t "total" %></strong></td>
+        <td class="border-none"><%= @total.round 1 %></td>
+      </tr>
+
+      <tr class="background-whitek">
+        <td class="text-right border-none"><strong><%= t "best_depart_mark" %></strong></td>
+        <td class="border-none"><%= @depart_best.name %>(<%= @result_best_depart.sum_mark.round 1 %>)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

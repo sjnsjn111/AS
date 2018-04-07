@@ -15,6 +15,14 @@ class Result < ApplicationRecord
   scope :order_by_subject, ->{order subject_id: :asc}
   scope :get_by_deparment, ->department_ids{where department_id: department_ids}
   scope :get_by_subject, ->subject_ids{where subject_id: subject_ids}
+  scope :mark_department_best, ->(department_ids, user_id) do
+    joins(:subject_departments)
+    .select("sum(results.mark) as sum_mark, subject_departments.department_id")
+    .where("user_id = ? AND subject_departments.department_id IN (?)", user_id, department_ids)
+    .group("subject_departments.department_id")
+    .order("sum_mark desc ")
+    .limit 1
+  end
 
   delegate :id, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :subject, prefix: true, allow_nil: true
@@ -89,15 +97,6 @@ class Result < ApplicationRecord
           when ".xlsx" then Roo::Excelx.new(file.path)
           else raise "Unknown file type: #{file.original_filename}"
       end
-    end
-
-    def mark_department_best department_ids, user_id
-      Result.find_by_sql "SELECT sum(results.mark) as sum_mark, subject_departments.department_id
-        FROM results
-        join subject_departments on subject_departments.subject_id = results.subject_id
-        where user_id = #{user_id} and department_id IN #{department_ids}
-        group by subject_departments.department_id
-        order by sum_mark desc limit 1"
     end
   end
 end

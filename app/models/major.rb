@@ -23,6 +23,10 @@ class Major < ApplicationRecord
 
   scope :get_by, ->ids {where id: ids}
   scope :newest, ->{order created_at: :desc}
+  scope :get_by_department, ->(department_ids) do
+    joins(:major_departments).where "major_departments.department_id IN (?)", department_ids
+  end
+  scope :get_by_school, ->school_id{where school_id: school_id}
 
   mount_uploader :picture, PictureMajorUploader
 

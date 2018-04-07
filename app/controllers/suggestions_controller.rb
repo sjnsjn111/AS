@@ -3,6 +3,10 @@ class SuggestionsController < BaseNotificationsController
   before_action :current_ability
   authorize_resource class: false, through: :users
 
+  def show
+
+  end
+
   def index
     @q = Major.search params[:q]
     @majors = @q.result.page(params[:page]).per Settings.per_page
