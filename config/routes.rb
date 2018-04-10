@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get "/statistic_results_by_major", to: "statistic_results#average_each_majors"
 
   resources :users, except: %i(destroy new create index) do
-    get "/suggestion", to: "suggestions#index", as: :suggestions
+    resources :suggestions, only: %i(index show)
   end
   resources :registers,except: %i(destroy edit update)
   resources :results

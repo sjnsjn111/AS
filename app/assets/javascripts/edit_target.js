@@ -4,7 +4,7 @@ $(document).on('keypress', '#body-table-target td', function(e) {
     target_id = $(this).attr('data');
     role = $(this).attr('role');
     major_id = $(this).attr('data-major');
-    value = parseFloat($(this).html()) / 100;
+    value = parseFloat($(this).html());
     year = $('#year-selected').val();
     $.ajax({
       url: 'targets',

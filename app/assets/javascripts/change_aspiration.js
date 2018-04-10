@@ -34,6 +34,8 @@ $(document).ready(function() {
         })
         .then(function(isConfirm){
           if (isConfirm) {
+              $('#img-loading').show();
+              $('#home').css('opacity', '0.3');
             $.ajax({
               url: '/suggestion_register',
               type: 'GET',
@@ -44,6 +46,8 @@ $(document).ready(function() {
                 $('select').prop('disabled', true)
                 $('#btn-change-aspiration').hide(700);
                 $('#suggestions').show(700);
+                $('#img-loading').hide();
+                $('#home').css('opacity', '1');
               },
               error: function (result) {
                 alertify.error('Error tranmission.');

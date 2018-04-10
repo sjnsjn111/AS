@@ -31,3 +31,4 @@
 //= require ckeditor/init
 //= require hide_flash
 //= require cable
+//= require loading_page

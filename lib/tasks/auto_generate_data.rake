@@ -36,7 +36,7 @@ namespace :data do
       nation: "kinh", religion: "không", identification_number: Faker::Code.asin, nationality: "Việt Nam",
       birthday: Faker::Date.between(50.years.ago, 40.years.ago), year: DateTime.now.year
 
-    1.upto(150) do |x|
+    1.upto(500) do |x|
       name = Faker::Name.name
       email = "user#{x}@gmail.com"
       address = "Hai chau, Da Nang"
@@ -344,18 +344,28 @@ namespace :data do
     end
 
     Major.all.each do |m|
-      m.targets.create! amount: Faker::Number.rand(50..100), year: 2016,
+      # m.targets.create! amount: Faker::Number.rand(50..100), year: 2016,
+      #   benchmark: Faker::Number.rand(15..30),job: Faker::Number.rand(0.0..1.0).round(2)
+      # m.targets.create! amount: Faker::Number.rand(50..100), year: 2017,
+      #   benchmark: Faker::Number.rand(15..30), job: Faker::Number.rand(0.0..1.0).round(2)
+      # m.targets.create! amount: Faker::Number.rand(50..100), year: 2018,
+      #   job: Faker::Number.rand(0.0..1.0).round(2)
+
+      m.targets.create! amount: Faker::Number.rand(10..50), year: 2016,
         benchmark: Faker::Number.rand(15..30),job: Faker::Number.rand(0.0..1.0).round(2)
-      m.targets.create! amount: Faker::Number.rand(50..100), year: 2017,
+      m.targets.create! amount: Faker::Number.rand(10..50), year: 2017,
         benchmark: Faker::Number.rand(15..30), job: Faker::Number.rand(0.0..1.0).round(2)
-      m.targets.create! amount: Faker::Number.rand(50..100), year: 2018,
+      m.targets.create! amount: Faker::Number.rand(10..50), year: 2018,
         job: Faker::Number.rand(0.0..1.0).round(2)
       # m.reviews.create! amount: Faker::Number.rand(40.0..100.0).round(2)
     end
 
     User.student.each do |u|
       department_ids = u.find_user_departments
-      major_ids = MajorDepartment.get_by_depart(department_ids).pluck :major_id
+      # major_ids = MajorDepartment.get_by_depart(department_ids).pluck :major_id
+      major_id1s = School.first.major_departments.get_by_depart(department_ids).pluck :major_id
+      major_id2s = School.second.major_departments.get_by_depart(department_ids).pluck :major_id
+      major_ids = major_id1s|major_id2s
       1.upto(3) do |n|
         major_id = major_ids.sample
         next if major_id.blank?
