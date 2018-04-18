@@ -15,7 +15,7 @@ class Teachers::TargetsController < Teachers::TeachersController
       when Settings.target_columns.amount
         @target.update_attribute :amount, params[:value]
       when Settings.target_columns.job
-        @target.update_attribute :job, params[:value]
+        @target.update_attribute :job, params[:value].to_i.round(4) / 100
       else
         @flash = t "errors_update_target"
       end

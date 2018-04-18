@@ -14,20 +14,18 @@
 
       <div class="row">
         <div class="col-md-12 bars-container">
-          <h4 class="sub-header"><%= t "level" %></h4>
-
-
+          <h4 class="sub-header"><%= t "progress" %></h4>
           <div class="progress">
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 55%;">safe</div>
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12 bars-container">
-          <h4 class="sub-header"><%= t "warning" %></h4>
-
+          <h4 class="sub-header"><%= t "information_change" %></h4>
           <div class="content">
+            <%= render partial: "info_change", collection: @datas.keys, as: :key %>
           </div>
         </div>
       </div>

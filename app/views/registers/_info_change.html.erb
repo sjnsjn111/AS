@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to "javascript:", class: "widget widget-hover-effect1" do %>
+      <div class="widget-simple">
+        <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
+          <strong><%= Register.aspirations[key] + 1 %></strong>
+        </div>
+        <ul class="p-100">
+          <li>
+            <%= t "you_requested" %> <strong><%= t "#{key}" %></strong>
+            <%= t "to_major" %> <strong><%= @datas[key][:major].name %></strong>
+          </li>
+          <li>
+            <%= t "with_mark_now" %> <strong><%= @datas[key][:mark_best]&.round 2 %></strong>
+          </li>
+          <li>
+            <%= t "bench_mark_major_now" %> <strong><%= @datas[key][:bench_mark] %></strong>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title"><strong><%= @major.name %></strong></h4>
+    </div>
+    <div class="modal-body">
+      <h4 class="sub-header"><%= t "detail_info" %></h4>
+      <table class="table table-borderless table-striped table-vcenter">
+        <tbody>
+          <tr class="background-white">
+            <td class="border-none wp-50"><strong><%= t "target" %></strong></td>
+            <td class="border-none"><%= @target.amount %></td>
+          </tr>
+
+          <tr class="background-white">
+            <td class="border-none  wp-50"><strong><%= t "amount_register" %></strong></td>
+            <td class="border-none"><%= @all_register %></td>
+          </tr>
+
+          <tr class="background-white">
+            <td class="border-none  wp-50"><strong><%= t "benchmark_current" %></strong></td>
+            <td class="border-none"><%= @benchmark %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="chart">
+        <%= pie_chart @aspiration, library: {
+          title: {text: t("aspiration_ratio"), style: {color: "red"}, x: -20},
+          plotOptions: {
+            pie: {
+              dataLabels: {
+                enabled: false
+              },
+              showInLegend: true
+            }
+          }
+        } %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% else %>
+  $('#major-suggestion').html('<%= j render "suggestion" %>');
+  $('#major-suggestion').modal('show');
+<% end %>
+$('#img-loading').hide();
+$('#home').css('opacity', '1');

@@ -7,6 +7,7 @@ class Register < ApplicationRecord
   has_one :school, through: :major
   has_many :subject_departments, through: :department
   has_many :subjects, through: :subject_departments
+  has_many :targets, through: :major
 
   enum aspiration: %i(aspiration_1 aspiration_2 aspiration_3)
 
@@ -15,6 +16,8 @@ class Register < ApplicationRecord
 
   scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
   scope :get_by_major, ->ids{where major_id: ids}
+  scope :get_by_user, ->ids{where user_id: ids}
+  scope :get_by_id, ->ids{where id: ids}
   scope :get_average_majors, ->(major_ids, year = nil) do
     year = year ? year : Time.now.year
     hashes = {}
@@ -22,6 +25,26 @@ class Register < ApplicationRecord
       hashes[x.first.name] = (x.second.sum{|result| result.mark} / x.second.size).round 1
     end
     hashes
+  end
+  scope :get_register_success, ->(target_amount, major_id, aspiration, year = nil) do
+    year = year ? year : Time.now.year
+    get_year(year).where(major_id: major_id, aspiration: aspiration).order(mark: :desc)
+      .limit(target_amount)
+  end
+  scope :get_register_fail, ->(bench_mark, major_id, aspiration, year = nil) do
+    year = year ? year : Time.now.year
+    get_year(year).where "major_id = ? AND aspiration = ? AND mark < ?", major_id, aspiration, bench_mark
+  end
+  scope :get_limit_by_user_id, -> major_id, user_ids, year = nil do
+    year = year ? year : Time.now.year
+    get_year(year).where(user_id: user_ids, major_id: major_id).order(mark: :desc).last
+  end
+  scope :get_register_success_by_mark, ->(bench_mark, major_id, aspiration, year = nil) do
+    year = year ? year : Time.now.year
+    get_year(year).where "major_id = ? AND aspiration = ? AND mark >= ?", major_id, aspiration, bench_mark
+  end
+  scope :get_success_no_major, -> target_amount do
+    order(mark: :desc).limit target_amount
   end
 
   class << self

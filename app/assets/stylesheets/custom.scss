@@ -265,3 +265,14 @@ button.close {
 .modal-content {
   border-radius: 7px;
 }
+.img-load {
+  display: none;
+  position: fixed;
+  left: 43%;
+  top: 35%;
+  width: 105px;
+  z-index: 2100;
+}
+.p-100 {
+  padding-left: 100px;
+}

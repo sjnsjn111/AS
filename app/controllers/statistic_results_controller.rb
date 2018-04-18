@@ -1,4 +1,5 @@
 class StatisticResultsController < BaseNotificationsController
+  before_action :load_notifications, only: %i(index by_depart average_each_majors)
   before_action :load_deparment, only: :show
   before_action :load_result_user, only: %i(index by_depart average_each_majors)
   before_action :get_depart_user, :load_best_result_by_depart, only: %i(index by_depart average_each_majors)
