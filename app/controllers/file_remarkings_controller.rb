@@ -9,11 +9,12 @@ class FileRemarkingsController < BaseNotificationsController
   include NotesHelper
 
   def new
+    return if current_user.file_remarkings.present?
     @remarking = @result.remarkings.build
   end
 
   def create
-    return if @error
+    return if @error || current_user.file_remarkings.present?
     FileRemarking.transaction do
       if @file_remarking_current.blank?
         school_id = current_user.registers.first ? current_user.registers.first.school.id : 1
