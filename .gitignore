@@ -13,9 +13,9 @@
 !/log/.keep
 !/tmp/.keep
 
-/node_modules
 /yarn-error.log
 /config/database.yml
+/config/application.yml
 /public
 
 .byebug_history
