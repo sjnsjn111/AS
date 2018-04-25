@@ -35,6 +35,8 @@ class User < ApplicationRecord
   scope :get_not_role, ->role{where.not role: :role}
   scope :get_teacher_by_school, ->school_id{where role: :teacher, school_id: school_id}
   scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
+  scope :change_aspiration, ->status{where is_changed_register: status}
+  scope :get_not_id, ->ids{where.not user_id: ids}
 
   def picture_size
     if avatar.size > 5.megabytes

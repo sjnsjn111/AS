@@ -388,3 +388,9 @@ vi:
   benchmark_current: "Điểm chuẩn hiện tại"
   detail_info: "Thông tin chi tiết"
   aspiration_ratio: "Tỉ lệ đăng kí"
+  redmire_remarking: "Nhắc nhở thời gian phúc khảo"
+  redmire_aspiration: "Nhắc nhở thời gian thay đổi nguyện vọng"
+  mail_redmire_aspiration: Sắp đến ngày cuối để bạn có thể thay đổi nguyện vọng,
+    nếu các ngành đăng kí chưa hợp lí thì hãy thay đổi nào!
+  mail_redmire_remarking: Sắp đến ngày cuối để bạn có thể nộp đơn phúc khảo,
+    nếu nhận thấy điểm số chưa hợp lí thì hãy nộp đơn phúc khảo.
