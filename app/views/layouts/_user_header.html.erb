@@ -105,7 +105,7 @@
 
             <% if current_user.student? %>
               <li class="has-submenu">
-                <a href="#"><i class="gi gi-lightbulb"></i> <%= t "registers" %></a>
+                <a href="#"><i class="fa fa-lightbulb-o"></i> <%= t "registers" %></a>
                 <ul class="submenu">
                   <li class="menu-custom">
                     <%= link_to user_suggestions_path(current_user) do %>

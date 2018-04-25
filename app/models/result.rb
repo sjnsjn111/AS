@@ -10,7 +10,9 @@ class Result < ApplicationRecord
   has_many :majors, through: :registers
   has_many :schools, through: :majors
 
-  scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
+  before_create :set_year
+
+  scope :get_year, ->year{where year: year}
   scope :get_newest, ->{order created_at: :desc}
   scope :order_by_subject, ->{order subject_id: :asc}
   scope :get_by_deparment, ->department_ids{where department_id: department_ids}
@@ -22,6 +24,9 @@ class Result < ApplicationRecord
     .group("subject_departments.department_id")
     .order("sum_mark desc ")
     .limit 1
+  end
+  scope :total_mark, ->(subject_ids, user_id) do
+    select("SUM(mark) as total").where(user_id: user_id, subject_id: subject_ids).group :user_id
   end
 
   delegate :id, to: :user, prefix: true, allow_nil: true
@@ -40,7 +45,7 @@ class Result < ApplicationRecord
         if user && subject && mark &&
           result = Result.where(user_id: user.id, subject_id: subject.id)
           if result.blank?
-            result = Result.new user_id: user.id, subject_id: subject.id, mark: mark
+            result = Result.new user_id: user.id, subject_id: subject.id, mark: mark, year: Time.now.year
             results << result
           end
         end
@@ -61,15 +66,13 @@ class Result < ApplicationRecord
     #   end
     #   @average_results = hashes
     # end
-    def rank user_id
-      Result.find_by_sql "SELECT Test1.n as rank
-        from(SELECT @n := @n + 1 n, Test.user_id, Test.total from
-        (SELECT user_id, sum(results.mark) as total
-        FROM results
-        GROUP BY results.user_id
-        ) as Test, (SELECT @n := 0) m
-        ORDER BY Test.total desc) as Test1
-        WHERE Test1.user_id = #{user_id}"
+
+    def rank_all sum_mark
+      Result.find_by_sql "select count(*) as rank from
+      (SELECT user_id, SUM(mark) as total FROM `results`
+      WHERE `results`.`deleted_at` IS NULL
+      GROUP BY `results`.`user_id`) as temp
+      where temp.total >= #{sum_mark}"
     end
 
     def average_mark_department
@@ -79,15 +82,13 @@ class Result < ApplicationRecord
         group by results.subject_id"
     end
 
-    def rank_by_department user_ids, subject_ids, user_id
-      Result.find_by_sql "select temp1.rank as rank, temp1.user_id, temp1.sum_mark as sum from
-        (select @n := @n + 1 rank, temp.user_id, temp.sum_mark from
-        (SELECT sum(mark) as sum_mark, user_id FROM results
-        where user_id in #{user_ids}
-        and subject_id in #{subject_ids}
-        group by results.user_id) as temp, (SELECT @n := 0) m
-        order by sum_mark desc) as temp1
-        where temp1.user_id = #{user_id}"
+    def rank_by_department user_ids, subject_ids, sum_mark
+      Result.find_by_sql "select count(*) as rank from
+        (SELECT user_id, SUM(mark) as total FROM results
+        WHERE results.deleted_at IS NULL AND results.subject_id IN #{subject_ids}
+        AND results.user_id IN #{user_ids}
+        GROUP BY results.user_id) as temp
+        where temp.total >= #{sum_mark}"
     end
 
     def open_spreadsheet file
@@ -98,5 +99,11 @@ class Result < ApplicationRecord
           else raise "Unknown file type: #{file.original_filename}"
       end
     end
+  end
+
+  private
+
+  def set_year
+    self.year = year ? year : Time.now.year
   end
 end

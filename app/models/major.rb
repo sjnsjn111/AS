@@ -51,8 +51,8 @@ class Major < ApplicationRecord
       Major.find_by_sql "SELECT count(registers.major_id) as num,
         majors.code FROM majors
         inner join registers on registers.major_id = majors.id
-        where registers.created_at like '%#{year}%'
-        group by major_id
+        where registers.year = #{year}
+        group by majors.code
         order by num desc
         limit 1"
     end

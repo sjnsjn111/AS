@@ -54,7 +54,7 @@
               <div class="col-md-12">
                 <% School.levels.each do |key, value| %>
                   <div class="funkyradio-<%= show_level_school key %> col-md-4">
-                    <%= f.radio_button :level, value, id: "radio#{value}" %>
+                    <%= f.radio_button :level, key, id: "radio#{value}" %>
                     <%= f.label :level, t("levels.#{key}"), for: "radio#{value}" %>
                   </div>
                 <% end %>

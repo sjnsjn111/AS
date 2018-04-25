@@ -13,6 +13,7 @@ class FileRemarking < ApplicationRecord
   after_create :save_remarking
   after_update :update_result, :destroy_remarking, :send_email, if: :is_processed?
   after_save :create_notification
+  before_create :set_year
 
   enum status: %i(pending rejected approved processed)
 
@@ -22,7 +23,7 @@ class FileRemarking < ApplicationRecord
 
   scope :get_newest, ->{order created_at: :desc}
   scope :get_current, ->status{where is_current: status}
-  scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
+  scope :get_year, ->year{where year: year}
   scope :get_lastest, ->{order created_at: :asc}
 
   def self_attr_after_create remarkings_ids
@@ -112,5 +113,9 @@ class FileRemarking < ApplicationRecord
 
   def send_email
     RemarkingMailer.processed_remarking(self).deliver_now
+  end
+
+  def set_year
+    self.year = year ? year : Time.now.year
   end
 end

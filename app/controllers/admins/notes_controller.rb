@@ -37,7 +37,6 @@ class Admins::NotesController < Admins::AdminsController
   end
 
   def note_params
-    params[:note][:style] = params[:note][:style].to_i if params[:note]
     params.require(:note).permit :start_time, :end_time, :style
   end
 

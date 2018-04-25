@@ -6,7 +6,7 @@ class StatisticResultsController < BaseNotificationsController
   before_action :get_major_ids, :load_schools, only: :average_each_majors
 
   def index
-    @rank = Result.rank current_user.id
+    # @rank = Result.rank_all @total
     @average_marks = Result.group(:mark).size
     @subjects = current_user.subjects
   end
@@ -25,10 +25,12 @@ class StatisticResultsController < BaseNotificationsController
     get_method = RegistersService.new
     @rank_by_departments = {}
     @departments.each do |department|
+      subject_ids = department.subject_ids
+      @sum_mark = Result.total_mark subject_ids, current_user.id
       @rank_by_departments[department.name] = Result
         .rank_by_department get_method.convert_array2string(@results_important[department
-        .name][:user_ids]), get_method.convert_array2string(department.subjects.pluck(:id)),
-        current_user.id
+        .name][:user_ids]), get_method.convert_array2string(subject_ids),
+        @sum_mark[0].total
     end
   end
 
