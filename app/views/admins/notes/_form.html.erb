@@ -27,7 +27,7 @@
               <div class="funkyradio">
                 <% Note.styles.each do |key, value| %>
                   <div class="funkyradio-<%= get_style_note key %> col-md-6">
-                    <%= f.radio_button :style, value, id: "radio#{value}" %>
+                    <%= f.radio_button :style, key, id: "radio#{value}" %>
                     <%= f.label :style, t("note_style.#{key}"), for: "radio#{value}" %>
                   </div>
                 <% end %>

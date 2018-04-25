@@ -5,7 +5,7 @@ class CreateRegisters < ActiveRecord::Migration[5.1]
       t.references :user
       t.references :department
       t.integer :aspiration
-      t.boolean :status, default: 0
+      t.boolean :status, default: false
       t.float :mark
       t.date :deleted_at
 

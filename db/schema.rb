@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331043238) do
+ActiveRecord::Schema.define(version: 20180421135734) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20180331043238) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "reason_reject"
+    t.integer "year"
     t.index ["school_id"], name: "index_file_remarkings_on_school_id"
     t.index ["user_id"], name: "index_file_remarkings_on_user_id"
   end
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(version: 20180331043238) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "year"
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(version: 20180331043238) do
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "year"
     t.index ["department_id"], name: "index_registers_on_department_id"
     t.index ["major_id"], name: "index_registers_on_major_id"
     t.index ["user_id"], name: "index_registers_on_user_id"
@@ -159,6 +162,7 @@ ActiveRecord::Schema.define(version: 20180331043238) do
     t.date "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "year"
     t.index ["subject_id"], name: "index_results_on_subject_id"
     t.index ["user_id"], name: "index_results_on_user_id"
   end

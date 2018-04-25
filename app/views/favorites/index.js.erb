@@ -2,5 +2,5 @@
   $('#favorite-majors').html('<%= j render "registers/favorite_majors" %>');
   $('#favorite-majors').modal('show');
 <% else %>
-  $('#table-major').html('<%= j render "majors/table_major" %>');
+  $('#table-major').html('<%= j render @majors %>');
 <% end %>

@@ -29,7 +29,7 @@ class Admins::SchoolsController < Admins::AdminsController
 
   def load_statistic_school
     @top = Target.top_school(1.years.ago.year).first
-    @hot = Register.hot_school(Date.new(2018,12,-1).strftime "%y-%m-%d").first
+    @hot = Register.hot_school(Time.now.year).first
     @total = School.all.size
   end
 
@@ -40,7 +40,6 @@ class Admins::SchoolsController < Admins::AdminsController
   end
 
   def school_params
-    params[:school][:level] = params[:school][:level].to_i if params[:school]
     params.require(:school).permit :name, :address, :phone, :email, :code,
       :logo, :url_school, :introducing, :level, :city
   end

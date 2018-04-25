@@ -26,6 +26,8 @@ class User < ApplicationRecord
   validate :picture_size
   validates :school_id, presence: true, if: :user_teacher?
 
+  before_create :set_year
+
   enum role: %i(student teacher admin)
   enum sex: %i(unknown male female)
 
@@ -34,9 +36,9 @@ class User < ApplicationRecord
   scope :user_newest, ->{order created_at: :desc}
   scope :get_not_role, ->role{where.not role: :role}
   scope :get_teacher_by_school, ->school_id{where role: :teacher, school_id: school_id}
-  scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
   scope :change_aspiration, ->status{where is_changed_register: status}
   scope :get_not_id, ->ids{where.not user_id: ids}
+  scope :get_year, ->year{where year: year}
 
   def picture_size
     if avatar.size > 5.megabytes
@@ -69,6 +71,10 @@ class User < ApplicationRecord
   def is_teacher? school
     return false if self.school.id != school.id || !self.teacher?
     self.school.id == school.id
+  end
+
+  def set_year
+    self.year = year ? year : Time.now.year
   end
 
   class << self
