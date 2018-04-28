@@ -263,9 +263,6 @@ end
 end
 [a.id, b.id, d7.id].each do |id|
   bkm16.major_departments.create! department_id: id
-  bkm16.major_departments.create! department_id: id
-  bkm16.major_departments.create! department_id: id
-  bkm16.major_departments.create! department_id: id
 end
 [v.id].each do |id|
   bkm17.major_departments.create! department_id: id

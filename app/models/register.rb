@@ -15,6 +15,7 @@ class Register < ApplicationRecord
 
   delegate :name, :id, to: :major, prefix: true, allow_nil: true
   delegate :name, :id, to: :department, prefix: true, allow_nil: true
+  delegate :name, :people_id, to: :user, prefix: true, allow_nil: true
 
   scope :get_year, ->year{where year: year}
   scope :get_by_major, ->ids{where major_id: ids}
@@ -48,6 +49,7 @@ class Register < ApplicationRecord
   scope :get_success_no_major, -> target_amount do
     order(mark: :desc).limit target_amount
   end
+  scope :aspiration_increase, ->{order aspiration: :asc}
 
   def set_year
     self.year = year ? year : Time.now.year
@@ -64,6 +66,39 @@ class Register < ApplicationRecord
         order by num desc limit 1"
     end
 
+    def open_spreadsheet file
+      case File.extname(file.original_filename)
+          when ".csv" then Roo::CSV.new(file.path)
+          when ".xls" then Roo::Excel.new(file.path)
+          when ".xlsx" then Roo::Excelx.new(file.path)
+          else raise "Unknown file type: #{file.original_filename}"
+      end
+    end
+
+    def import_file file
+      spreadsheet = open_spreadsheet(file)
+      header = spreadsheet.row(1)
+      registers = []
+      (2..spreadsheet.last_row).each do |i|
+        row = Hash[[header, spreadsheet.row(i)].transpose]
+        user = User.find_by identification_number: row["ma thi sinh"]
+        major = Major.find_by code: row["ma nganh"]
+        aspiration = row["NV"] - 1
+        get_department = RegistersService.new user, major.id
+        department_id = get_department.get_best_depart
+        mark = get_department.get_mark_from_depart
+        if user && major && department_id && mark && aspiration
+          register = Register.where user_id: user.id, aspiration: aspiration
+          if register.blank?
+            register = user.registers.build major_id: major.id, department_id: department_id,
+              mark: mark, aspiration: aspiration, year: Time.now.year
+            registers << register
+          end
+        end
+      end
+      raise ActiveRecord::RecordInvalid if registers.blank?
+      Register.import registers
+    end
     # def hot_major
     #   Register.find_by_sql "SELECT count(major_id) as num, major_id
     #     FROM registers

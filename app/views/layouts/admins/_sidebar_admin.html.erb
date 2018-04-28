@@ -1,7 +1,7 @@
 <div id="sidebar">
   <div id="sidebar-scroll">
     <div class="sidebar-content">
-      <%= link_to "#", class: "sidebar-brand" do %>
+      <%= link_to root_path, class: "sidebar-brand" do %>
         <%= image_tag "logo.ico", size: Settings.logo.size %>
         <span class="sidebar-nav-mini-hide"><strong><%= t "admin" %></strong></span>
       <% end %>
@@ -47,6 +47,12 @@
           <%= link_to admins_results_path do %>
             <i class="fa fa-mortar-board"></i>
             <span class="sidebar-nav-mini-hide lion"><%= t "result" %></span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admins_registers_path do %>
+            <i class="fa fa-lightbulb-o"></i>
+            <span class="sidebar-nav-mini-hide lion"><%= t "registers" %></span>
           <% end %>
         </li>
         <li>

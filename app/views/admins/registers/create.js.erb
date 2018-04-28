@@ -1,0 +1,7 @@
+<% if @user.errors.any? %>
+  alertify.error('<%= j render "shared/error_messages", object: @user %>');
+<% else %>
+$('.options-add').remove();
+  $('.area-registers').html('<%= j render "admins/users/registers_user" %>');
+  alertify.success('<%= @success %>');
+<% end %>

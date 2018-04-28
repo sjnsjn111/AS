@@ -1,0 +1,8 @@
+<div class="col-md-12">
+  <p class="text-info"><%= t "import_register_excel" %></p>
+  <%= form_tag import_admins_registers_path, multipart: true, remote: true do %>
+    <%= file_field_tag :file, class: "btn btn-warning",
+      accept: ".csv, .xlsx" %><br/>
+    <%= submit_tag t("import"), class: "btn btn-success" %>
+  <% end %>
+</div>

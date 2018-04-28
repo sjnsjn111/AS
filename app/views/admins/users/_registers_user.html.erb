@@ -1,0 +1,14 @@
+<table role="grid" class="table table-bordered table-striped table-vcenter no-footer">
+  <thead>
+    <tr>
+      <td class="text-center"><%= t "aspiration_1" %></td>
+      <td class="text-center"><%= t "aspiration_2" %></td>
+      <td class="text-center"><%= t "aspiration_3" %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <%= render partial: "admins/users/register", collection: @registers, as: :register %>
+    </tr>
+  </tbody>
+</table>

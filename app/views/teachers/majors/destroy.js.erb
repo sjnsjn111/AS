@@ -1,0 +1,6 @@
+<% if @major.errors.any? %>
+  alertify.error('<%= j render "shared/error_messages", object: @major %>')
+<% else %>
+  $('.major-' + <%= @major.id %>).remove();
+  alertify.success('<%= @success %>');
+<% end %>

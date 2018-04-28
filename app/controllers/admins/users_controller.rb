@@ -1,6 +1,6 @@
 class Admins::UsersController < Admins::AdminsController
   before_action :find_user, only: %i(show destroy)
-  before_action :load_result, only: :show
+  before_action :load_result, :load_user_registers, only: :show
   before_action :build_user, only: :index
 
   def index

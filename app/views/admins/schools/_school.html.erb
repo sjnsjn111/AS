@@ -21,7 +21,8 @@
         class: "btn btn-warning btn-xs" do %>
         <i class="fa fa-pencil"></i>
       <% end %>
-      <%= link_to "#", class: "btn btn-danger btn-xs" do %>
+      <%= link_to admins_school_path(school), method: :delete, remote: true,
+        class: "btn btn-danger btn-xs", data: {confirm: t("sure")} do %>
         <i class="fa fa-remove"></i>
       <% end %>
     </div>

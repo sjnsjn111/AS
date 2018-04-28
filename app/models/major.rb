@@ -5,7 +5,6 @@ class Major < ApplicationRecord
   belongs_to :style_major
   has_many :major_departments, dependent: :destroy
   has_many :targets, dependent: :destroy
-  has_many :reviews, dependent: :destroy
   has_many :registers, dependent: :destroy
   has_many :users, through: :registers
   has_many :departments, through: :major_departments

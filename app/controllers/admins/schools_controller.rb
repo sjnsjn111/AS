@@ -1,6 +1,6 @@
 class Admins::SchoolsController < Admins::AdminsController
   before_action :load_statistic_school, only: :index
-  before_action :load_school, only: %i(show edit update)
+  before_action :load_school, except: %i(new create index)
 
   def index
     @schools = School.get_newest.page(params[:page]).per Settings.per_page
@@ -22,6 +22,13 @@ class Admins::SchoolsController < Admins::AdminsController
     return if @error
     if @school.update_attributes school_params
       @success = t "updated_school"
+    end
+  end
+
+  def destroy
+    return if @error
+    if @school.destroy
+      @success = t "destroyed_school"
     end
   end
 

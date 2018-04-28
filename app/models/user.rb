@@ -26,6 +26,8 @@ class User < ApplicationRecord
   validate :picture_size
   validates :school_id, presence: true, if: :user_teacher?
 
+  accepts_nested_attributes_for :registers, limit: 3
+
   before_create :set_year
 
   enum role: %i(student teacher admin)
@@ -82,10 +84,10 @@ class User < ApplicationRecord
       spreadsheet = open_spreadsheet(file)
       header = spreadsheet.row(1)
       (2..spreadsheet.last_row).each do |i|
-          row = Hash[[header, spreadsheet.row(i)].transpose]
-          user = find_by_id(row["id"]) || new
-          user.attributes = row.to_hash.slice(*row.to_hash.keys)
-          user.save!
+        row = Hash[[header, spreadsheet.row(i)].transpose]
+        user = find_by_id(row["id"]) || new
+        user.attributes = row.to_hash.slice(*row.to_hash.keys)
+        user.save!
       end
     end
 

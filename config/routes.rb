@@ -58,6 +58,9 @@ Rails.application.routes.draw do
     end
     resources :notes
     resources :style_majors
+    resources :registers, except: :destroy do
+      collection { post :import }
+    end
   end
   resources :favorites
 end
