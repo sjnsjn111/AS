@@ -14,6 +14,7 @@ student: "student"
 admin: "admin"
 min_name: 6
 min_code: 3
+university: "university"
 college: "college"
 intermediate: "intermediate"
 warning: "warning"
