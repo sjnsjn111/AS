@@ -43,7 +43,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    alertify-rails (0.2.0)
     arel (8.0.0)
     autoprefixer-rails (8.0.0)
       execjs
@@ -353,6 +352,7 @@ GEM
     paranoia (2.4.0)
       activerecord (>= 4.0, < 5.2)
     pdfkit (0.8.2)
+    pg (1.0.0)
     polyamorous (1.3.3)
       activerecord (>= 3.0)
     pry (0.11.3)
@@ -496,7 +496,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-import
-  alertify-rails
   bcrypt
   bootstrap-sass (= 3.3.7)
   byebug
@@ -525,6 +524,7 @@ DEPENDENCIES
   mysql2 (>= 0.3.18, < 0.5)
   paranoia
   pdfkit
+  pg
   pry
   pry-byebug
   pry-rails

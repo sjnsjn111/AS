@@ -24,7 +24,7 @@ class Admins::ResultsController < Admins::AdminsController
         params[:subject].each.with_index do |id, i|
           result_return = Result.where subject_id: id, user_id: user.id
           if result_return.blank?
-            result = user.results.new subject_id: id, user_id: user.id, mark: params[:mark][i]
+            result = user.results.new subject_id: id, user_id: user.id, mark: params[:mark][i], year: Time.now.year
             results << result
           end
         end

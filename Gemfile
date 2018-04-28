@@ -38,7 +38,6 @@ gem "chartkick"
 gem "cancancan"
 gem "roo"
 gem "ckeditor"
-gem "alertify-rails"
 gem "activerecord-import"
 gem "cocoon"
 gem "pdfkit"
@@ -51,10 +50,14 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "pry-rails"
   gem "pry"
+  gem "mysql2", ">= 0.3.18", "< 0.5"
+end
+
+group :production do
+  gem "pg"
 end
 
 group :development do
-  gem "mysql2", ">= 0.3.18", "< 0.5"
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"

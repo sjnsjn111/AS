@@ -17,7 +17,7 @@ class Target < ApplicationRecord
         inner join majors on majors.id = targets.major_id
         inner join schools on schools.id = majors.school_id
         where targets.year = #{year}
-        group by school_id) as Temp
+        group by schools.code) as Temp
         order by Temp.mark desc
         limit 1"
     end

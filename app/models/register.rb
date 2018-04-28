@@ -11,10 +11,12 @@ class Register < ApplicationRecord
 
   enum aspiration: %i(aspiration_1 aspiration_2 aspiration_3)
 
+  before_create :set_year
+
   delegate :name, :id, to: :major, prefix: true, allow_nil: true
   delegate :name, :id, to: :department, prefix: true, allow_nil: true
 
-  scope :get_year, ->year{where "created_at LIKE ?", "%#{year}%"}
+  scope :get_year, ->year{where year: year}
   scope :get_by_major, ->ids{where major_id: ids}
   scope :get_by_user, ->ids{where user_id: ids}
   scope :get_by_id, ->ids{where id: ids}
@@ -47,14 +49,18 @@ class Register < ApplicationRecord
     order(mark: :desc).limit target_amount
   end
 
+  def set_year
+    self.year = year ? year : Time.now.year
+  end
+
   class << self
-    def hot_school datetime
+    def hot_school year
       Register.find_by_sql "select * from
         (SELECT count(*) as num, schools.code FROM registers
         inner join majors on majors.id = registers.major_id
         inner join schools on schools.id = majors.school_id
-        where registers.created_at < '#{datetime}'
-        group by school_id) as Temp
+        where registers.year = #{year}
+        group by schools.code) as Temp
         order by num desc limit 1"
     end
 
