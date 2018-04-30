@@ -1,6 +1,5 @@
 class Teachers::MajorsController < Teachers::TeachersController
   before_action :top_major, :hot_major, only: :index
-  before_action :load_major, only: %i(show edit update)
 
   def index
     @q = @school.majors.newest.search params[:q]
@@ -9,6 +8,8 @@ class Teachers::MajorsController < Teachers::TeachersController
 
   def show; end
 
+  def new; end
+
   def create
     @major = @school.majors.build major_params
     if @major.save
@@ -16,18 +17,21 @@ class Teachers::MajorsController < Teachers::TeachersController
     end
   end
 
+  def edit; end
+
   def update
     if @major.update_attributes major_params
       @success = t "updated_major"
     end
   end
 
-  private
-
-  def load_major
-    @major = Major.find_by id: params[:id]
-    @error = t "not_found_major" unless @major
+  def destroy
+    if @major.destroy
+      @success = t "destroyed_major"
+    end
   end
+
+  private
 
   def major_params
     params.require(:major).permit :name, :code, :picture, :introducing, :style_major_id

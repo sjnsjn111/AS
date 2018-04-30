@@ -3,4 +3,9 @@ class Admins::AdminsController < BaseNotificationsController
 
   before_action :current_ability
   authorize_resource
+
+  def load_user_registers
+    return if @user.blank?
+    @registers = @user.registers.aspiration_increase
+  end
 end

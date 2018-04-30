@@ -1,0 +1,6 @@
+<% if @school.errors.any? %>
+  alertify.error('<%= j render "shared/error_messages", object: @school %>')
+<% else %>
+  $('.school-' + <%= @school.id %>).remove();
+  alertify.success('<%= @success %>');
+<% end %>

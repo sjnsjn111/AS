@@ -15,7 +15,8 @@
         <i class="fa fa-pencil"></i>
       <% end %>
 
-      <%= link_to teachers_major_path(major), method: :delete, remote: true, class: "btn btn-danger btn-xs" do %>
+      <%= link_to teachers_major_path(major), method: :delete, remote: true,
+        class: "btn btn-danger btn-xs", data: {confirm: t("sure")} do %>
         <i class="fa fa-trash"></i>
       <% end %>
     </div>

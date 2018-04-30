@@ -29,3 +29,4 @@
 //= require cable
 //= require ckeditor/init
 //= require hide_flash
+//= require jquery-customselect-1.9.1.min

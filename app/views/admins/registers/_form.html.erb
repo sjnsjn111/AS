@@ -1,0 +1,23 @@
+<%= simple_form_for @user, url: admins_register_path(@user), method: :patch, remote: true do |f| %>
+  <table role="grid" class="table table-bordered table-striped table-vcenter no-footer">
+    <tbody>
+      <% counter = 1 %>
+      <%= f.simple_fields_for :registers do |ff| %>
+        <tr>
+          <td class="text-center"><%= t "aspiration_#{counter}" %></td>
+          <td>
+            <%= ff.input :major_id, as: :select, label: false, collection: @majors
+              .map { |x| ["#{x.name}-#{x.code}", x.id] }, input_html: {class: "custom-select"} %>
+          </td>
+        </tr>
+        <% counter += 1 %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="row">
+    <center>
+      <%= f.submit t("change"), class: "btn btn-primary btn-md" %>
+    </center>
+  </div>
+<% end %>
+<%= javascript_include_tag "custom_select" %>

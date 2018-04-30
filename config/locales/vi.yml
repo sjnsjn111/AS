@@ -207,7 +207,7 @@ vi:
   confirm_change_aspiration: "Kích 'OK' để xác nhận thay đổi(Chú ý: Chí cho phép 1 lần)."
   no_change_major: "Không thay đổi"
   confirm: "Xác nhận"
-  not_time_change_register: "Không phải thaoiwf gian thay đổi đăng kí."
+  not_time_change_register: "Không phải thời gian thay đổi đăng kí."
   one_changed_register: "Thay đổi đăng kí chỉ cho phép 1 lần."
   student_area: "Thí sinh"
   registers: "Đăng kí"
@@ -311,6 +311,12 @@ vi:
               blank: " không được bỏ trống"
             people_id:
               blank: " không được bỏ trống"
+        register:
+          attributes:
+            major:
+              required: không được bỏ trống
+            department:
+              required: không được bỏ trống
   home: "Trang chủ"
   information_invalid: "Thông tin không hợp lệ!"
   check_again_information: "Vui lòng kiểm tra lại thông tin"
@@ -394,3 +400,11 @@ vi:
     nếu các ngành đăng kí chưa hợp lí thì hãy thay đổi nào!
   mail_redmire_remarking: Sắp đến ngày cuối để bạn có thể nộp đơn phúc khảo,
     nếu nhận thấy điểm số chưa hợp lí thì hãy nộp đơn phúc khảo.
+  destroyed_school: "Đã xóa trường."
+  destroyed_major: "Đã xóa ngành."
+  updated_registers: Đã cập nhật đăng kí.
+  not_registers: "Chưa có thông tin đăng kí"
+  add_registers: "Thêm đăng kí"
+  import_register_excel: Nhập thông tin đăng kí từ file excel
+  import_success: "Nhập thông tin hoàn tất."
+  import_fail: "Nhập thông tin thất bại."

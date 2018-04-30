@@ -81,27 +81,73 @@
           </ul>
         </div>
       </div>
+
       <% if @results.present? %>
         <div class="row">
           <div class="col-md-12">
-            <div class="widget">
-              <div class="widget-extra themed-background-blackberry">
-                <div class="widget-options">
-                  <div class="btn-group btn-group-xs">
-                    <a href="javascript:void(0)" class="btn btn-default"
-                      data-toggle="tooltip" title="" data-original-title="Edit Widget">
-                      <i class="fa fa-pencil"></i>
-                    </a>
-                  </div>
+            <div class="block">
+              <div class="block-title">
+                <div class="block-options pull-right">
+                  <a href="javascript:void(0)" class="btn btn-alt btn-default"
+                    data-toggle="tooltip" title="" data-original-title="Edit Widget">
+                    <i class="fa fa-pencil"></i>
+                  </a>
                 </div>
                 <h3 class="widget-content-light">
                   <%= t "result" %>
                 </h3>
               </div>
-              <div class="widget-extra-full  themed-background-flatie">
+              <div class="block-content">
                 <div class="row text-center">
                   <%= render partial: "result_user", collection: @results, as: :result %>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @registers.present? %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="block">
+              <div class="block-title">
+                <div class="block-options pull-right">
+                  <%= link_to edit_admins_register_path(@user), remote: true,
+                    class: "btn btn-alt btn-default" do %>
+                    <i class="fa fa-pencil"></i>
+                  <% end %>
+                </div>
+                <h3 class="widget-content-light">
+                  <%= t "registers" %>
+                </h3>
+              </div>
+              <div class="block-content area-registers">
+                <%= render "registers_user" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% elsif @user.student? %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="block">
+              <div class="block-title">
+                <div class="block-options pull-right options-add">
+                  <%= link_to new_admins_register_path(id: @user), remote: true,
+                    class: "btn btn-alt btn-default" do %>
+                    <i class="fa fa-plus"></i>
+                  <% end %>
+                </div>
+                <h3 class="widget-content-light">
+                  <%= t "registers" %>
+                </h3>
+              </div>
+              <div class="block-content area-registers">
+                <p class="text-center text-danger">
+                  <i class="fa fa-times"></i>
+                  <%= t "not_registers" %>
+                </p>
               </div>
             </div>
           </div>
