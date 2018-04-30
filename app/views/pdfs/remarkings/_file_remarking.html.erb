@@ -1,0 +1,5 @@
+<tr role="row" class="file_remarking-<%= file_remarking.id %>">
+  <td class="text-center"><%= file_remarking.user_name %></td>
+  <td class="text-center"><%= file_remarking.user_identification_number %></td>
+  <%= render partial: "remarking", collection: file_remarking.remarkings, as: :remarking %>
+</tr>

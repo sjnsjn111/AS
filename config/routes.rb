@@ -63,4 +63,8 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites
+
+  namespace :pdfs do
+    resources :remarkings, only: :index
+  end
 end

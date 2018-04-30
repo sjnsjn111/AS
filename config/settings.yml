@@ -40,3 +40,4 @@ target_columns:
   benchmark: "benchmark"
   amount: "amount"
   job: "job"
+approved: "approved"

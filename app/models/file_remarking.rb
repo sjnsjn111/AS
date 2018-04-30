@@ -5,6 +5,7 @@ class FileRemarking < ApplicationRecord
   belongs_to :school
   has_many :remarkings, dependent: :destroy
   has_many :results, through: :remarkings
+  has_many :subjects, through: :results
 
   validates :reason_reject, presence: true, if: :is_rejected?
 

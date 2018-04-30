@@ -300,7 +300,7 @@ std::string Magick::Options::font(void) const
 {
   if (_imageInfo->font)
     return(std::string(_imageInfo->font));
-  
+
   return(std::string());
 }
 
@@ -322,7 +322,7 @@ std::string Magick::Options::fontFamily(void) const
 {
   if (_drawInfo->family)
     return(std::string(_drawInfo->family));
-  
+
   return(std::string());
 }
 
@@ -372,7 +372,7 @@ std::string Magick::Options::format(void) const
 
   if ((magick_info != 0) && (*magick_info->description != '\0'))
     return(std::string( magick_info->description));
-  
+
   return(std::string());
 }
 
@@ -728,7 +728,7 @@ std::string Magick::Options::textEncoding(void) const
 {
   if (_drawInfo->encoding && *_drawInfo->encoding)
     return(std::string(_drawInfo->encoding));
-  
+
   return(std::string());
 }
 
