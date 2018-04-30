@@ -13,10 +13,11 @@
   <div class="col-md-9">
     <div class="block full">
       <div class="block-title">
-        <div class="block-options pull-right">
-          <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default">
-            <i class="fa fa-briefcase"></i>
-          </a>
+        <div class="block-options pull-right display-none">
+          <%= link_to pdfs_remarkings_path(format: "pdf"), target: :blank,
+            class: "btn btn-alt btn-sm btn-default" do %>
+            <i class="fa fa-print"></i>
+          <% end %>
         </div>
         <h3 class="widget-content-light"><%= t "remarking" %> <strong><%= t "list" %></strong></h3>
       </div>

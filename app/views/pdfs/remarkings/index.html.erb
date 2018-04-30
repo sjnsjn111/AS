@@ -1,0 +1,18 @@
+<h2 class="text-center"><strong>DANH SÁCH THÍ SINH PHÚC KHẢO</strong></h2>
+<% if @file_remarkings.present? %>
+  <table role="grid" class="table table-bordered table-striped table-vcenter dataTable no-footer background-white">
+    <thead>
+      <tr role="row">
+        <th class="text-center"><%= t "user" %></th>
+        <th class="text-center"><%= t "identification_number" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "file_remarking", collection: @file_remarkings, as: :file_remarking %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-danger text-center">
+    <i><%= t "not_file_remarkings" %></i>
+  </p>
+<% end %>

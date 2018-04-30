@@ -305,12 +305,10 @@ en:
   aspiration_ratio: "Aspiration ratio"
   redmire_remarking: Redmire times to remark
   redmire_aspiration: Redmire times to change aspiration
-  mail_redmire_aspiration: Coming to the end, you can change your mind,
-    If the registration is not reasonable, please change!
-  mail_redmire_remarking: By the end of the day you can file an appeal,
-    If you find that the score is not reasonable then apply for re-examination.
-  destroyed_school:
-  destroyed_major: Deleted school.
+  mail_redmire_aspiration: Coming to the end, you can change your mind, If the registration is not reasonable, please change!
+  mail_redmire_remarking: By the end of the day you can file an appeal, If you find that the score is not reasonable then apply for re-examination.
+  destroyed_school: Deleted school.
+  destroyed_major: Deleted major.
   updated_registers: Updated register.
   not_registers: No registration information yet
   add_registers: Add registers
