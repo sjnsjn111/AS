@@ -15,7 +15,7 @@ class Register < ApplicationRecord
 
   delegate :name, :id, to: :major, prefix: true, allow_nil: true
   delegate :name, :id, to: :department, prefix: true, allow_nil: true
-  delegate :name, :people_id, to: :user, prefix: true, allow_nil: true
+  delegate :name, :people_id, :identification_number, to: :user, prefix: true, allow_nil: true
 
   scope :get_year, ->year{where year: year}
   scope :get_by_major, ->ids{where major_id: ids}

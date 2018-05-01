@@ -3,6 +3,11 @@ class Admins::RegistersController < Admins::AdminsController
   before_action :load_user_registers, only: :edit
   before_action :load_major_valid, only: %i(new edit)
 
+  def index
+    @registers = Register.get_year(Time.now.year).aspiration_increase
+      .includes(:user, :major).group_by &:user_id
+  end
+
   def new
     3.times do
       @user.registers.build

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="block full">
+      <div class="block-title">
+        <h3 class="widget-content-light"><%= t "all" %> <strong><%= t "register" %></strong></h3>
+      </div>
+      <div class="dataTables_wrapper form-inline no-footer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-search-registers pull-right">
+              <div class="form-group">
+                <div class="icon-addon addon-lg">
+                  <%= text_field_tag :user_name, nil, class: "form-control input-sm", placeholder: t("enter_name_code_user"), id: "live-search" %>
+                  <label for="user_name" class="fa fa-id-badge" rel="tooltip"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="table-registers" class="scroll-custom">
+          <%= render "table_registers" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag "live_search" %>
