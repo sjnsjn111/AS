@@ -1,0 +1,5 @@
+<tr>
+  <td class="text-center"><%= registers.second.first.user_identification_number %></td>
+  <td class="text-center"><%= registers.second.first.user_name %></td>
+  <%= render partial: "register", collection: registers.second, as: :register %>
+</tr>

@@ -49,3 +49,7 @@ p {
 .background-white {
   background-color: white;
 }
+.scroll-custom {
+  overflow: auto;
+  max-height: 600px;
+}

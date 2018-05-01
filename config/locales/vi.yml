@@ -408,3 +408,4 @@ vi:
   import_register_excel: Nhập thông tin đăng kí từ file excel
   import_success: "Nhập thông tin hoàn tất."
   import_fail: "Nhập thông tin thất bại."
+  all_student: Tất cả thí sinh

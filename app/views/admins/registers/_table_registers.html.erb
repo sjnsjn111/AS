@@ -1,0 +1,22 @@
+<% if @registers.present? %>
+  <table role="grid" class="table table-bordered table-striped table-vcenter no-footer background-white">
+    <thead>
+      <tr role="row">
+        <th class="text-center"><%= t "identification_number" %></th>
+        <th class="text-center"><%= t "name" %></th>
+        <th class="text-center"><%= t "aspiration_1" %></th>
+        <th class="text-center"><%= t "aspiration_2" %></th>
+        <th class="text-center"><%= t "aspiration_3" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "registers", collection: @registers, as: :registers %>
+    </tbody>
+  </table>
+  <div class="row text-center pag">
+  </div>
+<% else %>
+  <p class="text-danger text-center">
+    <i><%= t "not_users" %></i>
+  </p>
+<% end %>
