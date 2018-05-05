@@ -50,6 +50,7 @@ class CalculateMarkService
   end
 
   def get_fail_aspiration_1 registers
+    return if registers.blank?
     registers_fail = []
     registers.each do |register|
       register_1 = Register.get_year(Time.new.year).get_by_user(register.user_id)
