@@ -87,6 +87,7 @@ class User < ApplicationRecord
         row = Hash[[header, spreadsheet.row(i)].transpose]
         user = find_by_id(row["id"]) || new
         user.attributes = row.to_hash.slice(*row.to_hash.keys)
+        user.password = user.people_id + user.identification_number
         user.save!
       end
     end
