@@ -326,14 +326,14 @@ nnm14.major_departments.create! department_id: d1.id
 User.student.each do |s|
   array = [toan.id, van.id, anh.id]
   array.each do |n|
-    s.results.create! subject_id: n, mark: Faker::Number.rand(1.0..10.0).round(1), year: Time.now.year
+    s.results.create! subject_id: n, mark: Faker::Number.rand(4.0..10.0).round(1), year: Time.now.year
   end
   array1 = [hoa.id, dia.id]
   array2 = [ly.id, su.id]
   array3 = [sinh.id, nangkhieu.id]
-  s.results.create! subject_id: array1.sample, mark: Faker::Number.rand(1.0..10.0).round(1), year: Time.now.year
-  s.results.create! subject_id: array2.sample, mark: Faker::Number.rand(1.0..10.0).round(1), year: Time.now.year
-  s.results.create! subject_id: array3.sample, mark: Faker::Number.rand(1.0..10.0).round(1), year: Time.now.year
+  s.results.create! subject_id: array1.sample, mark: Faker::Number.rand(4.0..10.0).round(1), year: Time.now.year
+  s.results.create! subject_id: array2.sample, mark: Faker::Number.rand(4.0..10.0).round(1), year: Time.now.year
+  s.results.create! subject_id: array3.sample, mark: Faker::Number.rand(4.0..10.0).round(1), year: Time.now.year
 end
 
 spktdn.majors.each do |m|

@@ -1,9 +1,9 @@
 <div class="topbar-main">
   <div class="container-fluid" id="tilte-bar">
     <div class="logo">
-      <a href="index.html" class="logo">
+      <%= link_to root_url, class: "logo" do %>
         <%= image_tag "logo.png", height: 35 %>
-      </a>
+      <% end %>
     </div>
 
     <ul class="nav navbar-nav navbar-right site-nav">
@@ -43,6 +43,11 @@
             <li>
               <%= link_to edit_user_registration_url(current_user) do %>
                 <%= t("change_pass") %><i class="fa fa-pencil-square-o pull-right"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to lock_account_url(id: current_user), method: :patch, class: "color-red" do %>
+                <%= t("lock_account") %><i class="fa fa-lock pull-right"></i>
               <% end %>
             </li>
             <li>
