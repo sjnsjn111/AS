@@ -1,0 +1,27 @@
+<% @schools.each do |school| %>
+  <h4 class="text-primary"><%= t "school" %>: <strong><%= school.name %></strong></h4>
+  <% school.majors.each do |major| %>
+    <h5><%= t "major" %> <strong><%= major.name %></strong></h5>
+    <% if major.registers.present? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center"><%= t "stt" %></th>
+            <th class="text-center"><%= t "student" %></th>
+            <th class="text-center"><%= t "identification_number" %></th>
+            <th class="text-center"><%= t "mark" %></th>
+            <th class="text-center"><%= t "department" %></th>
+            <th class="text-center"><%= t "aspiration" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "register", collection: major.registers.get_year(DateTime.now.year).aspiration_increase, as: :register %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="text-danger text-center">
+        <i><%= t "not_registers" %></i>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>

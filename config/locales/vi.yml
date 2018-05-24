@@ -409,3 +409,6 @@ vi:
   import_success: "Nhập thông tin hoàn tất."
   import_fail: "Nhập thông tin thất bại."
   all_student: Tất cả thí sinh
+  lock_account: Khóa tài khoản
+  locked_success: Đã khóa tài khoản thành công
+  locked_failure: Khóa tài khoản thất bại, vui lòng thử lại

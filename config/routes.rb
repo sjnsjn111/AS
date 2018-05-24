@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "/statistic_result", to: "statistic_results#show"
   get "/statistic_results_by_department", to: "statistic_results#by_depart"
   get "/statistic_results_by_major", to: "statistic_results#average_each_majors"
+  patch "/lock_account", to: "users#lock_account"
 
   resources :users, except: %i(destroy new create index) do
     resources :suggestions, only: %i(index show)
@@ -66,5 +67,6 @@ Rails.application.routes.draw do
 
   namespace :pdfs do
     resources :remarkings, only: :index
+    resources :registers, only: :index
   end
 end

@@ -1,6 +1,6 @@
 class UsersController < BaseNotificationsController
   before_action :current_ability
-  before_action :load_user, only: %i(show edit update)
+  before_action :load_user, only: %i(show edit update lock_account)
   before_action :load_aspiration, :load_results, only: :show
   before_action :load_notifications, only: :show
   load_and_authorize_resource param_method: :user_params
@@ -18,6 +18,17 @@ class UsersController < BaseNotificationsController
       else
         format.js{@errors = t "update_failure"}
       end
+    end
+  end
+
+  def lock_account
+    if @user.update_attributes(locked_at: DateTime.now)
+      sign_out @user
+      flash[:success] = t "locked_success"
+      redirect_to new_user_session_path
+    else
+      flash[:danger] = t "locked_failure"
+      redirect_to request.referer || root_url
     end
   end
 
