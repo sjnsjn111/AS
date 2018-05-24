@@ -10,6 +10,15 @@
 
   <div class="form-group">
     <div class="icon-addon addon-lg">
+      <%= f.select :style_major_id_eq, StyleMajor.all
+        .collect{|s| [s.name, s.id]}.unshift([t("all_style"), nil]), {},
+        {class: "form-control input-lg"} %>
+      <label for="school_id_eq" class="fa fa-filter" rel="tooltip"></label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="icon-addon addon-lg">
       <%= f.search_field :name_or_code_cont, class: "form-control input-sm",
         placeholder: t("enter_name_code_major") %>
       <label for="name_or_code_cont" class="fa fa-archive" rel="tooltip"></label>
