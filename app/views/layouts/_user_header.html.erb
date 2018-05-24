@@ -110,20 +110,12 @@
 
             <% if current_user.student? %>
               <li class="has-submenu">
-                <a href="#"><i class="fa fa-lightbulb-o"></i> <%= t "registers" %></a>
-                <ul class="submenu">
-                  <li class="menu-custom">
-                    <%= link_to user_suggestions_path(current_user) do %>
-                      <%= t "suggestions" %>
-                    <% end %>
-                  </li>
-
-                  <li class="menu-custom">
-                    <%= link_to registers_path do %>
-                      <%= t "change_aspiration" %>
-                    <% end %>
-                  </li>
-                </ul>
+                <li class="menu-custom">
+                  <%= link_to registers_path do %>
+                    <i class="fa fa-lightbulb-o"></i>
+                    <%= t "change_aspiration" %>
+                  <% end %>
+                </li>
               </li>
 
               <li class="has-submenu">
