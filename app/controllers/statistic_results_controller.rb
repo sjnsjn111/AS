@@ -3,7 +3,7 @@ class StatisticResultsController < BaseNotificationsController
   before_action :load_deparment, only: :show
   before_action :load_result_user, only: %i(index by_depart average_each_majors)
   before_action :get_depart_user, :load_best_result_by_depart, only: %i(index by_depart average_each_majors)
-  before_action :get_major_ids, :load_schools, only: :average_each_majors
+  before_action :get_major, :load_schools, only: :average_each_majors
 
   def index
     # @rank = Result.rank_all @total
@@ -36,8 +36,13 @@ class StatisticResultsController < BaseNotificationsController
 
   def average_each_majors
     aspiration = params[:aspirations].present? ? params[:aspirations] : :all
-    @results = Register.send(aspiration).get_average_majors @major_ids
-    @results = @results.sort_by {|name, value| value}
+    @results = Register.send(aspiration).get_average_majors @majors.pluck(:id)
+    @rate = {}
+    @majors.order(id: :desc).each do |major|
+      rate = (major.registers.get_year(DateTime.now.year).size.to_f / major.targets.get_year(DateTime.now.year).first.amount).round 2
+      next if rate == 0
+      @rate[major.name] = rate
+    end
   end
 
   private
@@ -68,12 +73,12 @@ class StatisticResultsController < BaseNotificationsController
     @departments = Department.get_by @department_ids
   end
 
-  def get_major_ids
+  def get_major
     department_ids = params[:department].present? ? params[:department] : @department_ids
     if params[:schools].present?
-      @major_ids = Major.get_by_school(params[:schools]).get_by_department(department_ids).pluck :id
+      @majors = Major.get_by_school(params[:schools]).get_by_department(department_ids)
     else
-      @major_ids = Major.get_by_department(department_ids).pluck :id
+      @majors = Major.get_by_department(department_ids)
     end
   end
 

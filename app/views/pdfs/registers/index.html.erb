@@ -1,8 +1,10 @@
 <% @schools.each do |school| %>
   <h4 class="text-primary"><%= t "school" %>: <strong><%= school.name %></strong></h4>
-  <% school.majors.each do |major| %>
+  <% majors = school.majors %>
+  <% majors.each do |major| %>
+    <% registers = major.registers.get_year(DateTime.now.year).aspiration_increase.includes :user, :department %>
     <h5><%= t "major" %> <strong><%= major.name %></strong></h5>
-    <% if major.registers.present? %>
+    <% if registers.present? %>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -15,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= render partial: "register", collection: major.registers.get_year(DateTime.now.year).aspiration_increase, as: :register %>
+          <%= render partial: "register", collection: registers, as: :register %>
         </tbody>
       </table>
     <% else %>

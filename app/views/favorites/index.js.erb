@@ -3,4 +3,5 @@
   $('#favorite-majors').modal('show');
 <% else %>
   $('#table-major').html('<%= j render @majors %>');
+  $('.text-center.pag').html('<%= j paginate @majors, remote: true %>');
 <% end %>
