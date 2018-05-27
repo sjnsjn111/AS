@@ -1,0 +1,8 @@
+<%= line_chart @rate, height: "500px", stacked: true,
+  colors: ["#f7941d"],
+  library: {
+    title: {text: t("rate"), style: {color: "red"}, x: -20},
+    yAxis: {allowDecimals: false, title:{text: t("average_mark")}},
+    xAxis: {title: {text: t("majors")}}
+  }
+%>

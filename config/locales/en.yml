@@ -315,3 +315,8 @@ en:
   import_register_excel: Import registration information by excel file
   import_success: Import information success.
   import_fail: Import information failure.
+  all_student: All studnet
+  lock_account: Lock Account
+  locked_success: Locked account success
+  locked_failure: Locked account fail, pls again
+  rate: rate

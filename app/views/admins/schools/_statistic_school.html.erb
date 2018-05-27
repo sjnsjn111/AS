@@ -23,7 +23,7 @@
     </div>
     <div class="widget-extra-full">
       <span class="h2 h2 animation-expandOpen">
-        <%= @top.code %> / <%= @top.mark.round 1 %>
+        <%= @top&.code %> / <%= @top&.mark&.round 1 %>
       </span>
     </div>
   </a>
@@ -53,7 +53,7 @@
     </div>
     <div class="widget-extra-full">
       <span class="h2 text-danger themed-color-dark animation-expandOpen">
-        <%= @hot.code %> / <%= @hot.num %>
+        <%= @hot&.code %> / <%= @hot&.num %>
       </span>
     </div>
   </a>

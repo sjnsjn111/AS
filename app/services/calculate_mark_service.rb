@@ -65,7 +65,7 @@ class CalculateMarkService
   end
 
   def get_registers_success success_ids, registers_fail_asp, amount
-    success_ids = success_ids|registers_fail_asp
+    success_ids = success_ids | registers_fail_asp.to_a
     registers_new = Register.get_by_id success_ids
     registers_new.get_success_no_major amount
   end

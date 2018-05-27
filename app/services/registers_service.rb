@@ -17,6 +17,8 @@ class RegistersService
 
   def set_best_depart
     department_ids = MajorDepartment.get_by_major(@major_id).pluck :department_id
+    depart_user = @user.find_user_departments
+    department_ids = department_ids&depart_user
     Result.mark_department_best(department_ids, @user.id).first.department_id
   end
 
