@@ -36,6 +36,7 @@ class Ability
     can :manage, Target, major_id: school.majors.pluck(:id)
     can %i(update read), User, user_id: school.users.pluck(:id)
     can :manage, FileRemarking, school_id: school.id
+    can :read, Notification
   end
 
   def permission_user user

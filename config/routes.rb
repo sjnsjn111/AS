@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       collection { post :import }
     end
   end
+  resources :notifications, only: :index
   resources :favorites
 
   namespace :pdfs do
