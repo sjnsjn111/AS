@@ -51,4 +51,8 @@ module ApplicationHelper
       register.major_id
     end
   end
+
+  def status_seen_notification notification, user
+    notification.user_readed.include?(user.id) ?  "white" : "gray-light"
+  end
 end
