@@ -43,6 +43,9 @@ gem "cocoon"
 gem "pdfkit"
 gem "wkhtmltopdf-binary"
 gem "whenever", require: false
+gem "sidekiq"
+gem "redis"
+gem "delayed_job_active_record"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -9,7 +9,7 @@ module NotesHelper
   end
 
   def check_time_note time
-    case time
+    case
     when time > DateTime.now
       t "next"
     else
