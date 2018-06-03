@@ -39,7 +39,7 @@ class Notification < ApplicationRecord
   end
 
   def render_notification notification
-    ApplicationController.renderer.render partial: "notifications/notification",
+    ApplicationController.renderer.render partial: "shared/notification",
       locals: {notification: notification}
   end
 
