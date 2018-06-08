@@ -113,7 +113,7 @@ class FileRemarking < ApplicationRecord
   end
 
   def send_email
-    RemarkingMailer.processed_remarking(self).deliver_now
+    RemarkingMailer.processed_remarking(self).deliver_later wait: 5.seconds
   end
 
   def set_year

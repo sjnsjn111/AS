@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :auto_password
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :timeoutable,
@@ -79,6 +80,10 @@ class User < ApplicationRecord
     self.year = year ? year : Time.now.year
   end
 
+  def self_attr_after_save auto_password
+    self.auto_password = auto_password
+  end
+
   class << self
     def import file
       spreadsheet = open_spreadsheet(file)
@@ -87,8 +92,10 @@ class User < ApplicationRecord
         row = Hash[[header, spreadsheet.row(i)].transpose]
         user = find_by_id(row["id"]) || new
         user.attributes = row.to_hash.slice(*row.to_hash.keys)
-        user.password = user.people_id + user.identification_number
+        user.password = Devise.friendly_token
+        user.self_attr_after_save user.password
         user.save!
+        UserMailer.import_user(user).deliver
       end
     end
 
