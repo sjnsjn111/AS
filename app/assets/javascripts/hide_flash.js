@@ -1,5 +1,6 @@
 $(document).ready( function() {
   $('#message-flash').delay(4000).fadeOut();
+  $('.alert').delay(4000).fadeOut();
 
   if (window.location.pathname === "/") {
     $('section#home.header').css('padding-top', '0');

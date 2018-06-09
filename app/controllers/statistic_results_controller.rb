@@ -7,7 +7,7 @@ class StatisticResultsController < BaseNotificationsController
 
   def index
     # @rank = Result.rank_all @total
-    @average_marks = Result.group(:mark).size
+    @average_marks = Result.order(mark: :asc).group(:mark).size
     @subjects = current_user.subjects
   end
 
