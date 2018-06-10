@@ -6,7 +6,7 @@ class SuggestionsController < BaseNotificationsController
 
   def show
     calculate = CalculateMarkService.new @major, @target
-    @benchmark = calculate.get_benchmark
+    @benchmark = (calculate.get_benchmark * 4).round / 4.0
   end
 
   def index
