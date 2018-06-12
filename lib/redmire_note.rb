@@ -24,7 +24,7 @@ class RedmireNote
   end
 
   def send_mail_redmire
-    RedmireNoteMailer.redmire_remarking(@users_not_remarking).deliver_now if near_expires_remarking?
-    RedmireNoteMailer.redmire_aspiration(@users_not_change).deliver_now if near_expires_change_aspiration?
+    RedmireNoteMailer.redmire_remarking(@users_not_remarking.limit(20)).deliver_now if near_expires_remarking?
+    RedmireNoteMailer.redmire_aspiration(@users_not_change.limit(20)).deliver_now if near_expires_change_aspiration?
   end
 end

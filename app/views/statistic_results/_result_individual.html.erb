@@ -15,12 +15,12 @@
       <%= render partial: "result_subject", collection: @results_user, as: :result %>
       <tr class="background-white">
         <td class="text-right border-none"><strong><%= t "total" %></strong></td>
-        <td class="border-none"><%= @total.round 1 %></td>
+        <td class="border-none"><%= @total.round 2 %></td>
       </tr>
 
       <tr class="background-whitek">
         <td class="text-right border-none"><strong><%= t "best_depart_mark" %></strong></td>
-        <td class="border-none"><%= @depart_best.name %>(<%= @result_best_depart.sum_mark.round 1 %>)</td>
+        <td class="border-none"><%= @depart_best.name %>(<%= @result_best_depart.sum_mark.round 2 %>)</td>
       </tr>
     </tbody>
   </table>
