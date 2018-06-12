@@ -1,4 +1,4 @@
-User.unscoped.delete_all
+# User.unscoped.delete_all
 User.create!(name: "Phan Đình Lâm", email: "phan.dinh.lam@framgia.com", password: "123456",
   phone: "01698624222", role: 0, address: "hai chau, Da Nang", year: DateTime.now.year,
   sex: 1, people_id: "201697277", nation: "Kinh", nationality: "Việt Nam",
@@ -31,7 +31,7 @@ User.create! name: "Admin", email: "admin@edu.com", password: "123123",
   nation: "kinh", religion: "không", identification_number: Faker::Code.asin, nationality: "Việt Nam",
   birthday: Faker::Date.between(50.years.ago, 40.years.ago), year: DateTime.now.year
 
-1.upto(5000) do |x|
+1.upto(15000) do |x|
   name = Faker::Name.name
   email = "user#{x}@edu.com"
   address = "Hai chau, Da Nang"
@@ -107,13 +107,11 @@ sp25 = Major.create! name: "Công tác xã hội", school_id: spdn.id, code: "N5
 nnm1 = Major.create! name: "Sư phạm Tiếng Anh", school_id: nndn.id, code: "D52140201", introducing: "", style_major_id: 5
 bkm4 = Major.create! name: "Công nghệ kỹ thuật vật liệu xây dựng", school_id: bkdn.id, code: "A7510105", introducing: "", style_major_id: 2
 bkm5 = Major.create! name: "Quản lý công nghiệp", school_id: bkdn.id, code: "A7510601", introducing: "", style_major_id: 3
-ktm4 = Major.create! name: "Quản trị khách sạn", school_id: @ktdn.id, code: "B7340107", introducing: "", style_major_id: 1
 sp26 = Major.create! name: "Quản lý tài nguyên và môi trường", school_id: spdn.id, code: "N52850101", introducing: "", style_major_id: 3
 ktm5 = Major.create! name: "Marketing", school_id: @ktdn.id, code: "B7340115", introducing: "", style_major_id: 1
 bkm6 = Major.create! name: "Kỹ thuật cơ khí", school_id: bkdn.id, code: "A7520103", introducing: "", style_major_id: 2
 nnm2 = Major.create! name: "Sư phạm Tiếng Nga", school_id: nndn.id, code: "D52140202", introducing: "", style_major_id: 5
 ktm1 = Major.create! name: "Kinh tế", school_id: @ktdn.id, code: "B7310101", introducing: "", style_major_id: 1
-ktm2 = Major.create! name: "Quản trị kinh doanh", school_id: @ktdn.id, code: "B7340101", introducing: "", style_major_id: 1
 bkm3 = Major.create! name: "Công nghệ chế tạo máy", school_id: bkdn.id, code: "A7510202", introducing: "", style_major_id: 2
 ktm7 = Major.create! name: "Kinh doanh thương mại", school_id: @ktdn.id, code: "B7340121", introducing: "", style_major_id: 1
 ktm9 = Major.create! name: "Kế toán", school_id: @ktdn.id,  code: "B73402112", introducing: "", style_major_id: 1
@@ -124,18 +122,18 @@ ktm11 = Major.create! name: "Quản trị nhân lực", school_id: @ktdn.id, cod
 nnm3 = Major.create! name: "Sư phạm Tiếng Pháp", school_id: nndn.id, code: "D52140206", introducing: "", style_major_id: 5
 bkm13 = Major.create! name: "Kỹ thuật hóa học", school_id: bkdn.id, code: "A7520301", introducing: "", style_major_id: 3
 nnm4 = Major.create! name: "Sư phạm Tiếng Trung Quốc", school_id: nndn.id, code: "D52140209", introducing: "", style_major_id: 5
+bkm20 = Major.create! name: "Hệ thống nhúng", school_id: bkdn.id, code: "A7905216", introducing: "", style_major_id: 2
 sp23 = Major.create! name: "Toán ứng dụng", school_id: spdn.id, code: "N52460112", introducing: "", style_major_id: 2
 bkm17 = Major.create! name: "Kiến trúc", school_id: bkdn.id, code: "A7580101CLC", introducing: "", style_major_id: 2
-bkm18 = Major.create! name: "Kinh tế xây dựng", school_id: bkdn.id, code: "A7580201A", introducing: "", style_major_id: 2
-bkm19 = Major.create! name: "Điện tử viễn thông(CTTT)", school_id: bkdn.id, code: "A7505206", introducing: "", style_major_id: 2
 nnm5 = Major.create! name: "Ngôn ngữ Anh", school_id: nndn.id, code: "D52140211", introducing: "", style_major_id: 6
-bkm20 = Major.create! name: "Hệ thống nhúng", school_id: bkdn.id, code: "A7905216", introducing: "", style_major_id: 2
+bkm19 = Major.create! name: "Điện tử viễn thông(CTTT)", school_id: bkdn.id, code: "A7505206", introducing: "", style_major_id: 2
+
+bkm18 = Major.create! name: "Kinh tế xây dựng", school_id: bkdn.id, code: "A7580201A", introducing: "", style_major_id: 2
 bkm21 = Major.create! name: "Sư phạm kỹ thuật công nghiệp", school_id: bkdn.id, code: "A7140214", introducing: "", style_major_id: 3
 bkm22 = Major.create! name: "Kỹ thuật điện tử & viễn thông (Chất lượng cao)", school_id: bkdn.id, code: "A20207CLC", introducing: "", style_major_id: 2
 bkm23 = Major.create! name: "Kỹ thuật điều khiển & tự động hóa (Chất lượng cao)", school_id: bkdn.id, code: "A220216CLC", introducing: "", style_major_id: 2
 nnm6 = Major.create! name: "Ngôn ngữ Nga", school_id: nndn.id, code: "D52140213", introducing: "", style_major_id: 6
 sp13 = Major.create! name: "Việt Nam học", school_id: spdn.id, code: "N52220113", introducing: "", style_major_id: 4
-bkm16 = Major.create! name: "Công nghệ thực phẩm", school_id: bkdn.id, code: "A7540101", introducing: "", style_major_id: 3
 sp21 = Major.create! name: "Vật lý học", school_id: spdn.id, code: "N52440102", introducing: "", style_major_id: 2
 nnm7 = Major.create! name: "Ngôn ngữ Pháp", school_id: nndn.id, code: "D52140218", introducing: "", style_major_id: 6
 nnm8 = Major.create! name: "Ngôn ngữ Trung Quốc", school_id: nndn.id, code: "D52340201", introducing: "", style_major_id: 6
@@ -143,31 +141,34 @@ sp14 = Major.create! name: "Lịch sử", school_id: spdn.id, code: "N52220310",
 sp15 = Major.create! name: "Văn học", school_id: spdn.id, code: "N52220320", introducing: "", style_major_id: 6
 sp16 = Major.create! name: "Văn hóa học", school_id: spdn.id, code: "N52220340", introducing: "", style_major_id: 4
 ktm12 = Major.create! name: "Hệ thống thông tin quản lý", school_id: @ktdn.id, code: "B7340405", introducing: "", style_major_id: 1
-ktm13 = Major.create! name: "Thống kê kinh tế", school_id: @ktdn.id, code: "B7310107", introducing: "", style_major_id: 1
+sp4 = Major.create! name: "Sư phạm Tin học", school_id: spdn.id, code: "N52140210", introducing: "", style_major_id: 5
 ktm14 = Major.create! name: "Thương mại điện tử", school_id: @ktdn.id, code: "B7340122", introducing: "", style_major_id: 1
 nnm9 = Major.create! name: "Ngôn ngữ Nhật", school_id: nndn.id, code: "D52340101", introducing: "", style_major_id: 6
 nnm10 = Major.create! name: "Ngôn ngữ Hàn Quốc", school_id: nndn.id, code: "D52480103", introducing: "", style_major_id: 6
+bkm9 = Major.create! name: "Kỹ thuật tàu thủy", school_id: bkdn.id, code: "A7520122", introducing: "", style_major_id: 2
 sp22 = Major.create! name: "Khoa học môi trường", school_id: spdn.id, code: "N52440201", introducing: "", style_major_id: 3
 nnm11 = Major.create! name: "Ngôn ngữ Thái Lan", school_id: nndn.id, code: "D52480201", introducing: "", style_major_id: 6
 nnm12 = Major.create! name: "Quốc tế học", school_id: nndn.id, code: "D52520201", introducing: "", style_major_id: 4
-bkm7 = Major.create! name: "Kỹ thuật cơ điện tử", school_id: bkdn.id, code: "A7520114", introducing: "", style_major_id: 2
+sp10 = Major.create! name: "Sư phạm Địa lý", school_id: spdn.id, code: "N52140219", introducing: "", style_major_id: 5
 sp1 = Major.create! name: "Giáo dục Tiểu học", school_id: spdn.id, code: "N52140202", introducing: "", style_major_id: 5
 sp11 = Major.create! name: "Gíao dục Mầm non", school_id: spdn.id, code: "N52140201", introducing: "", style_major_id: 5
+sp9 = Major.create! name: "Sư phạm Lịch sử", school_id: spdn.id, code: "N52140218", introducing: "", style_major_id: 5
 sp2 = Major.create! name: "Giáo dục Chính trị", school_id: spdn.id, code: "N52140205", introducing: "", style_major_id: 5
-sp3 = Major.create! name: "Sư phạm Toán học", school_id: spdn.id, code: "N52140209", introducing: "", style_major_id: 5
+
 bkm8 = Major.create! name: "Kỹ thuật nhiệt", school_id: bkdn.id, code: "A7520115", introducing: "", style_major_id: 2
-sp4 = Major.create! name: "Sư phạm Tin học", school_id: spdn.id, code: "N52140210", introducing: "", style_major_id: 5
+ktm13 = Major.create! name: "Thống kê kinh tế", school_id: @ktdn.id, code: "B7310107", introducing: "", style_major_id: 1
+ktm4 = Major.create! name: "Quản trị khách sạn", school_id: @ktdn.id, code: "B7340107", introducing: "", style_major_id: 1
 bkm14 = Major.create! name: "Kỹ thuật môi trường", school_id: bkdn.id, code: "A7520320", introducing: "", style_major_id: 3
+bkm16 = Major.create! name: "Công nghệ thực phẩm", school_id: bkdn.id, code: "A7540101", introducing: "", style_major_id: 3
 sp5 = Major.create! name: "Sư phạm Vật lý", school_id: spdn.id, code: "N52140211", introducing: "", style_major_id: 5
 sp6 = Major.create! name: "Sư phạm Hóa học", school_id: spdn.id, code: "N52140212", introducing: "", style_major_id: 5
-bkm9 = Major.create! name: "Kỹ thuật tàu thủy", school_id: bkdn.id, code: "A7520122", introducing: "", style_major_id: 2
+bkm7 = Major.create! name: "Kỹ thuật cơ điện tử", school_id: bkdn.id, code: "A7520114", introducing: "", style_major_id: 2
+sp3 = Major.create! name: "Sư phạm Toán học", school_id: spdn.id, code: "N52140209", introducing: "", style_major_id: 5
 sp8 = Major.create! name: "Sư phạm Ngữ văn", school_id: spdn.id, code: "N52140217", introducing: "", style_major_id: 5
 sp17 = Major.create! name: "Tâm lý học", school_id: spdn.id, code: "N52310401", introducing: "", style_major_id: 4
 sp18 = Major.create! name: "Địa lý học", school_id: spdn.id, code: "N52310501", introducing: "", style_major_id: 4
 sp19 = Major.create! name: "Báo chí", school_id: spdn.id, code: "N52320101", introducing: "", style_major_id: 4
 sp20 = Major.create! name: "Công nghệ sinh học", school_id: spdn.id, code: "N52420201", introducing: "", style_major_id: 2
-sp9 = Major.create! name: "Sư phạm Lịch sử", school_id: spdn.id, code: "N52140218", introducing: "", style_major_id: 5
-sp10 = Major.create! name: "Sư phạm Địa lý", school_id: spdn.id, code: "N52140219", introducing: "", style_major_id: 5
 bkm10 = Major.create! name: "Kỹ thuật điện", school_id: bkdn.id, code: "A7520201", introducing: "", style_major_id: 2
 sp7 = Major.create! name: "Sư phạm Sinh học", school_id: spdn.id, code: "N52140213", introducing: "", style_major_id: 5
 bkm12 = Major.create! name: "Kỹ thuật điều khiển  & tự động hóa", school_id: bkdn.id, code: "A7520216", introducing: "", style_major_id: 2
@@ -177,6 +178,7 @@ nnm14 = Major.create! name: "Đông phương học", school_id: nndn.id, code: "
 bkm15 = Major.create! name: "Công nghệ dầu khí và khai thác dầu", school_id: bkdn.id, code: "A7510701CLC", introducing: "", style_major_id: 3
 bkm11 = Major.create! name: "Kỹ thuật điện tử viễn thông", school_id: bkdn.id, code: "A7520207", introducing: "", style_major_id: 2
 sp24 = Major.create! name: "Công nghệ thông tin", school_id: spdn.id, code: "N52480201", introducing: "", style_major_id: 2
+ktm2 = Major.create! name: "Quản trị kinh doanh", school_id: @ktdn.id, code: "B7340101", introducing: "", style_major_id: 1
 
 # Major.create! name: "Sư phạm Kỹ thuật công nghiệp", school_id: spktdn.id, code: "O7140214", introducing: "", style_major_id: 5
 # Major.create! name: "Sinh học ứng dụng", school_id: spktdn.id, code: "O07140148", introducing: "7420203", style_major_id: 3
@@ -487,7 +489,7 @@ def float_num num
   (num*4).round / 4.0
 end
 
-users = User.student.limit(1500)
+users = User.student.limit(7500)
 users.each do |s|
   array = [toan.id, van.id, anh.id]
   array.each do |n|
@@ -502,7 +504,7 @@ users.each do |s|
 end
 users_done = users.pluck :id
 
-users = User.student.where.not(id: users_done).limit(1500)
+users = User.student.where.not(id: users_done).limit(4500)
 users.each do |s|
   array = [toan.id, van.id, anh.id]
   array.each do |n|
@@ -517,7 +519,7 @@ users.each do |s|
 end
 users_done = users_done|users.pluck(:id)
 
-users = User.student.where.not(id: users_done).limit(2000)
+users = User.student.where.not(id: users_done)
 users.each do |s|
   array = [toan.id, van.id, anh.id]
   array.each do |n|
@@ -611,8 +613,8 @@ Note.create! start_time: 5.days.ago, end_time: 2.months.from_now, year: Time.now
 # spdn = School.find_by code: "UED"
 
 # Register.unscoped.delete_all
-users = User.student.limit(1500)
-majors = Major.limit(26).pluck :id
+users = User.student.limit(7500)
+majors = Major.limit(38).pluck :id
 users.each do |u|
   department_ids = u.find_user_departments
   major_ids = MajorDepartment.get_by_major(majors).get_by_depart(department_ids).pluck :major_id
@@ -628,8 +630,8 @@ end
 users_done = users.pluck :id
 majors_done = majors
 
-users = User.student.where.not(id: users_done).limit(1500)
-majors = Major.where.not(id: majors_done).limit(26).pluck :id
+users = User.student.where.not(id: users_done).limit(4500)
+majors = Major.where.not(id: majors_done).limit(24).pluck :id
 # users = User.student.where.not(id: users_done).limit(30)
 users.each do |u|
   department_ids = u.find_user_departments
@@ -646,7 +648,7 @@ end
 users_done = users_done|users.pluck(:id)
 majors_done = majors_done|majors
 
-users = User.student.where.not(id: users_done).limit(2000)
+users = User.student.where.not(id: users_done)
 majors = Major.where.not(id: majors_done).pluck :id
 # users = User.student.where.not(id: users_done).limit(30)
 users.each do |u|

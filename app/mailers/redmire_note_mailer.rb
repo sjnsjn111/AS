@@ -1,7 +1,7 @@
 class RedmireNoteMailer < ApplicationMailer
   def redmire_remarking users
     @users = users
-    @url = file_remarkings_path
+    @url = file_remarkings_url
     mail to: @users.map(&:email).uniq, subject: t("redmire_remarking")
   end
 

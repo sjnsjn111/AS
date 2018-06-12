@@ -40,7 +40,7 @@ class User < ApplicationRecord
   scope :get_not_role, ->role{where.not role: :role}
   scope :get_teacher_by_school, ->school_id{where role: :teacher, school_id: school_id}
   scope :change_aspiration, ->status{where is_changed_register: status}
-  scope :get_not_id, ->ids{where.not user_id: ids}
+  scope :get_not_id, ->ids{where.not id: ids}
   scope :get_year, ->year{where year: year}
 
   def picture_size
