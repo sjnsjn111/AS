@@ -2,7 +2,7 @@ $(document).ready(function(){
   $(document).on('click', '#btn-remarking', function(){
     var id = $(this).attr('data-id');
     if (CKEDITOR.instances[`content-${id}`].getData().length < 20 ) {
-      alertify.error("content minimum 20 character.")
+      alertify.error("Nội dung tối thiểu 20 ký tự.")
     } else {
       $('#no-remarking').remove();
       var content = $('#name-result-' + id).text();

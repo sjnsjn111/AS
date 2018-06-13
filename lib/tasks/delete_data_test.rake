@@ -4,5 +4,9 @@ namespace :data do
     User.student.order(id: :desc).limit(11).each do |u|
       u.really_destroy!
     end
+
+    Notification.all.each do |n|
+      n.really_destroy!
+    end
   end
 end

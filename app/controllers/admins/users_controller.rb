@@ -15,6 +15,7 @@ class Admins::UsersController < Admins::AdminsController
     @user = User.new user_params
     get_password
     if @user.save
+      UserMailer.import_user(@user).deliver
       notification
       after_handlind_user
       @success = t "created_user"
@@ -88,11 +89,13 @@ class Admins::UsersController < Admins::AdminsController
   end
 
   def get_password
-    if @user.student? && params[:user] && params[:user][:people_id] && params[:user][:identification_number]
-      @user.password = params[:user][:people_id] + params[:user][:identification_number]
-    else @user.teacher? && params[:user] && params[:user][:people_id]
-      @user.password = params[:user][:people_id]
-    end
+    # if @user.student? && params[:user] && params[:user][:people_id] && params[:user][:identification_number]
+    #   @user.password = params[:user][:people_id] + params[:user][:identification_number]
+    # else @user.teacher? && params[:user] && params[:user][:people_id]
+    #   @user.password = params[:user][:people_id]
+    # end
+    @user.password = Devise.friendly_token
+    @user.self_attr_after_save @user.password
   end
 
   def after_handlind_user
